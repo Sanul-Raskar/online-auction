@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="../resources/css/registration.css"/>
+  </head>
+
+    <body>
+    <div class="text-center">
+      <h1>User Registration</h1>
+      <h3>Create your Auctivity account</h3>
+    </div>
+    <br />
+    <section>
+      <div class="form-container">
+        <form id="userRegisterForm" method="post">
+          <div class="form-group">
+            <label for="name">Name</label><br />
+            <input
+              id="name"
+              class="form-input"
+              type="text"
+              name="name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Email</label><br />
+            <input
+              class="form-input"
+              type="text"
+              name="email"
+              id="email"
+              required
+            /><br />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Username</label><br />
+            <input
+              class="form-input"
+              type="text"
+              name="username"
+              id="uname"
+              required
+            /><br />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Phone Number</label><br />
+            <input
+              class="form-input"
+              type="text"
+              name="mobile"
+              id="mobile"
+              required
+            /><br />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Date of Birth</label><br />
+            <input
+              class="form-input"
+              type="date"
+              name="dob"
+              id="dob"
+              required
+            /><br />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Password</label><br />
+            <input
+              class="form-input"
+              type="password"
+              name="password"
+              id="password"
+              required
+            /><br />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Confirm Password</label><br />
+            <input
+              class="form-input"
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              required
+            /><br />
+          </div>
+
+          <div class="form-group">
+            <label for="name">Address</label><br />
+            <textarea
+              class="form-input"
+              id="address"
+              name="address"
+              rows="4"
+              cols="30"
+              required
+            ></textarea
+            ><br />
+          </div>
+
+          <div class="form-group">
+            <label for="name">How do you want to use Auctivity?</label><br />
+            <select class="form-input" name="userType" id="userType" required>
+              <option value="">Select</option>
+              <option value="buyer">Buy products</option>
+              <option value="seller">Sell products</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Wallet Amount</label><br />
+            <input
+              class="form-input"
+              type="text"
+              name="walletAmount"
+              id="walletAmount"
+              required
+            /><br />
+          </div>
+          <br />
+          <div class="text-center">
+            <button class="signup-btn">Sign Up</button>
+          </div>
+        </form>
+        <br />
+        <h4 class="text-center">
+          Already a member? <span class="font-bold"><a href="">Log In</a></span>
+        </h4>
+      </div>
+    </section>
+    <div style="height: 50px"></div>
+  </body>
+</html>
