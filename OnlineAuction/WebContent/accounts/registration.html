@@ -17,18 +17,19 @@
       <div class="form-container">
         <form id="userRegisterForm" method="post">
           <div class="form-group">
-            <label for="name">Name</label><br />
+            <label for="name">Name<span style="color:red">*</span> </label><br />
             <input
               id="name"
               class="form-input"
               type="text"
               name="name"
               required
-            />
+            /><br/>
+             <p id="nameError" style="margin-top:4px;color:red"></p>
           </div>
-
+          
           <div class="form-group">
-            <label for="name">Email</label><br />
+            <label for="email">Email<span style="color:red">*</span></label><br />
             <input
               class="form-input"
               type="text"
@@ -36,10 +37,11 @@
               id="email"
               required
             /><br />
+            <p id="emailError" style="margin-top:4px;color:red"></p>
           </div>
 
           <div class="form-group">
-            <label for="name">Username</label><br />
+            <label for="uname">Username<span style="color:red">*</span></label><br />
             <input
               class="form-input"
               type="text"
@@ -47,10 +49,11 @@
               id="uname"
               required
             /><br />
+            <p id="unameError" style="margin-top:4px;color:red"></p>
           </div>
 
           <div class="form-group">
-            <label for="name">Phone Number</label><br />
+            <label for="mobile">Phone Number<span style="color:red">*</span></label><br />
             <input
               class="form-input"
               type="text"
@@ -58,10 +61,11 @@
               id="mobile"
               required
             /><br />
+            <p id="mobileError" style="margin-top:4px;color:red"></p>
           </div>
 
           <div class="form-group">
-            <label for="name">Date of Birth</label><br />
+            <label for="dob">Date of Birth<span style="color:red">*</span></label><br />
             <input
               class="form-input"
               type="date"
@@ -69,10 +73,11 @@
               id="dob"
               required
             /><br />
+            <p id="dobError" style="margin-top:4px;color:red"></p>
           </div>
 
           <div class="form-group">
-            <label for="name">Password</label><br />
+            <label for="password">Password<span style="color:red">*</span></label><br />
             <input
               class="form-input"
               type="password"
@@ -80,10 +85,11 @@
               id="password"
               required
             /><br />
+            <p id="passwordError" style="margin-top:4px;color:red"></p>
           </div>
 
           <div class="form-group">
-            <label for="name">Confirm Password</label><br />
+            <label for="confirmPassword">Confirm Password<span style="color:red">*</span></label><br />
             <input
               class="form-input"
               type="password"
@@ -91,32 +97,36 @@
               id="confirmPassword"
               required
             /><br />
+            <p id="confirmPasswordError" style="margin-top:4px;color:red"></p>
           </div>
 
           <div class="form-group">
-            <label for="name">Address</label><br />
+            <label for="address">Address<span style="color:red">*</span></label><br />
             <textarea
               class="form-input"
               id="address"
               name="address"
               rows="4"
               cols="30"
+              form="userRegisterForm"
               required
             ></textarea
             ><br />
+            <p id="addressError" style="margin-top:4px;color:red"></p>
           </div>
 
           <div class="form-group">
-            <label for="name">How do you want to use Auctivity?</label><br />
+            <label for="userType">How do you want to use Auctivity? <span style="color:red">*</span></label><br />
             <select class="form-input" name="userType" id="userType" required>
               <option value="">Select</option>
               <option value="buyer">Buy products</option>
               <option value="seller">Sell products</option>
             </select>
+            <p id="userTypeError" style="margin-top:4px;color:red"></p>
           </div>
 
           <div class="form-group">
-            <label for="name">Wallet Amount</label><br />
+            <label for="walletAmount">Wallet Amount<span style="color:red">*</span></label><br />
             <input
               class="form-input"
               type="text"
@@ -124,6 +134,7 @@
               id="walletAmount"
               required
             /><br />
+            <p id="walletError" style="margin-top:4px;color:red"></p>
           </div>
           <br />
           <div class="text-center">
@@ -137,5 +148,7 @@
       </div>
     </section>
     <div style="height: 50px"></div>
+    <script src="../resources/js/inputValidation.js"></script>
+    <script src="../resources/js/register.js"></script>
   </body>
 </html>
