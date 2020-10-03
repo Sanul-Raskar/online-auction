@@ -37,7 +37,7 @@ public class ProductForAuction extends Product {
 	/**
 	 * @param bidStartDate the bidStartDate to set
 	 */
-	public void setBidStartDate(Date bidStartDate) {
+	public void setBidStartDate(Timestamp bidStartDate) {
 		this.bidStartDate = bidStartDate;
 	}
 	/**
@@ -49,7 +49,7 @@ public class ProductForAuction extends Product {
 	/**
 	 * @param bidEndDate the bidEndDate to set
 	 */
-	public void setBidEndDate(Date bidEndDate) {
+	public void setBidEndDate(Timestamp bidEndDate) {
 		this.bidEndDate = bidEndDate;
 	}
 	/**

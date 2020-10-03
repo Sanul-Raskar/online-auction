@@ -69,13 +69,13 @@ public class User {
 	/**
 	 * @return the userPhoneNumber
 	 */
-	public long getUserPhoneNumber() {
+	public String getUserPhoneNumber() {
 		return userPhoneNumber;
 	}
 	/**
 	 * @param userPhoneNumber the userPhoneNumber to set
 	 */
-	public void setUserPhoneNumber(long userPhoneNumber) {
+	public void setUserPhoneNumber(String userPhoneNumber) {
 		this.userPhoneNumber = userPhoneNumber;
 	}
 	/**
@@ -151,7 +151,7 @@ public class User {
 	 * @param userType
 	 * @param userWalletAmount
 	 */
-	public User(String userName, int userId, Date userDob, String userEmail, long userPhoneNumber, String userUserName,
+	public User(String userName, int userId, Date userDob, String userEmail, String userPhoneNumber, String userUserName,
 			String userPassword, String userAddress, String userType, double userWalletAmount) {
 		super();
 		this.userName = userName;
