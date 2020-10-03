@@ -1,115 +1,114 @@
 //import * as validate from "./inputValidation";
 
 function validateForm(event) {
-	//Prevent form from automatic submit
+	// Prevent form from automatic submit
 	event.preventDefault()
-	
-  /*
-   * Initialize empty js object. This object will store valid form data to
-   * send to server
-   */
-  let data = {};
-  let registerForm = document.getElementById("userRegisterForm");
-	
 
-  /* Initialize flag variable to check if all data is valid */
-  let validData = true;
+	/*
+	 * Initialize empty js object. This object will store valid form data to
+	 * send to server
+	 */
+	let data = {};
+	let registerForm = document.getElementById("userRegisterForm");
 
-  if (validateName(registerForm["name"].value)) {
-    data.name = registerForm["name"].value;
-  } else {
-    validData = false;
-    document.getElementById("nameError").innerHTML = "Invalid name";
-  }
+	/* Initialize flag variable to check if all data is valid */
+	let validData = true;
 
-  if (validateEmail(registerForm["email"].value)) {
-    data.email = registerForm["email"].value;
-  } else {
-    validData = false;
-    document.getElementById("emailError").innerHTML = "Invalid email";
-  }
+	if (validateName(registerForm["name"].value)) {
+		data.name = registerForm["name"].value;
+	} else {
+		validData = false;
+		document.getElementById("nameError").innerHTML = "Invalid name";
+	}
 
-  if (validateUsername(registerForm["username"].value)) {
-    data.username = registerForm["username"].value;
-  } else {
-    validData = false;
-    document.getElementById("unameError").innerHTML = "Invalid username";
-  }
+	if (validateEmail(registerForm["email"].value)) {
+		data.email = registerForm["email"].value;
+	} else {
+		validData = false;
+		document.getElementById("emailError").innerHTML = "Invalid email";
+	}
 
-  if (validateMobile(registerForm["mobile"].value)) {
-    data.mobile = registerForm["mobile"].value;
-  } else {
-    validData = false;
-    document.getElementById("mobileError").innerHTML = "Invalid mobile number";
-  }
+	if (validateUsername(registerForm["username"].value)) {
+		data.username = registerForm["username"].value;
+	} else {
+		validData = false;
+		document.getElementById("unameError").innerHTML = "Invalid username";
+	}
 
-  if (validateBirthdate(registerForm["dob"].value)) {
-    data.dob = registerForm["dob"].value;
-  } else {
-    validData = false;
-    document.getElementById("dobError").innerHTML = "Invalid date of birth";
-  }
+	if (validateMobile(registerForm["mobile"].value)) {
+		data.mobile = registerForm["mobile"].value;
+	} else {
+		validData = false;
+		document.getElementById("mobileError").innerHTML = "Invalid mobile number";
+	}
 
-  if (validatePassword(registerForm["password"].value)) {
-    data.password = registerForm["password"].value;
-  } else {
-    validData = false;
-    document.getElementById("passwordError").innerHTML = "Invalid password";
-  }
+	if (validateBirthdate(registerForm["dob"].value)) {
+		data.dob = registerForm["dob"].value;
+	} else {
+		validData = false;
+		document.getElementById("dobError").innerHTML = "Invalid date format. Date format should be dd/mm/yyyy";
+	}
 
-  if (
-    registerForm["confirmPassword"].value === registerForm["password"].value
-  ) {
-    data.confirmPassword = registerForm["confirmPassword"].value;
-  } else {
-    validData = false;
-    document.getElementById("confirmPasswordError").innerHTML =
-      "Passwords do not match";
-  }
+	if (validatePassword(registerForm["password"].value)) {
+		data.password = registerForm["password"].value;
+	} else {
+		validData = false;
+		document.getElementById("passwordError").innerHTML = "Invalid password. Password should contain atleast one capital letter, one small letter, one number and one special character. Length of password should be between 8 to 15";
+	}
 
-  if (validateAddress(registerForm["address"].value)) {
-    data.address = registerForm["address"].value;
-  } else {
-    validData = false;
-    document.getElementById("addressError").innerHTML = "Invalid address";
-  }
+	if (registerForm["confirmPassword"].value === registerForm["password"].value) {
+		data.confirmPassword = registerForm["confirmPassword"].value;
+	} else {
+		validData = false;
+		document.getElementById("confirmPasswordError").innerHTML = "Passwords do not match";
+	}
 
-  if (validateUsertype(registerForm["userType"].value)) {
-    data.userType = registerForm["userType"].value;
-  } else {
-    validData = false;
-    document.getElementById("userTypeError").innerHTML =
-      "Please select option from dropdown";
-  }
+	if (validateAddress(registerForm["address"].value)) {
+		data.address = registerForm["address"].value;
+	} else {
+		validData = false;
+		document.getElementById("addressError").innerHTML = "Invalid address";
+	}
 
-  if (validateWalletAmount(registerForm["walletAmount"].value)) {
-    data.walletAmount = registerForm["walletAmount"].value;
-  } else {
-    validData = false;
-    document.getElementById("walletError").innerHTML = "Invalid amount";
-  }
+	if (validateUsertype(registerForm["userType"].value)) {
+		data.userType = registerForm["userType"].value;
+	} else {
+		validData = false;
+		document.getElementById("userTypeError").innerHTML = "Please select option from dropdown";
+	}
 
-  if (validData) {
-    console.log(data);
-    /* Send data variable to server using XMLHttpRequest() */
-    var http = new XMLHttpRequest();
-    var params = "name="+data.name+"&email="+data.email+"&username="+data.username+"&mobile="+data.mobile+"&dob="+data.dob+"&password="+data.confirmPassword+"&address="+data.address+"&userType="+data.userType+"&walletAmount="+data.walletAmount;
-    http.open('POST', "./register", true);
+	if (validateWalletAmount(registerForm["walletAmount"].value)) {
+		data.walletAmount = registerForm["walletAmount"].value;
+	} else {
+		validData = false;
+		document.getElementById("walletError").innerHTML = "Invalid amount";
+	}
 
-    //Send the proper header information along with the request
-    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	if (validData) {
+		console.log(data);
+		/* Send data variable to server using XMLHttpRequest() */
+		var http = new XMLHttpRequest();
+		var params = "name=" + data.name + "&email=" + data.email
+				+ "&username=" + data.username + "&mobile=" + data.mobile
+				+ "&dob=" + data.dob + "&password=" + data.confirmPassword
+				+ "&address=" + data.address + "&userType=" + data.userType
+				+ "&walletAmount=" + data.walletAmount;
+		http.open('POST', "./register", true);
 
-    //Call a function when the state changes.
-    http.onreadystatechange = function() {
-        if(http.readyState == 4 && http.status == 200) {
-            alert(http.responseText);
-        }
-    }
-    console.log(params);
-    //http.send(params);
-  }
+		// Send the proper header information along with the request
+		http.setRequestHeader('Content-type',
+				'application/x-www-form-urlencoded');
+
+		// Call a function when the state changes.
+		http.onreadystatechange = function() {
+			if (http.readyState == 4 && http.status == 200) {
+				alert(http.responseText);
+			}
+		}
+		console.log(params);
+		// http.send(params);
+	}
 }
 
-document
-  .getElementById("userRegisterForm")
-  .addEventListener("submit", validateForm);
+document.getElementById("userRegisterForm").addEventListener("submit",
+		validateForm);
