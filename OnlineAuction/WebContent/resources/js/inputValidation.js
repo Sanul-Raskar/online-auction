@@ -162,8 +162,8 @@ function validateProductName(productName) {
  * validateProductDescription function is check if product description is not
  * null or empty. If product description is valid then return true else false
  */
-function validateProductDescription(productName) {
-	if (productName !== null && productName !== "" && productName !== " ") {
+function validateProductDescription(productDesp) {
+	if (productDesp !== null && productDesp !== "" && productDesp !== " ") {
 		return true;
 	} else {
 		return false;
@@ -191,6 +191,23 @@ function validateActualPrice(actualPrice) {
 
 
 /*
+ * validateProductQuantity function is check if quantity is not null or empty. If quantity
+ * is valid then return true else false
+ */
+function validateProductQuantity(productQuantity) {
+	/*
+	 * Regular expression pattern to check if quantity is digit
+	 */
+	let pattern = /^[0-9]*$/;
+	if (productQuantity !== null && productQuantity !== "" && productQuantity !== " "
+			&& pattern.test(productQuantity)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/*
  * validateUploadImage function is check if price is not null or empty. If price
  * is valid then return true else false
  */
@@ -202,7 +219,7 @@ function validateUploadImage() {
 	let imgExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 
 	if (!imgExtensions.exec(imagePath)) {
-		alert('Invalid Image Extension');
+		//alert('Invalid Image Extension');
 		imageInput.value = '';
 		return false;
 	} else {

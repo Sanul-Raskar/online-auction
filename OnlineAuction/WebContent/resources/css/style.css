@@ -43,9 +43,6 @@ nav {
 /* Style the footer */
 #footer {
 	background-color: #DB0011;
-	position: fixed;
-	left: 0;
-	bottom: 0;
 	text-align: center;
 	margin: 0px auto;
 	width: 100%;
