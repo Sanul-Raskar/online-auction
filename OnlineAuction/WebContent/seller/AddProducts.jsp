@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="addProducts.css"/>
-    <%@ include file="SellerNavbar.html" %>
+    <%@ include file="./SellerNavbar.html" %>
 </head>
 <body>
     <div class="text-center">
@@ -62,6 +62,6 @@
 
         </form>
     </div>
-<script src="addProducts.js"></script>
+<script src="../resources/js/inputValidation.js"></script>
 </body>
 </html>
