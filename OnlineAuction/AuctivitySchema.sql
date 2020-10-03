@@ -21,7 +21,7 @@ create table OnlineAuctionDB.Usertable (
     password varchar(255) NOT NULL,
     address varchar(255) NOT NULL,
     user_type int NOT NULL,
-    wallet int,
+    wallet double,
     PRIMARY KEY (UserID)
 );
 
@@ -31,7 +31,6 @@ create table OnlineAuctionDB.Category (
 	CategoryDesc varchar(255) NOT NULL,
 	PRIMARY KEY(CategoryName)
 );
-
 create table OnlineAuctionDB.Product (
 	ProductID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 300, INCREMENT BY 1),
 	ProductName varchar(255) NOT NULL,
@@ -52,6 +51,7 @@ create table OnlineAuctionDB.Bid (
 	Status INTEGER NOT NULL
 	--Status has 3 values : 1 -> Bid is Open; 2 -> Bid is Lost; 3 -> Bid is Won.
 );
+
 create table OnlineAuctionDB.ProductBid (
 	MinBidValue INTEGER NOT NULL,
 	BidStartDate timestamp,
