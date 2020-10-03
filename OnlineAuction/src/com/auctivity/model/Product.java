@@ -13,7 +13,7 @@ public class Product {
 	private double productPrice;
 	private int productQuantity;
 	private String productImage;
-	//productSellerId must be registered with userId first
+	// @productSellerId must be registered with @userId first
 	private int productSellerId;
 	/**
 	 * @return the productId

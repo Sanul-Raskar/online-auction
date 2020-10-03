@@ -11,7 +11,7 @@ public class ProductForAuction extends Product {
 	private double minimumBidValue;
 	private Date bidStartDate;
 	private Date bidEndDate;
-	//buyerId must be registered with userId
+	// @buyerId must be registered with @userId
 	private int buyerId;
 	private double soldPrice;
 	private int auctionStatus;
