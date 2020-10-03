@@ -110,5 +110,7 @@ function validateForm(event) {
 	}
 }
 
+/*add onSubmit event listener to user registration form so that input
+ * field values can be validated before submitting form to server */
 document.getElementById("userRegisterForm").addEventListener("submit",
 		validateForm);

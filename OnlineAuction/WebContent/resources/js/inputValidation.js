@@ -28,7 +28,7 @@ function validateEmail(email) {
 }
 
 /*
- * validateUsername function is check if email is not null or empty. If username
+ * validateUsername function is check if username is not null or empty. If username
  * is valid then return true else false
  */
 function validateUsername(uname) {
@@ -40,7 +40,7 @@ function validateUsername(uname) {
 }
 
 /*
- * validateMobile function is check if email is not null or empty and test with
+ * validateMobile function is check if mobile number is not null or empty and test with
  * given regex pattern. If mobile number is valid then return true else false
  */
 function validateMobile(mobile) {
@@ -128,6 +128,18 @@ function validateWalletAmount(amount) {
 	let pattern = /^\d+(\.\d{1,3})?$/;
 	if (amount !== null && amount !== "" && amount !== " "
 			&& pattern.test(amount)) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+/*
+ * validateLoginPassword function is check if password enter during login is not null or empty.
+ */
+function validateLoginPassword(loginPassword){
+	if (loginPassword !== null && loginPassword !== "" && loginPassword !== " ") {
 		return true;
 	} else {
 		return false;
