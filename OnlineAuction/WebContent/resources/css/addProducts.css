@@ -1,0 +1,49 @@
+.text-center {
+	text-align: center;
+}
+
+.font-bold {
+	font-weight: bold;
+}
+
+.form-container {
+	margin: auto;
+	width: 32%;
+	border: 1px solid rgb(172, 168, 168);
+	padding: 40px;
+	border-radius: 12px;
+}
+
+@media only screen and (max-width: 450px) {
+	.form-container {
+		width: 70%;
+	}
+}
+
+.addproduct-btn {
+	width: 30%;
+	font-size: 14px;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	background-color: #db0011;
+	color: #fff;
+	border-radius: 10px;
+	border-width: 2px;
+	border-color: #db0011;
+	text-align: center;
+}
+
+.addproduct-btn:hover {
+	background-color: #fff;
+	color: #db0011;
+}
+
+.form-group {
+	margin: 20px;
+}
+
+.form-input {
+	margin-top: 4px;
+	width: 100%;
+	padding:10px;
+}
