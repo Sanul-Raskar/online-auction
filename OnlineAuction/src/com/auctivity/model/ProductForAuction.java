@@ -4,13 +4,14 @@
  */
 package com.auctivity.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class ProductForAuction extends Product {
 
 	private double minimumBidValue;
-	private Date bidStartDate;
-	private Date bidEndDate;
+	private Timestamp bidStartDate;
+	private Timestamp bidEndDate;
 	// @buyerId must be registered with @userId
 	private int buyerId;
 	private double soldPrice;
