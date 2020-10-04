@@ -12,8 +12,8 @@ public class ProductForAuction extends Product {
 	private double minimumBidValue;
 	private Timestamp bidStartDate;
 	private Timestamp bidEndDate;
-	// @buyerId must be registered with @userId
-	private int buyerId;
+	// @sellerId must be registered with @userId
+	private int sellerId;
 	private double soldPrice;
 	private int auctionStatus;
 	/**
@@ -55,14 +55,15 @@ public class ProductForAuction extends Product {
 	/**
 	 * @return the buyerId
 	 */
-	public int getBuyerId() {
-		return buyerId;
+	public int getSellerId() {
+		return sellerId;
 	}
 	/**
 	 * @param buyerId the buyerId to set
 	 */
-	public void setBuyerId(int buyerId) {
-		this.buyerId = buyerId;
+
+	public void setSellerId(int sellerId) {
+		this.sellerId = sellerId;
 	}
 	/**
 	 * @return the soldPrice
@@ -112,13 +113,14 @@ public class ProductForAuction extends Product {
 				productSellerId);
 		// TODO Auto-generated constructor stub
 	}
-	
 	@Override
 	public String toString() {
 		return "ProductForAuction [minimumBidValue=" + minimumBidValue + ", bidStartDate=" + bidStartDate
-				+ ", bidEndDate=" + bidEndDate + ", buyerId=" + buyerId + ", soldPrice=" + soldPrice
+				+ ", bidEndDate=" + bidEndDate + ", sellerId=" + sellerId + ", soldPrice=" + soldPrice
 				+ ", auctionStatus=" + auctionStatus + "]";
 	}
+	
+
 	
 	
 	
