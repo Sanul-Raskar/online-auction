@@ -8,14 +8,14 @@ function validateAddProductForm(event) {
 	let validData = true;
 
 	if (validateProductName(addProductForm["productName"].value)) {
-		formData.append("name", addProductForm["productName"].value);
+		formData.append("productName", addProductForm["productName"].value);
 	} else {
 		validData = false;
 		document.getElementById("productNameError").innerHTML = "Please enter product name";
 	}
 
 	if (validateProductDescription(addProductForm["productDescription"].value)) {
-		formData.append("description",
+		formData.append("productDescription",
 				addProductForm["productDescription"].value);
 	} else {
 		validData = false;
@@ -35,6 +35,9 @@ function validateAddProductForm(event) {
 		validData = false;
 		document.getElementById("quantityError").innerHTML = "Please enter product quantity";
 	}
+	
+	formData.append("category",addProductForm["category"].value);
+	formData.append("img",addProductForm["img"].value);
 
 //	if (validateUploadImage()) {
 //		formData.append("image", addProductForm["img"].files[0]);
@@ -47,10 +50,7 @@ function validateAddProductForm(event) {
 		console.log(formData);
 		/* Send data variable to server using XMLHttpRequest() */
 		var http = new XMLHttpRequest();
-		http.open('POST', "./addProduct", true);
-
-		// Send the proper header information along with the request
-		http.setRequestHeader('Content-type', 'multipart/form-data');
+		http.open('POST', "/OnlineAuction/addProduct", true);
 
 		// Call a function when the state changes.
 		http.onreadystatechange = function() {
@@ -59,7 +59,7 @@ function validateAddProductForm(event) {
 			}
 		}
 		console.log(formData);
-		// http.send(formData);
+		http.send(formData);
 	}
 
 }
