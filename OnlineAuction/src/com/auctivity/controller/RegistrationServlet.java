@@ -1,8 +1,14 @@
 package com.auctivity.controller;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Properties;
+
 import com.auctivity.controller.ConnectionProvider;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,6 +56,9 @@ public class RegistrationServlet extends HttpServlet {
 			String password = request.getParameter("password");
 			String address = request.getParameter("address");
 			String usertype = request.getParameter("userType");
+			
+			System.out.println(""+name+" "+email+" "+" "+username+" "+mobile+" "+dob+" "+password+" "+address+" "+usertype);
+			
 			int type;
 			if(usertype.equals("buyer"))
 				{
@@ -60,7 +69,7 @@ public class RegistrationServlet extends HttpServlet {
 			}
 			int walletamount = Integer.parseInt(request.getParameter("walletAmount"));
 				Connection conn = ConnectionProvider.getConnection();
-				FileInputStream fis = new FileInputStream("/online-auction_OnlineAuction/WebContent/WEB-INF/properties/queries.properties");
+				FileInputStream fis = new FileInputStream("/OnlineAuction/WebContent/WEB-INF/properties/queries.properties");
 				Properties props = new Properties();
 				props.load(fis);
 				PreparedStatement ps = conn.prepareStatement(props.getProperty("registerUserQuery"));

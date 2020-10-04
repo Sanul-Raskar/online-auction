@@ -93,7 +93,7 @@ function validateForm(event) {
 				+ "&dob=" + data.dob + "&password=" + data.confirmPassword
 				+ "&address=" + data.address + "&userType=" + data.userType
 				+ "&walletAmount=" + data.walletAmount;
-		http.open('POST', "./register", true);
+		http.open('POST', "/OnlineAuction/registration", true);
 
 		// Send the proper header information along with the request
 		http.setRequestHeader('Content-type',
@@ -106,7 +106,7 @@ function validateForm(event) {
 			}
 		}
 		console.log(params);
-		// http.send(params);
+		http.send(params);
 	}
 }
 
