@@ -82,19 +82,19 @@ public class SellerController extends HttpServlet {
 		}
 
 		System.out.println();
-		Product product = new Product(202, data.get("productName"), data.get("category"),
+		Product product = new Product(201, data.get("productName"), "Electronics",
 				data.get("productDescription"), Double.parseDouble(data.get("actualPrice")),
-				Integer.parseInt(data.get("quantity")), "/sample/path/logo.jpg", 101);
+				Integer.parseInt(data.get("quantity")), "/sample/path/logo.jpg", 100);
 		System.out.println(product);
 		
-//		SellerDao sellerImplobj = new SellerDaoImpl();
-//
-//		try {
-//			sellerImplobj.addProduct(product);
-//		} catch (CustomException e) {
-//
-//			e.printStackTrace();
-//		}
+		SellerDao sellerImplobj = new SellerDaoImpl();
+
+		try {
+			sellerImplobj.addProduct(product);
+		} catch (CustomException e) {
+
+			e.printStackTrace();
+		}
 		
 	}
 

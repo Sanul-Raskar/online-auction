@@ -1,5 +1,6 @@
 package com.auctivity.controller;
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -46,13 +47,14 @@ public class RegistrationServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			int status = 0;	
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
 			String username = request.getParameter("username");
 			String mobile = request.getParameter("mobile");
 			//parsing date in required format
 			Date dob = sdf.parse(request.getParameter("dob"));
+			java.sql.Date sDate = new java.sql.Date(dob.getDate());
 			String password = request.getParameter("password");
 			String address = request.getParameter("address");
 			String usertype = request.getParameter("userType");
@@ -68,13 +70,14 @@ public class RegistrationServlet extends HttpServlet {
 				type = 1;
 			}
 			int walletamount = Integer.parseInt(request.getParameter("walletAmount"));
-				Connection conn = ConnectionProvider.getConnection();
-				FileInputStream fis = new FileInputStream("/OnlineAuction/WebContent/WEB-INF/properties/queries.properties");
-				Properties props = new Properties();
-				props.load(fis);
-				PreparedStatement ps = conn.prepareStatement(props.getProperty("registerUserQuery"));
+				//Connection conn = ConnectionProvider.getConnection();
+				//FileInputStream fis = new FileInputStream("/User/sanul/github/OnlineAuction/WebContent/WEB-INF/properties/queries.properties");
+				//Properties props = new Properties();
+				//props.load(fis);
+			Connection conn = GetConnection.getConnectionId();	
+			PreparedStatement ps = conn.prepareStatement("insert into OnlineAuctionDB.Usertable (Name,dob,email,phonenumber,username,password,address,user_type,wallet) values (?,?,?,?,?,?,?,?,?)");
 				ps.setString(1, name);
-				ps.setDate(2, (java.sql.Date) dob);
+				ps.setDate(2, sDate);
 				ps.setString(3, email);
 				ps.setString(4, mobile);
 				ps.setString(5, username);

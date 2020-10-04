@@ -44,6 +44,7 @@ function validateForm(event) {
 
 	if (validateBirthdate(registerForm["dob"].value)) {
 		data.dob = registerForm["dob"].value;
+		console.log(data.dob);
 	} else {
 		validData = false;
 		document.getElementById("dobError").innerHTML = "Invalid date format. Date format should be dd/mm/yyyy";
