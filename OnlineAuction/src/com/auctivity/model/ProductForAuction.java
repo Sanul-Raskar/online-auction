@@ -12,10 +12,11 @@ public class ProductForAuction extends Product {
 	private double minimumBidValue;
 	private Timestamp bidStartDate;
 	private Timestamp bidEndDate;
-	// @sellerId must be registered with @userId
-	private int sellerId;
+	// @buyerId must be registered with @userId
+	private int buyerId;
 	private double soldPrice;
 	private int auctionStatus;
+	private int productId;
 	/**
 	 * @return the minimumBidValue
 	 */
@@ -55,15 +56,14 @@ public class ProductForAuction extends Product {
 	/**
 	 * @return the buyerId
 	 */
-	public int getSellerId() {
-		return sellerId;
+	public int getBuyerId() {
+		return buyerId;
 	}
 	/**
 	 * @param buyerId the buyerId to set
 	 */
-
-	public void setSellerId(int sellerId) {
-		this.sellerId = sellerId;
+	public void setBuyerId(int buyerId) {
+		this.buyerId = buyerId;
 	}
 	/**
 	 * @return the soldPrice
@@ -71,6 +71,8 @@ public class ProductForAuction extends Product {
 	public double getSoldPrice() {
 		return soldPrice;
 	}
+
+
 	/**
 	 * @param soldPrice the soldPrice to set
 	 */
@@ -89,14 +91,28 @@ public class ProductForAuction extends Product {
 	public void setAuctionStatus(int auctionStatus) {
 		this.auctionStatus = auctionStatus;
 	}
+	
+	/**
+	 * @return the productId
+	 */
+	public int getProductId() {
+		return productId;
+	}
+	/**
+	 * @param productId the productId to set
+	 */
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
 	/**
 	 * 
 	 */
+	
 	public ProductForAuction() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	/**
 	 * @param productId
 	 * @param productName
@@ -116,19 +132,9 @@ public class ProductForAuction extends Product {
 	@Override
 	public String toString() {
 		return "ProductForAuction [minimumBidValue=" + minimumBidValue + ", bidStartDate=" + bidStartDate
-				+ ", bidEndDate=" + bidEndDate + ", sellerId=" + sellerId + ", soldPrice=" + soldPrice
-				+ ", auctionStatus=" + auctionStatus + "]";
+				+ ", bidEndDate=" + bidEndDate + ", buyerId=" + buyerId + ", soldPrice=" + soldPrice
+				+ ", auctionStatus=" + auctionStatus + ", productId=" + productId + "]";
 	}
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
