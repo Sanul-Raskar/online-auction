@@ -22,8 +22,8 @@
 	%>
 	<div id="main">
 	<div style="float:right">
-	<a href="./accounts/login.html" class="navbarButton">Login</a>
-	<a href="./accounts/registration.html" class="navbarButton">Sign Up</a>
+	<a href="./accounts/login.jsp" class="navbarButton">Login</a>
+	<a href="./accounts/registration.jsp" class="navbarButton">Sign Up</a>
 	</div>
 	</div>
 	<%

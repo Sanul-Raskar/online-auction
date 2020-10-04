@@ -6,10 +6,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="../resources/css/style.css"/>
     <link rel="stylesheet" href="../resources/css/addProducts.css"/>
-    <%@ include file="../Common/navbar.jsp" %>  
     
 </head>
 <body>
+	<%@ include file="../Common/navbar.jsp" %>  
+
     <div class="text-center">
         <h1>Add Products</h1>
         <h3>Please fill the product details...<h3>
