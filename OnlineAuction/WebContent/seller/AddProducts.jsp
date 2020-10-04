@@ -13,11 +13,11 @@
 
     <div class="text-center">
         <h1>Add Products</h1>
-        <h3>Please fill the product details...<h3>
+        <h3>Please fill the product details...</h3>
     </div>
 
     <div class="form-container">
-        <form id="addProductForm" method="post" enctype="multipart/form-data" >
+        <form action="./addProduct" id="addProductForm" method="post" enctype="multipart/form-data" >
             <div class="form-group">
                 <label for="productName"><b>Name</b></label>
                 <input class="form-input" type="text" placeholder="Product Name" name="productName" id="productName" required> 
