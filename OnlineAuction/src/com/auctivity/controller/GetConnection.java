@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class GetConnection {
 
 	public static void main(String[] args) {
-		
+		getConnectionId();
 	}
 	
 	public static Connection getConnectionId() {
@@ -21,7 +21,9 @@ public class GetConnection {
 		try {
 			
 			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-			con=DriverManager.getConnection("jdbc:derby:/Users/sanul/MyDB", "admin", "derby");
+
+			con=DriverManager.getConnection("jdbc:derby:C:\\Users\\hp\\MyDB;create=true");
+			 
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
