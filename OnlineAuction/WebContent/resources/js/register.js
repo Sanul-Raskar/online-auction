@@ -44,6 +44,7 @@ function validateForm(event) {
 
 	if (validateBirthdate(registerForm["dob"].value)) {
 		data.dob = registerForm["dob"].value;
+		console.log(data.dob);
 	} else {
 		validData = false;
 		document.getElementById("dobError").innerHTML = "Invalid date format. Date format should be dd/mm/yyyy";
@@ -93,7 +94,7 @@ function validateForm(event) {
 				+ "&dob=" + data.dob + "&password=" + data.confirmPassword
 				+ "&address=" + data.address + "&userType=" + data.userType
 				+ "&walletAmount=" + data.walletAmount;
-		http.open('POST', "./register", true);
+		http.open('POST', "/OnlineAuction/registration", true);
 
 		// Send the proper header information along with the request
 		http.setRequestHeader('Content-type',
@@ -106,7 +107,7 @@ function validateForm(event) {
 			}
 		}
 		console.log(params);
-		// http.send(params);
+		http.send(params);
 	}
 }
 

@@ -16,5 +16,7 @@
 <br/>
 <%@ include file="./Common/footer.jsp" %>
 <script src="./resources/js/index.js"></script>
+<script src="./resources/js/home.js"></script>
+
 </body>
 </html>

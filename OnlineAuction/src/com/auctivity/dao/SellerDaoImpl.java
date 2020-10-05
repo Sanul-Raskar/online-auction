@@ -21,7 +21,7 @@ public class SellerDaoImpl implements SellerDao {
 	public void addProduct(Product product) throws CustomException {
 		// TODO Auto-generated method stub
 		
-		String insert="Insert into OnlineAuctionDB.Product (ProductName,ProductCategory,ProductDesc,ActualPrice,Quantity,SellerID) values(?,?,?,?,?,?)";
+		String insert="insert into OnlineAuctionDB.Product (ProductName,ProductCategory,ProductDesc,ActualPrice,Quantity,Image,SellerID) values(?,?,?,?,?,?,?)";
 		PreparedStatement ps;
 		Connection connection = GetConnection.getConnectionId();
 		
@@ -33,7 +33,8 @@ public class SellerDaoImpl implements SellerDao {
 			 ps.setString(3,product.getProductDescription());
 			 ps.setDouble(4,product.getProductPrice());
 			 ps.setInt(5,product.getProductQuantity());
-			 ps.setInt(6,product.getProductSellerId());
+			 ps.setString(6,product.getProductImage());
+			 ps.setInt(7,product.getProductSellerId());
 			 
 			int i= ps.executeUpdate();
 			if(i>0)
@@ -43,6 +44,13 @@ public class SellerDaoImpl implements SellerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		 finally {
+			 try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		 }
 		
 	}
 

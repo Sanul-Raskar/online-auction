@@ -34,8 +34,8 @@ public class ConnectionProvider {
 			username = properties.getProperty(username);
 			password = properties.getProperty(password);
 			
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, username, password);
+			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+			con = DriverManager.getConnection("/Users/sanul/MyDB", "admin", "rby");
 			
 		} catch (ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
