@@ -13,8 +13,8 @@ import java.util.Properties;
 
 public class ConnectionProvider {
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) throws SQLException {
+		getConnection();
 	}
 	
 	public static Connection getConnection() throws SQLException {
@@ -27,7 +27,7 @@ public class ConnectionProvider {
 		
 		try {
 			Properties properties = new Properties();
-			FileInputStream fis = new FileInputStream("/online-auction-model/OnlineAuction/WebContent/WEB-INF/properties/connection.properties");
+			FileInputStream fis = new FileInputStream("/OnlineAuction/WebContent/WEB-INF/properties/connection.properties");
 			properties.load(fis);
 			driver = properties.getProperty(driver);
 			url = properties.getProperty(url);
