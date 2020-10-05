@@ -4,17 +4,19 @@
  */
 package com.auctivity.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class ProductForAuction extends Product {
 
 	private double minimumBidValue;
-	private Date bidStartDate;
-	private Date bidEndDate;
+	private Timestamp bidStartDate;
+	private Timestamp bidEndDate;
 	// @buyerId must be registered with @userId
 	private int buyerId;
 	private double soldPrice;
 	private int auctionStatus;
+	private int productId;
 	/**
 	 * @return the minimumBidValue
 	 */
@@ -36,7 +38,7 @@ public class ProductForAuction extends Product {
 	/**
 	 * @param bidStartDate the bidStartDate to set
 	 */
-	public void setBidStartDate(Date bidStartDate) {
+	public void setBidStartDate(Timestamp bidStartDate) {
 		this.bidStartDate = bidStartDate;
 	}
 	/**
@@ -48,7 +50,7 @@ public class ProductForAuction extends Product {
 	/**
 	 * @param bidEndDate the bidEndDate to set
 	 */
-	public void setBidEndDate(Date bidEndDate) {
+	public void setBidEndDate(Timestamp bidEndDate) {
 		this.bidEndDate = bidEndDate;
 	}
 	/**
@@ -69,6 +71,8 @@ public class ProductForAuction extends Product {
 	public double getSoldPrice() {
 		return soldPrice;
 	}
+
+
 	/**
 	 * @param soldPrice the soldPrice to set
 	 */
@@ -87,14 +91,28 @@ public class ProductForAuction extends Product {
 	public void setAuctionStatus(int auctionStatus) {
 		this.auctionStatus = auctionStatus;
 	}
+	
+	/**
+	 * @return the productId
+	 */
+	public int getProductId() {
+		return productId;
+	}
+	/**
+	 * @param productId the productId to set
+	 */
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
 	/**
 	 * 
 	 */
+	
 	public ProductForAuction() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	/**
 	 * @param productId
 	 * @param productName
@@ -111,21 +129,12 @@ public class ProductForAuction extends Product {
 				productSellerId);
 		// TODO Auto-generated constructor stub
 	}
-	
 	@Override
 	public String toString() {
 		return "ProductForAuction [minimumBidValue=" + minimumBidValue + ", bidStartDate=" + bidStartDate
 				+ ", bidEndDate=" + bidEndDate + ", buyerId=" + buyerId + ", soldPrice=" + soldPrice
-				+ ", auctionStatus=" + auctionStatus + "]";
+				+ ", auctionStatus=" + auctionStatus + ", productId=" + productId + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 
 }

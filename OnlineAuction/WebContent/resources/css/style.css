@@ -43,9 +43,6 @@ nav {
 /* Style the footer */
 #footer {
 	background-color: #DB0011;
-	position: fixed;
-	left: 0;
-	bottom: 0;
 	text-align: center;
 	margin: 0px auto;
 	width: 100%;
@@ -63,7 +60,7 @@ nav {
 	position: fixed;
 	z-index: 1;
 	top: 0;
-	left: 0;
+	right: 0;
 	background-color: #111;
 	overflow-x: hidden;
 	transition: 0.5s;
@@ -98,6 +95,7 @@ nav {
 	color: white;
 	padding: 10px 15px;
 	border: none;
+	float: right;
 }
 
 .openbtn:hover {
@@ -107,7 +105,9 @@ nav {
 #main {
 	background-color: #9FA1A4;
 	transition: margin-left .5s;
-	padding: 16px;
+	padding-right: 16px;
+	padding-top: 8px;
+	height: 70px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -117,5 +117,92 @@ nav {
 	}
 	.sidebar a {
 		font-size: 18px;
+	}
+}
+
+
+.navbarButton{
+  background-color: #DB0011;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius:10px;
+}
+
+
+/*Home page flexbox*/
+.container {
+	max-width: 96vw;
+	margin-left:auto;
+	margin-right:auto;
+	padding: 20px;
+}
+
+.grid-row {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+}
+
+.card {
+	width: 400px;
+	height: 380px;
+	margin: 14px;
+	padding-left:18px;
+	padding-right:18px;
+	padding-top:6px;
+	padding-bottom:6px;
+	border: 1.6px solid #bfbfbf;
+	box-shadow: 2px 4px rgba(179, 179, 179, 0.6);
+	border-radius: 10px;
+}
+
+.productImg {
+	display:block;
+	width: 160px;
+	height: auto;
+	max-height:160px;
+	background-size: cover;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.grid-item {
+	height: 300px;
+	flex-basis: 20%;
+	-ms-flex: auto;
+	width: 460px;
+	position: relative;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+@media ( max-width : 1333px) {
+	.grid-item {
+		flex-basis: 33.33%;
+	}
+}
+
+@media ( max-width : 1073px) {
+	.grid-item {
+		flex-basis: 33.33%;
+	}
+}
+
+@media ( max-width : 815px) {
+	.grid-item {
+		flex-basis: 50%;
+	}
+}
+
+@media ( max-width : 555px) {
+	.grid-item {
+		flex-basis: 100%;
 	}
 }
