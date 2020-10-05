@@ -3,13 +3,13 @@
  */
 package com.auctivity.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class User {
 	
 	private int userId;
 	private String userName;
-	private Date userDob;
+	private LocalDate userDob;
 	private String userEmail;
 	private String userPhoneNumber;
 	private String userUserName;
@@ -42,16 +42,17 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 	/**
 	 * @return the userDob
 	 */
-	public Date getUserDob() {
+	public LocalDate getUserDob() {
 		return userDob;
 	}
 	/**
 	 * @param userDob the userDob to set
 	 */
-	public void setUserDob(Date userDob) {
+	public void setUserDob(LocalDate userDob) {
 		this.userDob = userDob;
 	}
 	/**
@@ -151,20 +152,7 @@ public class User {
 	 * @param userType
 	 * @param userWalletAmount
 	 */
-	public User(String userName, int userId, Date userDob, String userEmail, String userPhoneNumber, String userUserName,
-			String userPassword, String userAddress, String userType, double userWalletAmount) {
-		super();
-		this.userName = userName;
-		this.userId = userId;
-		this.userDob = userDob;
-		this.userEmail = userEmail;
-		this.userPhoneNumber = userPhoneNumber;
-		this.userUserName = userUserName;
-		this.userPassword = userPassword;
-		this.userAddress = userAddress;
-		this.userType = userType;
-		this.userWalletAmount = userWalletAmount;
-	}
+
 	
 	/**
 	 * Constructor of Super class
@@ -174,6 +162,20 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public User(int userId, String userName, LocalDate userDob, String userEmail, String userPhoneNumber,
+			String userUserName, String userPassword, String userAddress, String userType, double userWalletAmount) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userDob = userDob;
+		this.userEmail = userEmail;
+		this.userPhoneNumber = userPhoneNumber;
+		this.userUserName = userUserName;
+		this.userPassword = userPassword;
+		this.userAddress = userAddress;
+		this.userType = userType;
+		this.userWalletAmount = userWalletAmount;
+	}
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", userDob=" + userDob + ", userEmail=" + userEmail
