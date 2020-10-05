@@ -1,15 +1,43 @@
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+   
+    
+    <%@page import="com.auctivity.model.Product"%>
+
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+   
+ 
 <!DOCTYPE html>
 <html>
 <head>
 <title>Seller Page</title>
+<link rel="stylesheet" href="../resources/css/style.css" />
 <link rel="stylesheet" href="../resources/css/SellerPage.css" />
+
 
 </head>
 <body>
+ 
+	<%@ include file="../Common/navbar.jsp"%>  
+	 
+	<%
+		 	 List<Product> products = new ArrayList<Product>();
+			products = (ArrayList<Product> )request.getAttribute("products");
+			
+			for(Product p:products){
+				
+				out.println("Id" + p.getProductId());
+				out.println("Name" + p.getProductName());
+			}
 
-	<%@ include file="../Common/navbar.jsp"%>
-
+		%>
+ 
+		  
 	<div class="row">
+		
+		
+	
 		<div class="card">
 			<div class="container">
 				<img src="auctivity-01.png" alt="Product image"

@@ -1,8 +1,19 @@
 package com.auctivity.controller;
 
 import java.io.IOException;
+ 
 import java.io.InputStream;
 
+ 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -36,22 +47,51 @@ import com.auctivity.model.Product;
 public class SellerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
+
+	
+	
+	/*
+	 * Creating object of @SellerDaoImpl
 	 */
-	public SellerController() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	SellerDaoImpl sellerDao = new SellerDaoImpl();
+	
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SellerController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+  
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		// TODO Auto-generated method stub
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+ 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 
+		List<Product> products = new ArrayList<Product>();
+		try {
+		products = sellerDao.readSellerData();
+			System.out.println(products + "\t");
+			 
+		} catch (SQLException e) {
+		e.printStackTrace();
+		}
+
+			  
+		request.setAttribute("products", products);
+		request.getRequestDispatcher("/seller/SellerPage.jsp").forward(request, response);
+
+	 System.out.println("sysout in servlet");
+		 
+		 
+ 
 	}
 
 	/**

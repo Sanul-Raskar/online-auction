@@ -7,10 +7,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Properties;
 
-import com.auctivity.controller.ConnectionProvider;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +27,7 @@ public class RegistrationServlet extends HttpServlet {
        
     /**
      * @see HttpServlet#HttpServlet()
-     */
+     */ 
     public RegistrationServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -47,14 +48,17 @@ public class RegistrationServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			int status = 0;	
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
 			String username = request.getParameter("username");
 			String mobile = request.getParameter("mobile");
 			//parsing date in required format
-			Date dob = sdf.parse(request.getParameter("dob"));
-			java.sql.Date sDate = new java.sql.Date(dob.getDate());
+			LocalDate dob = LocalDate.parse(request.getParameter("dob"));
+			java.sql.Date sDate = java.sql.Date.valueOf(formatter.format(dob));
+			System.out.println("request.getParameter(\"dob\"):"+dob);
+			System.out.println("sDate:"+sDate);
+
 			String password = request.getParameter("password");
 			String address = request.getParameter("address");
 			String usertype = request.getParameter("userType");
@@ -88,10 +92,6 @@ public class RegistrationServlet extends HttpServlet {
 				status = ps.executeUpdate();
 				response.getWriter().println("Database entered with status :" + status);
 				
-			}
-			catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
 			}
 			catch(SQLException e) {
 				e.printStackTrace();
