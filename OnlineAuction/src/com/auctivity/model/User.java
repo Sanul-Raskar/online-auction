@@ -162,6 +162,7 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 	
+
 	public User(int userId, String userName, LocalDate userDob, String userEmail, String userPhoneNumber,
 			String userUserName, String userPassword, String userAddress, String userType, double userWalletAmount) {
 		super();

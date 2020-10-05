@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +30,13 @@ public class BuyerProfileDaoImpl implements BuyerProfileDao{
 				int userID = rs.getInt("UserID");
 	            String name = rs.getString("Name");
 	            Date dob = rs.getDate("dob");
+	            ZoneId defaultZoneId = ZoneId.systemDefault();
+	    		
+	        	//Converting the date to Instant
+	        	Instant instant = dob.toInstant();
+	        		
+	        	//Converting the Date to LocalDate
+	        	LocalDate localDate = instant.atZone(defaultZoneId).toLocalDate();
 	            String emailID = rs.getString("email");
 	            String phoneNum = rs.getString("phonenumber");
 	            String userName = rs.getString("username");
@@ -41,7 +50,7 @@ public class BuyerProfileDaoImpl implements BuyerProfileDao{
 	            	userType1 = "Buyer";
 	            }
 	            double amt = rs.getDouble("wallet");
-	            User user1 = new User( name,userID, dob, emailID, phoneNum, userName,
+	            User user1 = new User( userID,name, localDate, emailID, phoneNum, userName,
 	        			password, address, userType1, amt);
 	            userList.add(user1);
 			}
