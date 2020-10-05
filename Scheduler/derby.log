@@ -1,4 +1,4 @@
-Sun Oct 04 22:33:29 IST 2020 Thread[main,5,main] Cleanup action starting
+Sun Oct 04 22:33:29 IST 2020 Thread[main,5,main] Cleanup action starting.
 java.sql.SQLException: Failed to start database 'C:\Users\hp\MyDB' with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44, see the next exception for details.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
