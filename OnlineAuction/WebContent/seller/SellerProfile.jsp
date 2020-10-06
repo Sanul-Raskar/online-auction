@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
@@ -9,7 +8,6 @@
 	<link rel="stylesheet" href="../resources/css/buyerProfile.css"/>
 </head>
 <body>
-	
 	<%@ include file="../Common/navbar.jsp" %>
 	<%@page import="java.util.ArrayList"%>
 	<%@page import="java.util.List"%>
@@ -18,8 +16,9 @@
 	<% 
 		List<User> list = (ArrayList<User>)request.getAttribute("users");
  	%>
-
-	<form id="buyerDetails" method="post" class="details">
+ 	
+ 	
+ 	<form id="buyerDetails" method="post" class="details">
       <div class="detail-box">
         <h2 style="font-family: Arial">Buyer Details</h2>
         <hr />
@@ -72,6 +71,6 @@
     </form>
 	
 	<%@ include file="../Common/footer.jsp" %>
-	
+ 	
 </body>
 </html>
