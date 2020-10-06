@@ -28,7 +28,7 @@
         id="name"
           type="text"
           name="name"
-          value="<%= list.get(0).getUserName() %>"
+          value="<%= list.get(0).getUsername() %>"
         />
 
         <br />
@@ -37,7 +37,7 @@
           id="dob"
           type="text"
           name="dob"
-          value ="<%= list.get(0).getUserDob() %>"
+          value ="<%= list.get(0).getDob() %>"
         />
         
         <br />
@@ -46,7 +46,7 @@
           id="email"
           type="text"
           name="email"
-          value="<%= list.get(0).getUserEmail() %>"
+          value="<%= list.get(0).getEmail() %>"
         />
 	
 		<br />
@@ -55,7 +55,7 @@
           id="phnNumber"
           type="text"
           name="phnNumber"
-          value="<%= list.get(0).getUserPhoneNumber() %>"
+          value="<%= list.get(0).getPhonenumber() %>"
         />
         
         <br />
@@ -64,7 +64,7 @@
           id="amount"
           type="text"
           name="amount"
-          value="<%= list.get(0).getUserWalletAmount() %>"
+          value="<%= list.get(0).getWallet()%>"
         />
 
         <br />

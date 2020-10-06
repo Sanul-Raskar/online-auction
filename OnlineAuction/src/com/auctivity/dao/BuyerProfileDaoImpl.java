@@ -43,15 +43,15 @@ public class BuyerProfileDaoImpl implements BuyerProfileDao{
 	            String password = rs.getString("password");
 	            String address = rs.getString("address");
 	            int userType = rs.getInt("user_type");
+	            double amt = rs.getDouble("wallet");
 	            String userType1=null;
 	            if(userType==0) {
 	            	userType1 = "Seller";
 	            }else {
 	            	userType1 = "Buyer";
 	            }
-	            double amt = rs.getDouble("wallet");
 	            User user1 = new User( userID,name, localDate, emailID, phoneNum, userName,
-	        			password, address, userType1, amt);
+	        			password, address, userType, amt);
 	            userList.add(user1);
 			}
 		} catch (SQLException e) {
