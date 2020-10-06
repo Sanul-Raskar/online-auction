@@ -15,7 +15,7 @@ public class User {
 	private String username;
 	private String password;
 	private String address;
-	private String usertype;
+	private int usertype;
 	private double wallet;
 	/**
 	 * 
@@ -37,7 +37,7 @@ public class User {
 	 * @param wallet
 	 */
 	public User(int userid, String name, LocalDate dob, String email, String phonenumber, String username,
-			String password, String address, String usertype, double wallet) {
+			String password, String address, int usertype, double wallet) {
 		super();
 		this.userid = userid;
 		this.name = name;
@@ -149,13 +149,13 @@ public class User {
 	/**
 	 * @return the usertype
 	 */
-	public String getUsertype() {
+	public int getUsertype() {
 		return usertype;
 	}
 	/**
 	 * @param usertype the usertype to set
 	 */
-	public void setUsertype(String usertype) {
+	public void setUsertype(int usertype) {
 		this.usertype = usertype;
 	}
 	/**
