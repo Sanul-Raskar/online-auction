@@ -79,6 +79,7 @@ public class SellerController extends HttpServlet {
 		try {
 		products = sellerDao.readSellerData();
 			System.out.println(products + "\t");
+	
 			 
 		} catch (SQLException e) {
 		e.printStackTrace();
@@ -88,6 +89,10 @@ public class SellerController extends HttpServlet {
 			  
 		request.setAttribute("products", products);
 		request.getRequestDispatcher("/seller/SellerPage.jsp").include(request, response);
+		
+		for(Product p:products) {
+			p.getProductName();
+		}
 		
 	 System.out.println("sysout in servlet");
 		 
