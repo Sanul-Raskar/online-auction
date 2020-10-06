@@ -83,11 +83,12 @@ public class SellerController extends HttpServlet {
 		} catch (SQLException e) {
 		e.printStackTrace();
 		}
-
+		
+		 
 			  
 		request.setAttribute("products", products);
-		request.getRequestDispatcher("/seller/SellerPage.jsp").forward(request, response);
-
+		request.getRequestDispatcher("/seller/SellerPage.jsp").include(request, response);
+		
 	 System.out.println("sysout in servlet");
 		 
 		 
