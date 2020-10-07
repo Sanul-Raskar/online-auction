@@ -1,5 +1,6 @@
 package com.auctivity.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -82,51 +83,88 @@ public class SellerController extends HttpServlet {
 
 		String BASE_DIR = "/Users/sanul/Documents/uploads/";
 		String currentTime = Long.toString((int) (new Date().getTime() / 10000));
-
-		List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory())
-				.parseRequest(new ServletRequestContext(request));
-		
 		HashMap<String, String> data = new HashMap<String, String>();
 
+		if (ServletFileUpload.isMultipartContent(request)) {
+			DiskFileItemFactory factory = new DiskFileItemFactory();
+			ServletFileUpload upload = new ServletFileUpload(factory);
+			List<FileItem> formItems = upload.parseRequest(new ServletRequestContext(request));
 
-		try {
-			for (FileItem item : items) {
-				if (item.isFormField()) {
-					// Normal form fields
-					String fieldName = item.getFieldName();
-					String fieldValue = item.getString();
-					System.out.println("" + fieldName + " : " + fieldValue);
-					data.put(fieldName, fieldValue);
-				} else {
-					// Image file
-					Part filePart = request.getPart("file");
-					String fileName = filePart.getName();
-					String imgName = fileName + currentTime;
-					String uploadLocation = BASE_DIR + imgName;
-					System.out.println("Upload location: "+uploadLocation);
-					filePart.write(uploadLocation);
-					System.out.println("file uploaded successfully");
-					data.put("Image", imgName);
+			if (formItems != null && formItems.size() > 0) {
+				for (FileItem item : formItems) {
+					if (!item.isFormField()) {
+						// File Input
+						String fileName = new File(item.getName()).getName();
+						fileName = currentTime + "-" + fileName;
+						String filePath = BASE_DIR + fileName;
+						File storeFile = new File(filePath);
+						try {
+							item.write(storeFile);
+							data.put("Image", fileName);
+							System.out.println("File" + fileName + " has uploaded successfully!");
+
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+					} else {
+						// Other than file form elements
+						String fieldName = item.getFieldName();
+						String fieldValue = item.getString();
+						System.out.println("" + fieldName + " : " + fieldValue);
+						data.put(fieldName, fieldValue);
+					}
 				}
 			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 
+//		try {
+//			for (FileItem item : items) {
+//				if (item.isFormField()) {
+//					// Normal form fields
+//					String fieldName = item.getFieldName();
+//					String fieldValue = item.getString();
+//					System.out.println("" + fieldName + " : " + fieldValue);
+//					data.put(fieldName, fieldValue);
+//				} else {
+//					// Image file
+//					//Part filePart = request.getPart("file");
+//					System.out.println(filePart.getSubmittedFileName());
+//					System.out.println(item.getName());
+//					if (item != null) {
+//						String fileName = item.getName();
+//						System.out.println("file name:" + fileName);
+//						String imgName = fileName + currentTime;
+//						String uploadLocation = BASE_DIR + imgName;
+//						System.out.println("Upload location: " + uploadLocation);
+//						filePart.write(uploadLocation);
+//						System.out.println("file uploaded successfully");
+//						data.put("Image", imgName);
+//					}
+//					else {
+//						System.out.println("file not uploaded");
+//					}
+//
+//				}
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
 		Product product = new Product(201, data.get("productName"), "Electronics", data.get("productDescription"),
 				Double.parseDouble(data.get("actualPrice")), Integer.parseInt(data.get("quantity")), data.get("Image"),
 				100);
 		System.out.println(product);
 
-		SellerDao sellerImplobj = new SellerDaoImpl();
-
-		try {
-			sellerImplobj.addProduct(product);
-		} catch (CustomException e) {
-
-			e.printStackTrace();
-		}
+//		SellerDao sellerImplobj = new SellerDaoImpl();
+//
+//		try {
+//			sellerImplobj.addProduct(product);
+//		} catch (CustomException e) {
+//
+//			e.printStackTrace();
+//		}
 
 	}
 
