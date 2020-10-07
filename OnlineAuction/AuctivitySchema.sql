@@ -31,6 +31,7 @@ create table OnlineAuctionDB.Category (
 	CategoryDesc varchar(255) NOT NULL,
 	PRIMARY KEY(CategoryName)
 );
+
 create table OnlineAuctionDB.Product (
 	ProductID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 300, INCREMENT BY 1),
 	ProductName varchar(255) NOT NULL,
@@ -39,6 +40,9 @@ create table OnlineAuctionDB.Product (
 	ActualPrice double NOT NULL,
 	Quantity INTEGER NOT NULL,
 	Image varchar(255) NOT NULL,
+	MinBidValue INTEGER NOT NULL,
+	BidStartDate timestamp,
+	BidEndDate timestamp,
 	SellerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
 	PRIMARY KEY(ProductID)
 );
@@ -53,9 +57,6 @@ create table OnlineAuctionDB.Bid (
 );
 
 create table OnlineAuctionDB.ProductBid (
-	MinBidValue INTEGER NOT NULL,
-	BidStartDate timestamp,
-	BidEndDate timestamp,
 	BuyerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
 	ProductID INTEGER NOT NULL references OnlineAuctionDB.Product(ProductID),
 	SoldPrice double NOT NULL,
