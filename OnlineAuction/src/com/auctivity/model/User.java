@@ -18,7 +18,7 @@ public class User {
 	private int usertype;
 	private double wallet;
 	/**
-	 * 
+	 * Constructor of Super class
 	 */
 	public User() {
 		super();

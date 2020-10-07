@@ -6,110 +6,110 @@ package com.auctivity.model;
 
 public class Product {
 
-	private int productId;
-	private String productName;
-	private String productCategory;
-	private String productDescription;
-	private double productPrice;
-	private int productQuantity;
-	private String productImage;
-	// @productSellerId must be registered with @userId first
-	private int productSellerId;
+	private int ProductId;
+	private String ProductName;
+	private String ProductCategory;
+	private String ProductDesc;
+	private double ActualPrice;
+	private int Quantity;
+	private String Image;
+	// @SellerId must be registered with @userId first
+	private int SellerId;
 	/**
 	 * @return the productId
 	 */
 	public int getProductId() {
-		return productId;
+		return ProductId;
 	}
 	/**
 	 * @param productId the productId to set
 	 */
 	public void setProductId(int productId) {
-		this.productId = productId;
+		this.ProductId = productId;
 	}
 	/**
 	 * @return the productName
 	 */
 	public String getProductName() {
-		return productName;
+		return ProductName;
 	}
 	/**
 	 * @param productName the productName to set
 	 */
 	public void setProductName(String productName) {
-		this.productName = productName;
+		this.ProductName = productName;
 	}
 	/**
 	 * @return the productCategory
 	 */
 	public String getProductCategory() {
-		return productCategory;
+		return ProductCategory;
 	}
 	/**
 	 * @param productCategory the productCategory to set
 	 */
 	public void setProductCategory(String productCategory) {
-		this.productCategory = productCategory;
+		this.ProductCategory = productCategory;
 	}
 	/**
 	 * @return the productDescription
 	 */
 	public String getProductDescription() {
-		return productDescription;
+		return ProductDesc;
 	}
 	/**
 	 * @param productDescription the productDescription to set
 	 */
 	public void setProductDescription(String productDescription) {
-		this.productDescription = productDescription;
+		this.ProductDesc = productDescription;
 	}
 	/**
 	 * @return the productPrice
 	 */
 	public double getProductPrice() {
-		return productPrice;
+		return ActualPrice;
 	}
 	/**
 	 * @param productPrice the productPrice to set
 	 */
 	public void setProductPrice(double productPrice) {
-		this.productPrice = productPrice;
+		this.ActualPrice = productPrice;
 	}
 	/**
 	 * @return the productQuantity
 	 */
 	public int getProductQuantity() {
-		return productQuantity;
+		return Quantity;
 	}
 	/**
 	 * @param productQuantity the productQuantity to set
 	 */
 	public void setProductQuantity(int productQuantity) {
-		this.productQuantity = productQuantity;
+		this.Quantity = productQuantity;
 	}
 	/**
 	 * @return the productImage
 	 */
 	public String getProductImage() {
-		return productImage;
+		return Image;
 	}
 	/**
 	 * @param productImage the productImage to set
 	 */
 	public void setProductImage(String productImage) {
-		this.productImage = productImage;
+		this.Image = productImage;
 	}
 	/**
 	 * @return the productSellerId
 	 */
 	public int getProductSellerId() {
-		return productSellerId;
+		return SellerId;
 	}
 	/**
 	 * @param productSellerId the productSellerId to set
 	 */
 	public void setProductSellerId(int productSellerId) {
-		this.productSellerId = productSellerId;
+		this.SellerId = productSellerId;
 	}
 	/**
 	 * Constructor of Super class
@@ -131,22 +131,22 @@ public class Product {
 	public Product(int productId, String productName, String productCategory, String productDescription,
 			double productPrice, int productQuantity, String productImage, int productSellerId) {
 		super();
-		this.productId = productId;
-		this.productName = productName;
-		this.productCategory = productCategory;
-		this.productDescription = productDescription;
-		this.productPrice = productPrice;
-		this.productQuantity = productQuantity;
-		this.productImage = productImage;
-		this.productSellerId = productSellerId;
+		this.ProductId = productId;
+		this.ProductName = productName;
+		this.ProductCategory = productCategory;
+		this.ProductDesc = productDescription;
+		this.ActualPrice = productPrice;
+		this.Quantity = productQuantity;
+		this.Image = productImage;
+		this.SellerId = productSellerId;
 	}
 	
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", productCategory="
-				+ productCategory + ", productDescription=" + productDescription + ", productPrice=" + productPrice
-				+ ", productQuantity=" + productQuantity + ", productImage=" + productImage + ", productSellerId="
-				+ productSellerId + "]";
+		return "Product [productId=" + ProductId + ", productName=" + ProductName + ", productCategory="
+				+ ProductCategory + ", productDescription=" + ProductDesc + ", productPrice=" + ActualPrice
+				+ ", productQuantity=" + Quantity + ", productImage=" + Image + ", productSellerId="
+				+ SellerId + "]";
 	}
 	
 	

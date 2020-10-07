@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.auctivity.dao.BuyerProfileDao;
-import com.auctivity.dao.BuyerProfileDaoImpl;
+
 import com.auctivity.dao.SellerProfileDao;
 import com.auctivity.dao.SellerProfileDaoImpl;
 import com.auctivity.model.User;

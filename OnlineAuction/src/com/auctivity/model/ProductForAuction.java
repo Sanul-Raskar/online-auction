@@ -9,67 +9,67 @@ import java.util.Date;
 
 public class ProductForAuction extends Product {
 
-	private double minimumBidValue;
-	private Timestamp bidStartDate;
-	private Timestamp bidEndDate;
+	private double MinBidValue;
+	private Timestamp BidStartDate;
+	private Timestamp BidEndDate;
 	// @buyerId must be registered with @userId
-	private int buyerId;
-	private double soldPrice;
-	private int auctionStatus;
+	private int BuyerId;
+	private double SoldPrice;
+	private int Status;
 	private int productId;
 	/**
 	 * @return the minimumBidValue
 	 */
 	public double getMinimumBidValue() {
-		return minimumBidValue;
+		return MinBidValue;
 	}
 	/**
 	 * @param minimumBidValue the minimumBidValue to set
 	 */
 	public void setMinimumBidValue(double minimumBidValue) {
-		this.minimumBidValue = minimumBidValue;
+		this.MinBidValue = minimumBidValue;
 	}
 	/**
 	 * @return the bidStartDate
 	 */
 	public Date getBidStartDate() {
-		return bidStartDate;
+		return BidStartDate;
 	}
 	/**
 	 * @param bidStartDate the bidStartDate to set
 	 */
 	public void setBidStartDate(Timestamp bidStartDate) {
-		this.bidStartDate = bidStartDate;
+		this.BidStartDate = bidStartDate;
 	}
 	/**
 	 * @return the bidEndDate
 	 */
 	public Date getBidEndDate() {
-		return bidEndDate;
+		return BidEndDate;
 	}
 	/**
 	 * @param bidEndDate the bidEndDate to set
 	 */
 	public void setBidEndDate(Timestamp bidEndDate) {
-		this.bidEndDate = bidEndDate;
+		this.BidEndDate = bidEndDate;
 	}
 	/**
 	 * @return the buyerId
 	 */
 	public int getBuyerId() {
-		return buyerId;
+		return BuyerId;
 	}
 	/**
 	 * @param buyerId the buyerId to set
 	 */
 	public void setBuyerId(int buyerId) {
-		this.buyerId = buyerId;
+		this.BuyerId = buyerId;
 	}
 	/**
 	 * @return the soldPrice
 	 */
 	public double getSoldPrice() {
-		return soldPrice;
+		return SoldPrice;
 	}
 
 
@@ -77,19 +77,19 @@ public class ProductForAuction extends Product {
 	 * @param soldPrice the soldPrice to set
 	 */
 	public void setSoldPrice(double soldPrice) {
-		this.soldPrice = soldPrice;
+		this.SoldPrice = soldPrice;
 	}
 	/**
 	 * @return the auctionStatus
 	 */
 	public int getAuctionStatus() {
-		return auctionStatus;
+		return Status;
 	}
 	/**
 	 * @param auctionStatus the auctionStatus to set
 	 */
 	public void setAuctionStatus(int auctionStatus) {
-		this.auctionStatus = auctionStatus;
+		this.Status = auctionStatus;
 	}
 	
 	/**
@@ -131,9 +131,9 @@ public class ProductForAuction extends Product {
 	}
 	@Override
 	public String toString() {
-		return "ProductForAuction [minimumBidValue=" + minimumBidValue + ", bidStartDate=" + bidStartDate
-				+ ", bidEndDate=" + bidEndDate + ", buyerId=" + buyerId + ", soldPrice=" + soldPrice
-				+ ", auctionStatus=" + auctionStatus + ", productId=" + productId + "]";
+		return "ProductForAuction [minimumBidValue=" + MinBidValue + ", bidStartDate=" + BidStartDate
+				+ ", bidEndDate=" + BidEndDate + ", buyerId=" + BuyerId + ", soldPrice=" + SoldPrice
+				+ ", auctionStatus=" + Status + ", productId=" + productId + "]";
 	}
 
 
