@@ -52,7 +52,8 @@ create table OnlineAuctionDB.Bid (
 	BidderID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
 	BidProductID INTEGER NOT NULL references OnlineAuctionDB.Product(ProductID),
 	BidValue double NOT NULL,
-	Status INTEGER NOT NULL
+	Status INTEGER NOT NULL,
+	PRIMARY KEY(BidID)
 	--Status has 3 values : 1 -> Bid is Open; 2 -> Bid is Lost; 3 -> Bid is Won.
 );
 
