@@ -118,53 +118,19 @@ public class SellerController extends HttpServlet {
 			}
 		}
 
-//		try {
-//			for (FileItem item : items) {
-//				if (item.isFormField()) {
-//					// Normal form fields
-//					String fieldName = item.getFieldName();
-//					String fieldValue = item.getString();
-//					System.out.println("" + fieldName + " : " + fieldValue);
-//					data.put(fieldName, fieldValue);
-//				} else {
-//					// Image file
-//					//Part filePart = request.getPart("file");
-//					System.out.println(filePart.getSubmittedFileName());
-//					System.out.println(item.getName());
-//					if (item != null) {
-//						String fileName = item.getName();
-//						System.out.println("file name:" + fileName);
-//						String imgName = fileName + currentTime;
-//						String uploadLocation = BASE_DIR + imgName;
-//						System.out.println("Upload location: " + uploadLocation);
-//						filePart.write(uploadLocation);
-//						System.out.println("file uploaded successfully");
-//						data.put("Image", imgName);
-//					}
-//					else {
-//						System.out.println("file not uploaded");
-//					}
-//
-//				}
-//			}
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
 		Product product = new Product(201, data.get("productName"), "Electronics", data.get("productDescription"),
 				Double.parseDouble(data.get("actualPrice")), Integer.parseInt(data.get("quantity")), data.get("Image"),
 				100);
 		System.out.println(product);
 
-//		SellerDao sellerImplobj = new SellerDaoImpl();
-//
-//		try {
-//			sellerImplobj.addProduct(product);
-//		} catch (CustomException e) {
-//
-//			e.printStackTrace();
-//		}
+		SellerDao sellerImplobj = new SellerDaoImpl();
+
+		try {
+			sellerImplobj.addProduct(product);
+		} catch (CustomException e) {
+
+			e.printStackTrace();
+		}
 
 	}
 
