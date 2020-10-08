@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-<link rel="stylesheet" href="../resources/css/style.css" />
-<link rel="stylesheet" href="../resources/css/addProducts.css" />
+<style><%@include file="../resources/css/style.css"%></style>
+<style><%@include file="../resources/css/addProducts.css"%></style>
+
 
 </head>
 <body>
@@ -72,10 +73,9 @@
 	<div style="height: 60px"></div>
 
 	<%@ include file="../Common/footer.jsp"%>
-	<!-- <script src="../resources/js/index.js"></script> --> 
-	<script src="../resources/js/inputValidation.js"></script>
-	<script src="../resources/js/addProducts.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/index.js"></script>
+	<script> <%@include file="../resources/js/index.js"%></script>
+	<script> <%@include file="../resources/js/inputValidation.js"%></script>
+	<script> <%@include file="../resources/js/addProducts.js"%></script>
 
 </body>
 </html>

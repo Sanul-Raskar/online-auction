@@ -13,4 +13,12 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
+	<servlet>
+		<servlet-name>index</servlet-name>
+		<servlet-class>com.auctivity.controller.HomeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>index</servlet-name>
+		<url-pattern></url-pattern>
+	</servlet-mapping>
 </web-app>

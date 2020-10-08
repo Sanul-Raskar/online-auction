@@ -1,9 +1,7 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    
-
-    <%@page import="com.auctivity.model.Product"%>
-
+<%@page import="com.auctivity.model.Product"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
    
@@ -12,8 +10,6 @@
 <html>
 <head>
 <title>Seller Page</title>
-<!--  <link rel="stylesheet" href="../resources/css/style.css" />
-<link rel="stylesheet" href="../resources/css/SellerPage.css" />  -->
 <style><%@include file="../resources/css/SellerPage.css"%></style>
 <style><%@include file="../resources/css/style.css"%></style>
 
@@ -163,5 +159,7 @@
 	</div>
 	<!-- row end -->
 	<%@ include file="../Common/footer.jsp"%>
+		<script> <%@include file="../resources/js/index.js"%></script>
+	
 </body>
 </html>

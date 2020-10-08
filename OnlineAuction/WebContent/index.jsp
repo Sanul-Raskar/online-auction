@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Home | Online Auction</title>
-<link rel="stylesheet" href="./resources/css/style.css" />
+<style><%@include file="./resources/css/style.css"%></style>
+<style><%@include file="./resources/css/home.css"%></style>
+
+
 </head>
 <body>
 	<%@ include file="./Common/navbar.jsp"%>
@@ -21,8 +24,8 @@
 	</div>
 	<br />
 	<%@ include file="./Common/footer.jsp"%>
-	<script src="./resources/js/index.js"></script>
-	<script src="./resources/js/home.js"></script>
+	<script> <%@include file="../resources/js/index.js"%></script>
+	<script> <%@include file="./resources/js/home.js"%></script>
 
 </body>
 </html>
