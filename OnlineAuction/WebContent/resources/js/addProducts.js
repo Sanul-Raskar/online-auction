@@ -37,7 +37,15 @@ function validateAddProductForm(event) {
 	}
 	
 	formData.append("category",addProductForm["category"].value);
-	formData.append("img",addProductForm["img"].value);
+	
+	//formData.append("file",document.getElementById("file").files[0]);
+	
+	let file = document.getElementById("file");
+	formData.append("file",file.files[0]);
+	
+	//console.log(document.getElementById("img").value.replace("C:\\fakepath\\",""));
+	//console.log(document.getElementById("img").files[0]);
+
 
 //	if (validateUploadImage()) {
 //		formData.append("image", addProductForm["img"].files[0]);
@@ -47,10 +55,11 @@ function validateAddProductForm(event) {
 //	}
 
 	if (validData) {
-		console.log(formData);
 		/* Send data variable to server using XMLHttpRequest() */
 		var http = new XMLHttpRequest();
 		http.open('POST', "/OnlineAuction/addProduct", true);
+		
+		//http.setRequestHeader( 'Content-Type', 'multipart/form-data' );
 
 		// Call a function when the state changes.
 		http.onreadystatechange = function() {

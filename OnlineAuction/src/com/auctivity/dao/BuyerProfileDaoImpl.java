@@ -22,7 +22,7 @@ public class BuyerProfileDaoImpl implements BuyerProfileDao{
 		List<User> userList = new ArrayList<User>();
 		
 		Connection connection = GetConnection.getConnectionId();
-		String getData = "select * from ONLINEAUCTIONDB.USERTABLE where user_type=1" ;
+		String getData = "select * from ONLINEAUCTIONDB.USERTABLE where user_type=0" ;
 		try {
 			PreparedStatement ps = connection.prepareStatement(getData);
 			ResultSet rs = ps.executeQuery();
