@@ -25,48 +25,23 @@
         <h2 style="font-family: Arial">Buyer Details</h2>
         <hr />
         <label>Name :</label>
-        <input
-        id="name"
-          type="text"
-          name="name"
-          value="<%= list.get(0).getUsername() %>"
-        />
+        <p><%= list.get(0).getUsername() %></p>
 
         <br />
         <label>Date of Birth : </label>
-        <input
-          id="dob"
-          type="text"
-          name="dob"
-          value ="<%= list.get(0).getDob() %>"
-        />
+        <p><%= list.get(0).getDob() %></p>
         
         <br />
         <label>Email ID : </label>
-        <input
-          id="email"
-          type="text"
-          name="email"
-          value="<%= list.get(0).getEmail() %>"
-        />
+        <p><%= list.get(0).getEmail() %></p>
 	
 		<br />
         <label>Phone Number :</label>
-        <input
-          id="phnNumber"
-          type="text"
-          name="phnNumber"
-          value="<%= list.get(0).getPhonenumber() %>"
-        />
+        <p><%= list.get(0).getPhonenumber() %></p>
         
         <br />
         <label>Wallet Amount : </label>
-        <input
-          id="amount"
-          type="text"
-          name="amount"
-          value="<%= list.get(0).getWallet()%>"
-        />
+        <p><%= list.get(0).getWallet()%></p>
 
         <br />
       </div>
