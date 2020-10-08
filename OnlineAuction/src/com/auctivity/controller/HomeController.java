@@ -41,9 +41,7 @@ public class HomeController extends HttpServlet {
 		
 		//inputbox button
 		
-		ProductForAuction obj = new ProductForAuction();
-	
-
+		String query = "";
 		
 		List<ProductForAuction> bidProducts = new ArrayList<ProductForAuction>();
 
