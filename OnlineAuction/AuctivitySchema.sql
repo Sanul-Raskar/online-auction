@@ -67,8 +67,9 @@ create table OnlineAuctionDB.ProductBid (
 	--                       3 -> Product bid is completed and sold;
 	--                       4 -> Product bid is open and accepting bids.	
 );
-
+--insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYNAME", "CATEGORYDESC") values('Books', 'Romcom');
 --insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYNAME", "CATEGORYDESC") values('Electronics', 'Sensors');
---insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYNAME", "CATEGORYDESC") values('Cosmetics', 'Facial');
+--insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYNAME", "CATEGORYDESC") values('Jewellary', 'Necklace');
 --insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYNAME", "CATEGORYDESC") values('Art', 'Paintings');
---insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYNAME", "CATEGORYDESC") values('Antiques', 'Wooden Antiques');
+--insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYNAME", "CATEGORYDESC") values('Antiques', 'Ancient Antiques');
+
