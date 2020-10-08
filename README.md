@@ -1,12 +1,14 @@
 <p align="center">
 <img style="padding:4px" src="/screenshots/logo.jpg" width="320"/>
 </p>
-
-#<center>Online Auction</center>
-####<center>The web based system which allows bidding for products</center>
-
 <br/>
-## Prerequisite
+
+# Online Auction
+#### The web based system which allows bidding for products
+
+## Prerequisite 
+<br/>
+
 1. [Java 1.8](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html)
 2. [Apache Derby 10.13.1.1](https://db.apache.org/derby/releases/release-10.13.1.1.html)
 3. [Apache Tomcat 8.5](https://tomcat.apache.org/download-80.cgi)
