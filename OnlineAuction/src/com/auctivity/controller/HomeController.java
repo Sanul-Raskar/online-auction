@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.auctivity.model.ProductForAuction;
+
 /**
  * Servlet implementation class HomeController
  */
@@ -36,9 +38,14 @@ public class HomeController extends HttpServlet {
 
 		// Product ID,name,desc,minBidAmount,category,startTime and endTime
 		// actualPrice,productImg
+		
+		//inputbox button
+		
+		ProductForAuction obj = new ProductForAuction();
+	
 
-		String query = "";
-		List<String> bidProducts = new ArrayList<String>();
+		
+		List<ProductForAuction> bidProducts = new ArrayList<ProductForAuction>();
 
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}

@@ -38,6 +38,8 @@
 
 	
 	<%@ include file="../Common/footer.jsp"%>
+	<script> <%@include file="../resources/js/index.js"%></script>
+	
 
 </body>
 </html>

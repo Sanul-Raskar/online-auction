@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Online Auction</title>
-	<style><%@include file="../resources/css/style.css"%></style>
+    <style><%@include file="../resources/css/style.css"%></style>
 	<style><%@include file="../resources/css/buyerProfile.css"%></style>
 </head>
 <body>

@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../resources/css/login.css" />
+	
+    <style><%@include file="../resources/css/login.css"%></style>
+    
   </head>
   <body>
     <form id="loginForm" method="post" class="login">
@@ -50,7 +52,9 @@
       </div>
     </form>
     
-    <script src="../resources/js/inputValidation.js"></script>
-    <script src="../resources/js/login.js"></script>
+ 	<%@ include file="../Common/footer.jsp" %>
+    <script> <%@include file="../resources/js/inputValidation.js"%></script>
+    <script> <%@include file="../resources/js/login.js"%></script>
+    
   </body>
 </html>

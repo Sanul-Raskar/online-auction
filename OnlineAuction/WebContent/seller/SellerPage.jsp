@@ -10,8 +10,8 @@
 <html>
 <head>
 <title>Seller Page</title>
-<style><%@include file="../resources/css/SellerPage.css"%></style>
 <style><%@include file="../resources/css/style.css"%></style>
+<style><%@include file="../resources/css/SellerPage.css"%></style>
 
 </head>
 <body>
