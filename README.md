@@ -1,4 +1,16 @@
-# online-auction 
+<p align="center">
+<img style="padding:4px" src="/screenshots/logo.jpg" width="320"/>
+</p>
+
+#<center>Online Auction</center>
+####<center>The web based system which allows bidding for products</center>
+
+<br/>
+## Prerequisite
+1. [Java 1.8](https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html)
+2. [Apache Derby 10.13.1.1](https://db.apache.org/derby/releases/release-10.13.1.1.html)
+3. [Apache Tomcat 8.5](https://tomcat.apache.org/download-80.cgi)
+4. [jstl-1.2.jar](https://mvnrepository.com/artifact/javax.servlet/jstl/1.2)
 
 ## Serving static files from local file system in Apache Tomcat
 Seller can add product image. The images are saved on local file system of server outside of the WAR. Image name is saved in database corresponding to the product. Tomcat can be configured to read files from anywhere on disk and serve them on a specific URL.
