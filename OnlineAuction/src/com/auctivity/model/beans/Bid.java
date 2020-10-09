@@ -6,100 +6,132 @@
 package com.auctivity.model.beans;
 
 public class Bid {
+
+	public enum status {
+		OPEN, LOST, WON;
+	}
 	
-	private int BidId;
-	// @bidderID must be registered as @userId  
-	private int BidderId;
+	private int bidID;
+	// @bidderID must be registered as @userId
+	private int bidderID;
 	// @biddedProductId must be same as the @productId in DB
-	private int BiddedProductId;
-	private double BidValue;
-	private int Status;
-	private int bidStatus;
+	private int bidProductID;
+	private double bidValue;
+	private status bidStatus;
 	/**
-	 * @return the bidId
+	 * @param bidID
+	 * @param bidderID
+	 * @param bidProductID
+	 * @param bidValue
+	 * @param bidStatus
 	 */
-	public int getBidId() {
-		return BidId;
+	public Bid(int bidID, int bidderID, int bidProductID, double bidValue, status bidStatus) {
+		super();
+		this.bidID = bidID;
+		this.bidderID = bidderID;
+		this.bidProductID = bidProductID;
+		this.bidValue = bidValue;
+		this.bidStatus = bidStatus;
 	}
 	/**
-	 * @param bidId the bidId to set
+	 * @return the bidID
 	 */
-	public void setBidId(int bidId) {
-		this.BidId = bidId;
+	public int getBidID() {
+		return bidID;
 	}
 	/**
-	 * @return the bidderId
+	 * @param bidID the bidID to set
 	 */
-	public int getBidderId() {
-		return BidderId;
+	public void setBidID(int bidID) {
+		this.bidID = bidID;
 	}
 	/**
-	 * @param bidderId the bidderId to set
+	 * @return the bidderID
 	 */
-	public void setBidderId(int bidderId) {
-		this.BidderId = bidderId;
+	public int getBidderID() {
+		return bidderID;
 	}
 	/**
-	 * @return the biddedProductId
+	 * @param bidderID the bidderID to set
 	 */
-	public int getBiddedProductId() {
-		return BiddedProductId;
+	public void setBidderID(int bidderID) {
+		this.bidderID = bidderID;
 	}
 	/**
-	 * @param biddedProductId the biddedProductId to set
+	 * @return the bidProductID
 	 */
-	public void setBiddedProductId(int biddedProductId) {
-		this.BiddedProductId = biddedProductId;
+	public int getBidProductID() {
+		return bidProductID;
+	}
+	/**
+	 * @param bidProductID the bidProductID to set
+	 */
+	public void setBidProductID(int bidProductID) {
+		this.bidProductID = bidProductID;
 	}
 	/**
 	 * @return the bidValue
 	 */
 	public double getBidValue() {
-		return BidValue;
+		return bidValue;
 	}
 	/**
 	 * @param bidValue the bidValue to set
 	 */
 	public void setBidValue(double bidValue) {
-		this.BidValue = bidValue;
+		this.bidValue = bidValue;
 	}
 	/**
 	 * @return the bidStatus
 	 */
-	public int getBidStatus() {
-		return getBidStatus();
+	public status getBidStatus() {
+		return bidStatus;
 	}
 	/**
 	 * @param bidStatus the bidStatus to set
 	 */
-	public void setBidStatus(int bidStatus) {
+	public void setBidStatus(status bidStatus) {
 		this.bidStatus = bidStatus;
 	}
-	
-	public Bid(int bidId, int bidderId, int biddedProductId, double bidValue, int bidStatus) {
-		super();
-		this.BidId = bidId;
-		this.BidderId = bidderId;
-		this.BiddedProductId = biddedProductId;
-		this.BidValue = bidValue;
-		this.bidStatus = bidStatus;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + bidID;
+		result = prime * result + bidProductID;
+		result = prime * result + ((bidStatus == null) ? 0 : bidStatus.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(bidValue);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + bidderID;
+		return result;
 	}
-	
-
-	/**
-	 * Constructor of Super class 
-	 */
-	public Bid() {
-		super();
-		// TODO Auto-generated constructor stub
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bid other = (Bid) obj;
+		if (bidID != other.bidID)
+			return false;
+		if (bidProductID != other.bidProductID)
+			return false;
+		if (bidStatus != other.bidStatus)
+			return false;
+		if (Double.doubleToLongBits(bidValue) != Double.doubleToLongBits(other.bidValue))
+			return false;
+		if (bidderID != other.bidderID)
+			return false;
+		return true;
 	}
-	
 	@Override
 	public String toString() {
-		return "Bid [bidId=" + BidId + ", bidderId=" + BidderId + ", biddedProductId=" + BiddedProductId + ", bidValue="
-				+ BidValue + ", bidStatus=" + bidStatus + "]";
+		return "Bid [bidID=" + bidID + ", bidderID=" + bidderID + ", bidProductID=" + bidProductID + ", bidValue="
+				+ bidValue + ", bidStatus=" + bidStatus + "]";
 	}
 	
 	
-
 }

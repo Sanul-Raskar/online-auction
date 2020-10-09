@@ -9,132 +9,173 @@ import java.util.Date;
 
 public class ProductForAuction extends Product {
 
-	private double MinBidValue;
-	private Timestamp BidStartDate;
-	private Timestamp BidEndDate;
+	public enum status {
+		NEW, OPEN, UNSOLD, SOLD;
+	}
+	
+	private int bidProductID;
+	private double minBidValue;
+	private Timestamp bidStartDate;
+	private Timestamp bidEndDate;
 	// @buyerId must be registered with @userId
-	private int BuyerId;
-	private double SoldPrice;
-	private int Status;
-	private int productId;
+	private int userID;
+	private double soldPrice;
+	private status bidStatus;
 	/**
-	 * @return the minimumBidValue
+	 * @param bidProductID
+	 * @param minBidValue
+	 * @param bidStartDate
+	 * @param bidEndDate
+	 * @param userID
+	 * @param soldPrice
+	 * @param bidStatus
 	 */
-	public double getMinimumBidValue() {
-		return MinBidValue;
+	public ProductForAuction(int bidProductID, double minBidValue, Timestamp bidStartDate, Timestamp bidEndDate,
+			int userID, double soldPrice, status bidStatus) {
+		super();
+		this.bidProductID = bidProductID;
+		this.minBidValue = minBidValue;
+		this.bidStartDate = bidStartDate;
+		this.bidEndDate = bidEndDate;
+		this.userID = userID;
+		this.soldPrice = soldPrice;
+		this.bidStatus = bidStatus;
 	}
 	/**
-	 * @param minimumBidValue the minimumBidValue to set
+	 * @return the bidProductID
 	 */
-	public void setMinimumBidValue(double minimumBidValue) {
-		this.MinBidValue = minimumBidValue;
+	public int getBidProductID() {
+		return bidProductID;
+	}
+	/**
+	 * @param bidProductID the bidProductID to set
+	 */
+	public void setBidProductID(int bidProductID) {
+		this.bidProductID = bidProductID;
+	}
+	/**
+	 * @return the minBidValue
+	 */
+	public double getMinBidValue() {
+		return minBidValue;
+	}
+	/**
+	 * @param minBidValue the minBidValue to set
+	 */
+	public void setMinBidValue(double minBidValue) {
+		this.minBidValue = minBidValue;
 	}
 	/**
 	 * @return the bidStartDate
 	 */
-	public Date getBidStartDate() {
-		return BidStartDate;
+	public Timestamp getBidStartDate() {
+		return bidStartDate;
 	}
 	/**
 	 * @param bidStartDate the bidStartDate to set
 	 */
 	public void setBidStartDate(Timestamp bidStartDate) {
-		this.BidStartDate = bidStartDate;
+		this.bidStartDate = bidStartDate;
 	}
 	/**
 	 * @return the bidEndDate
 	 */
-	public Date getBidEndDate() {
-		return BidEndDate;
+	public Timestamp getBidEndDate() {
+		return bidEndDate;
 	}
 	/**
 	 * @param bidEndDate the bidEndDate to set
 	 */
 	public void setBidEndDate(Timestamp bidEndDate) {
-		this.BidEndDate = bidEndDate;
+		this.bidEndDate = bidEndDate;
 	}
 	/**
-	 * @return the buyerId
+	 * @return the userID
 	 */
-	public int getBuyerId() {
-		return BuyerId;
+	public int getUserID() {
+		return userID;
 	}
 	/**
-	 * @param buyerId the buyerId to set
+	 * @param userID the userID to set
 	 */
-	public void setBuyerId(int buyerId) {
-		this.BuyerId = buyerId;
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 	/**
 	 * @return the soldPrice
 	 */
 	public double getSoldPrice() {
-		return SoldPrice;
+		return soldPrice;
 	}
-
-
 	/**
 	 * @param soldPrice the soldPrice to set
 	 */
 	public void setSoldPrice(double soldPrice) {
-		this.SoldPrice = soldPrice;
+		this.soldPrice = soldPrice;
 	}
 	/**
-	 * @return the auctionStatus
+	 * @return the bidStatus
 	 */
-	public int getAuctionStatus() {
-		return Status;
+	public status getBidStatus() {
+		return bidStatus;
 	}
 	/**
-	 * @param auctionStatus the auctionStatus to set
+	 * @param bidStatus the bidStatus to set
 	 */
-	public void setAuctionStatus(int auctionStatus) {
-		this.Status = auctionStatus;
+	public void setBidStatus(status bidStatus) {
+		this.bidStatus = bidStatus;
 	}
-	
-	/**
-	 * @return the productId
-	 */
-	public int getProductId() {
-		return productId;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((bidEndDate == null) ? 0 : bidEndDate.hashCode());
+		result = prime * result + bidProductID;
+		result = prime * result + ((bidStartDate == null) ? 0 : bidStartDate.hashCode());
+		result = prime * result + ((bidStatus == null) ? 0 : bidStatus.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(minBidValue);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(soldPrice);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + userID;
+		return result;
 	}
-	/**
-	 * @param productId the productId to set
-	 */
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
-	/**
-	 * 
-	 */
-	
-	public ProductForAuction() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @param productId
-	 * @param productName
-	 * @param productCategory
-	 * @param productDescription
-	 * @param productPrice
-	 * @param productQuantity
-	 * @param productImage
-	 * @param productSellerId
-	 */
-	public ProductForAuction(int productId, String productName, String productCategory, String productDescription,
-			double productPrice, int productQuantity, String productImage, int productSellerId) {
-		super(productId, productName, productCategory, productDescription, productPrice, productQuantity, productImage,
-				productSellerId);
-		// TODO Auto-generated constructor stub
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductForAuction other = (ProductForAuction) obj;
+		if (bidEndDate == null) {
+			if (other.bidEndDate != null)
+				return false;
+		} else if (!bidEndDate.equals(other.bidEndDate))
+			return false;
+		if (bidProductID != other.bidProductID)
+			return false;
+		if (bidStartDate == null) {
+			if (other.bidStartDate != null)
+				return false;
+		} else if (!bidStartDate.equals(other.bidStartDate))
+			return false;
+		if (bidStatus != other.bidStatus)
+			return false;
+		if (Double.doubleToLongBits(minBidValue) != Double.doubleToLongBits(other.minBidValue))
+			return false;
+		if (Double.doubleToLongBits(soldPrice) != Double.doubleToLongBits(other.soldPrice))
+			return false;
+		if (userID != other.userID)
+			return false;
+		return true;
 	}
 	@Override
 	public String toString() {
-		return "ProductForAuction [minimumBidValue=" + MinBidValue + ", bidStartDate=" + BidStartDate
-				+ ", bidEndDate=" + BidEndDate + ", buyerId=" + BuyerId + ", soldPrice=" + SoldPrice
-				+ ", auctionStatus=" + Status + ", productId=" + productId + "]";
+		return "ProductForAuction [bidProductID=" + bidProductID + ", minBidValue=" + minBidValue + ", bidStartDate="
+				+ bidStartDate + ", bidEndDate=" + bidEndDate + ", userID=" + userID + ", soldPrice=" + soldPrice
+				+ ", bidStatus=" + bidStatus + "]";
 	}
-
-
 }

@@ -5,178 +5,245 @@ package com.auctivity.model.beans;
 
 import java.time.LocalDate;
 
+import com.auctivity.utility.PasswordEncrypter;
+
 public class User {
 	
-	private int userid;
-	private String name;
-	private LocalDate dob;
-	private String email;
-	private String phonenumber;
-	private String username;
-	private String password;
-	private String address;
-	private int usertype;
-	private double wallet;
+	public enum type {
+		ADMIN, BUYER, SELLER;
+	}
+	
+	private int userID;
+	private String userName;
+	private LocalDate userDoB;
+	private String userEmail;
+	private String userContact;	
+	private String userLoginName;
+	private String userPassword;
+	private String userAddress;
+	private type userType;
+	private double userWallet;
 	/**
-	 * Constructor of Super class
+	 * @param userID
+	 * @param userName
+	 * @param userDoB
+	 * @param userEmail
+	 * @param userContact
+	 * @param userLoginName
+	 * @param userPassword
+	 * @param userAddress
+	 * @param userType
+	 * @param userWallet
 	 */
-	public User() {
+	public User(int userID, String userName, LocalDate userDoB, String userEmail, String userContact,
+			String userLoginName, String userPassword, String userAddress, type userType, double userWallet) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.userID = userID;
+		this.userName = userName;
+		this.userDoB = userDoB;
+		this.userEmail = userEmail;
+		this.userContact = userContact;
+		this.userLoginName = userLoginName;
+		this.userPassword = userPassword;
+		this.userAddress = userAddress;
+		this.userType = userType;
+		this.userWallet = userWallet;
 	}
 	/**
-	 * @param userid
-	 * @param name
-	 * @param dob
-	 * @param email
-	 * @param phonenumber
-	 * @param username
-	 * @param password
-	 * @param address
-	 * @param usertype
-	 * @param wallet
+	 * @return the userID
 	 */
-	public User(int userid, String name, LocalDate dob, String email, String phonenumber, String username,
-			String password, String address, int usertype, double wallet) {
-		super();
-		this.userid = userid;
-		this.name = name;
-		this.dob = dob;
-		this.email = email;
-		this.phonenumber = phonenumber;
-		this.username = username;
-		this.password = password;
-		this.address = address;
-		this.usertype = usertype;
-		this.wallet = wallet;
+	public int getUserID() {
+		return userID;
 	}
 	/**
-	 * @return the userid
+	 * @param userID the userID to set
 	 */
-	public int getUserid() {
-		return userid;
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 	/**
-	 * @param userid the userid to set
+	 * @return the userName
 	 */
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public String getUserName() {
+		return userName;
 	}
 	/**
-	 * @return the name
+	 * @param userName the userName to set
 	 */
-	public String getName() {
-		return name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	/**
-	 * @param name the name to set
+	 * @return the userDoB
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public LocalDate getUserDoB() {
+		return userDoB;
 	}
 	/**
-	 * @return the dob
+	 * @param userDoB the userDoB to set
 	 */
-	public LocalDate getDob() {
-		return dob;
+	public void setUserDoB(LocalDate userDoB) {
+		this.userDoB = userDoB;
 	}
 	/**
-	 * @param dob the dob to set
+	 * @return the userEmail
 	 */
-	public void setDob(LocalDate dob) {
-		this.dob = dob;
+	public String getUserEmail() {
+		return userEmail;
 	}
 	/**
-	 * @return the email
+	 * @param userEmail the userEmail to set
 	 */
-	public String getEmail() {
-		return email;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 	/**
-	 * @param email the email to set
+	 * @return the userContact
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public String getUserContact() {
+		return userContact;
 	}
 	/**
-	 * @return the phonenumber
+	 * @param userContact the userContact to set
 	 */
-	public String getPhonenumber() {
-		return phonenumber;
+	public void setUserContact(String userContact) {
+		this.userContact = userContact;
 	}
 	/**
-	 * @param phonenumber the phonenumber to set
+	 * @return the userLoginName
 	 */
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
+	public String getUserLoginName() {
+		return userLoginName;
 	}
 	/**
-	 * @return the username
+	 * @param userLoginName the userLoginName to set
 	 */
-	public String getUsername() {
-		return username;
+	public void setUserLoginName(String userLoginName) {
+		this.userLoginName = userLoginName;
 	}
 	/**
-	 * @param username the username to set
+	 * @return the userPassword
 	 */
-	public void setUsername(String username) {
-		this.username = username;
+	public String getUserPassword() {
+		return userPassword;
 	}
 	/**
-	 * @return the password
+	 * @param userPassword the userPassword to set
 	 */
-	public String getPassword() {
-		return password;
+	public void setUserPassword(String userPassword) {
+		this.userPassword = PasswordEncrypter.getSHA(userPassword);
 	}
 	/**
-	 * @param password the password to set
+	 * @return the userAddress
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public String getUserAddress() {
+		return userAddress;
 	}
 	/**
-	 * @return the address
+	 * @param userAddress the userAddress to set
 	 */
-	public String getAddress() {
-		return address;
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
 	}
 	/**
-	 * @param address the address to set
+	 * @return the userType
 	 */
-	public void setAddress(String address) {
-		this.address = address;
+	public type getUserType() {
+		return userType;
 	}
 	/**
-	 * @return the usertype
+	 * @param userType the userType to set
 	 */
-	public int getUsertype() {
-		return usertype;
+	public void setUserType(type userType) {
+		this.userType = userType;
 	}
 	/**
-	 * @param usertype the usertype to set
+	 * @return the userWallet
 	 */
-	public void setUsertype(int usertype) {
-		this.usertype = usertype;
+	public double getUserWallet() {
+		return userWallet;
 	}
 	/**
-	 * @return the wallet
+	 * @param userWallet the userWallet to set
 	 */
-	public double getWallet() {
-		return wallet;
-	}
-	/**
-	 * @param wallet the wallet to set
-	 */
-	public void setWallet(double wallet) {
-		this.wallet = wallet;
+	public void setUserWallet(double userWallet) {
+		this.userWallet = userWallet;
 	}
 	@Override
-	public String toString() {
-		return "User [userid=" + userid + ", name=" + name + ", dob=" + dob + ", email=" + email + ", phonenumber="
-				+ phonenumber + ", username=" + username + ", password=" + password + ", address=" + address
-				+ ", usertype=" + usertype + ", wallet=" + wallet + "]";
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((userAddress == null) ? 0 : userAddress.hashCode());
+		result = prime * result + ((userContact == null) ? 0 : userContact.hashCode());
+		result = prime * result + ((userDoB == null) ? 0 : userDoB.hashCode());
+		result = prime * result + ((userEmail == null) ? 0 : userEmail.hashCode());
+		result = prime * result + userID;
+		result = prime * result + ((userLoginName == null) ? 0 : userLoginName.hashCode());
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		result = prime * result + ((userPassword == null) ? 0 : userPassword.hashCode());
+		result = prime * result + ((userType == null) ? 0 : userType.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(userWallet);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (userAddress == null) {
+			if (other.userAddress != null)
+				return false;
+		} else if (!userAddress.equals(other.userAddress))
+			return false;
+		if (userContact == null) {
+			if (other.userContact != null)
+				return false;
+		} else if (!userContact.equals(other.userContact))
+			return false;
+		if (userDoB == null) {
+			if (other.userDoB != null)
+				return false;
+		} else if (!userDoB.equals(other.userDoB))
+			return false;
+		if (userEmail == null) {
+			if (other.userEmail != null)
+				return false;
+		} else if (!userEmail.equals(other.userEmail))
+			return false;
+		if (userID != other.userID)
+			return false;
+		if (userLoginName == null) {
+			if (other.userLoginName != null)
+				return false;
+		} else if (!userLoginName.equals(other.userLoginName))
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
+		if (userPassword == null) {
+			if (other.userPassword != null)
+				return false;
+		} else if (!userPassword.equals(other.userPassword))
+			return false;
+		if (userType != other.userType)
+			return false;
+		if (Double.doubleToLongBits(userWallet) != Double.doubleToLongBits(other.userWallet))
+			return false;
+		return true;
 	}
 	
-	
-
+	@Override
+	public String toString() {
+		return "User [userID=" + userID + ", userName=" + userName + ", userDoB=" + userDoB + ", userEmail=" + userEmail
+				+ ", userContact=" + userContact + ", userLoginName=" + userLoginName + ", userPassword=" + userPassword
+				+ ", userAddress=" + userAddress + ", userType=" + userType + ", userWallet=" + userWallet + "]";
+	}
 }
