@@ -14,7 +14,7 @@
 	<%@ include file="../Common/navbar.jsp" %>
 	<%@page import="java.util.ArrayList"%>
 	<%@page import="java.util.List"%>
-	<%@page import="com.auctivity.model.User"%>
+	<%@page import="com.auctivity.model.beans.User"%>
 	
 	<% 
 		List<User> list = (ArrayList<User>)request.getAttribute("users");

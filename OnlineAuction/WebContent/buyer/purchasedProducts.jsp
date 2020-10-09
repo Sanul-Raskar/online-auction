@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
  pageEncoding="UTF-8"%>
-    <%@page import="com.auctivity.model.Product"%>
+    <%@page import="com.auctivity.model.beans.Product"%>
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>

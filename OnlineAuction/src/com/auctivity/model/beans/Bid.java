@@ -3,7 +3,7 @@
  * This java file is a class that model the class Bid
  */
 
-package com.auctivity.model;
+package com.auctivity.model.beans;
 
 public class Bid {
 	

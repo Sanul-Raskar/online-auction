@@ -2,7 +2,7 @@
  * This java file is a class that that model the class Products for auction 
  * ProducForAuction is a child class extending Product as Super class
  */
-package com.auctivity.model;
+package com.auctivity.model.beans;
 
 import java.sql.Timestamp;
 import java.util.Date;

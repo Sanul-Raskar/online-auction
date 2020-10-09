@@ -1,15 +1,10 @@
-/**
- * This java file is class that returns connection parameter 
- * after establishing connection with database
- */
-package com.auctivity.controller;
+package com.auctivity.utility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class GetConnection {
-
+public class DBConnection {
 	public static void main(String[] args) {
 		getConnectionId();
 	}
@@ -22,7 +17,7 @@ public class GetConnection {
 			
 			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 
-			con=DriverManager.getConnection("jdbc:derby:/Users/sanul/MyDB");
+			con=DriverManager.getConnection("jdbc:derby:C:\\Users\\HP\\MyDB;create=true","admin","derby");
 			 
 			
 		} catch (ClassNotFoundException e) {

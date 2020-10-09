@@ -1,7 +1,7 @@
 /*
   * This java file is a class that model the class User
  */
-package com.auctivity.model;
+package com.auctivity.model.beans;
 
 import java.time.LocalDate;
 
