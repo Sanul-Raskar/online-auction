@@ -31,6 +31,7 @@ create table OnlineAuctionDB.Category (
 	CategoryDesc varchar(255) NOT NULL,
 	PRIMARY KEY(CategoryName)
 );
+
 create table OnlineAuctionDB.Product (
 	ProductID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 300, INCREMENT BY 1),
 	ProductName varchar(255) NOT NULL,
@@ -48,16 +49,17 @@ create table OnlineAuctionDB.Bid (
 	BidderID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
 	BidProductID INTEGER NOT NULL references OnlineAuctionDB.Product(ProductID),
 	BidValue double NOT NULL,
-	Status INTEGER NOT NULL
+	Status INTEGER NOT NULL,
+	PRIMARY KEY(BidID)
 	--Status has 3 values : 1 -> Bid is Open; 2 -> Bid is Lost; 3 -> Bid is Won.
 );
 
 create table OnlineAuctionDB.ProductBid (
+	BuyerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
+	ProductID INTEGER NOT NULL references OnlineAuctionDB.Product(ProductID),
 	MinBidValue INTEGER NOT NULL,
 	BidStartDate timestamp,
 	BidEndDate timestamp,
-	BuyerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
-	ProductID INTEGER NOT NULL references OnlineAuctionDB.Product(ProductID),
 	SoldPrice double NOT NULL,
 	Status INTEGER NOT NULL
 	-- Status has 4 values : 1 -> New Product for bid;
@@ -65,8 +67,3 @@ create table OnlineAuctionDB.ProductBid (
 	--                       3 -> Product bid is completed and sold;
 	--                       4 -> Product bid is open and accepting bids.	
 );
-
---insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYNAME", "CATEGORYDESC") values('Electronics', 'Sensors');
---insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYNAME", "CATEGORYDESC") values('Cosmetics', 'Facial');
---insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYNAME", "CATEGORYDESC") values('Art', 'Paintings');
---insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYNAME", "CATEGORYDESC") values('Antiques', 'Wooden Antiques');

@@ -5,8 +5,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Schedule an Auction</title>
-<link rel="stylesheet" href="../resources/css/SellerPage.css" />
-<link rel="stylesheet" href="../resources/css/style.css" />
+<style><%@include file="../resources/css/style.css"%></style>
+<style><%@include file="../resources/css/SellerPage.css"%></style>
+
 
 </head>
 <body>
@@ -36,5 +37,6 @@
 	<br/><br/>
 	<div style="height:150px"></div>
 	<%@ include file="../Common/footer.jsp"%>
+	<script> <%@include file="../resources/js/index.js"%></script>
 </body>
 </html>

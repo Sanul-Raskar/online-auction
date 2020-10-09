@@ -45,7 +45,7 @@ var productsArr = [
     category: "Laptop",
     actualPrice: 56,
     minBidAmount: 70,
-    productImg: "./resources/img/logo.jpg",
+    productImg: "/resources/img/logo.jpg",
     startTime: "Sun, 04 Oct 2020 07:14:47 GMT",
     endTime: "Sun, 04 Oct 2020 07:14:47 GMT",
   },
@@ -77,14 +77,14 @@ function loadProducts() {
     div.id = product.productId;
     div.className = "card";
     div.innerHTML = `
-      <img src=${product.productImg} class="productImg">
+      <img src=\${product.productImg} class="productImg">
       <br/>
-      <h2 class="text-center">${product.productName}</h2>
-      <p><span style="font-weight:bold">Category:</span> ${product.category}</p>
-      <p><span style="font-weight:bold">Actual Price:</span>&nbsp;Rs. ${product.actualPrice}</p>
-      <p> <span style="font-weight:bold">Min Bid Amount:</span>&nbsp;Rs. ${product.minBidAmount}</p>
-      <p><span style="font-weight:bold">Bit Start Time:</span> ${product.startTime}</p>
-      <p><span style="font-weight:bold">Bit Start Time:</span> ${product.endTime}</p>
+      <h2 class="text-center">\${product.productName}</h2>
+      <p><span style="font-weight:bold">Category:</span> \${product.category}</p>
+      <p><span style="font-weight:bold">Actual Price:</span>&nbsp;Rs. \${product.actualPrice}</p>
+      <p> <span style="font-weight:bold">Min Bid Amount:</span>&nbsp;Rs. \${product.minBidAmount}</p>
+      <p><span style="font-weight:bold">Bit Start Time:</span> \${product.startTime}</p>
+      <p><span style="font-weight:bold">Bit Start Time:</span> \${product.endTime}</p>
       <br/>
   `;
     document.getElementById("productsContainer").appendChild(div);

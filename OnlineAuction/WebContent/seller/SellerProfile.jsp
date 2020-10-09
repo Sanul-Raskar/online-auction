@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Online Auction</title>
-	<link rel="stylesheet" href="../resources/css/style.css"/>
-	<link rel="stylesheet" href="../resources/css/buyerProfile.css"/>
+    <style><%@include file="../resources/css/style.css"%></style>
+	<style><%@include file="../resources/css/buyerProfile.css"%></style>
 </head>
 <body>
 	<%@ include file="../Common/navbar.jsp" %>
@@ -72,6 +72,7 @@
     </form>
 	
 	<%@ include file="../Common/footer.jsp" %>
+	<script> <%@include file="../resources/js/index.js"%></script>
  	
 </body>
 </html>

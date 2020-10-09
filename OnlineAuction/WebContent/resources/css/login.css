@@ -1,21 +1,26 @@
-.login {
-	width: 400px;
-	height: 800px;
-	padding-left: 550px;
-	padding-top: 100px;
+.wrapper {
+	width: 100%;
 }
 
-input[type=text], input[type=password] {
+.login-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.inputField {
 	width: 100%;
-	padding: 12px 20px;
-	margin: 2px 0;
+	padding: 12px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	display: inline-block;
 	border: 1px solid #ccc;
 	box-sizing: border-box;
 	border-radius: 5px;
+	display: inline-block;
 }
 
-input[type=submit] {
+.login-button {
 	background-color: #DB0011;
 	color: white;
 	padding: 14px 20px;
@@ -26,7 +31,7 @@ input[type=submit] {
 	width: 100%;
 }
 
-input[type=submit]:hover {
+.login-button:hover {
 	opacity: 0.8;
 }
 
@@ -39,14 +44,15 @@ input[type=submit]:hover {
 	cursor: pointer;
 }
 
-a {
-	color: black;
-	opacity: 0.5;
-	font-size: 13px;
-	/* float: right; */
-}
-
 .login-box {
 	background-color: #f6f6f6;
-	padding: 20px;
+	padding: 26px;
+	width: 460px;
+}
+
+@media ( max-width : 555px) {
+	.login-box {
+		padding: 18px;
+		width:300px;
+	}
 }

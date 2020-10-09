@@ -224,6 +224,7 @@ function validateUploadImage() {
 		return false;
 	} else {
 		// Image preview
+		/*
 		if (imageInput.files && imageInput.img[0]) {
 			let reader = new FileReader();
 			reader.onload = function(e) {
@@ -232,7 +233,7 @@ function validateUploadImage() {
 			};
 
 			reader.readAsDataURL(imageInput.img[0]);
-		}
+		}*/
 		
 		return true;
 	}

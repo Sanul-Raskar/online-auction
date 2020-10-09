@@ -22,7 +22,7 @@ public class GetConnection {
 			
 			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 
-			con=DriverManager.getConnection("jdbc:derby:C:\\Users\\HP\\MyDB;create=true","admin","derby");
+			con=DriverManager.getConnection("jdbc:derby:/Users/sanul/MyDB");
 			 
 			
 		} catch (ClassNotFoundException e) {

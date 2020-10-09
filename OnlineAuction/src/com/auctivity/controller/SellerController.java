@@ -1,19 +1,14 @@
 package com.auctivity.controller;
 
+import java.io.File;
 import java.io.IOException;
- 
-import java.io.InputStream;
-
- 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -23,15 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.List;
 
 import com.auctivity.dao.SellerDao;
 import com.auctivity.dao.SellerDaoImpl;
@@ -39,65 +28,50 @@ import com.auctivity.exceptions.CustomException;
 import com.auctivity.model.Product;
 
 /**
- * Servlet implementation class SellerAddProduct
+ * Servlet implementation class SellerController
  */
-
-@WebServlet({ "/SellerAddProduct", "/addProduct" })
+@WebServlet("/addProduct")
 @MultipartConfig
 public class SellerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	
-	
 	/*
 	 * Creating object of @SellerDaoImpl
 	 */
 	SellerDaoImpl sellerDao = new SellerDaoImpl();
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SellerController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-  
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public SellerController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-//	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
- 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		List<Product> products = new ArrayList<Product>();
 		try {
-		products = sellerDao.readSellerData();
+			products = sellerDao.readSellerData();
 			System.out.println(products + "\t");
-	
-			 
+
 		} catch (SQLException e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
-		
-		 
-			  
+
 		request.setAttribute("products", products);
 		request.getRequestDispatcher("/seller/SellerPage.jsp").include(request, response);
-		
-		for(Product p:products) {
+
+		for (Product p : products) {
 			p.getProductName();
 		}
-		
-	 System.out.println("sysout in servlet");
-		 
-		 
- 
+
+		System.out.println("sysout in servlet");
+
 	}
 
 	/**
@@ -107,32 +81,48 @@ public class SellerController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory())
-				.parseRequest(new ServletRequestContext(request));
+		String BASE_DIR = "/Users/sanul/Documents/uploads/";
+		String currentTime = Long.toString((int) (new Date().getTime() / 10000));
 		HashMap<String, String> data = new HashMap<String, String>();
 
-		for (FileItem item : items) {
-			if (item.isFormField()) {
-				// Normal form fields
-				String fieldName = item.getFieldName();
-				String fieldValue = item.getString();
-				System.out.println("" + fieldName + " : " + fieldValue);
-				data.put(fieldName, fieldValue);
-			} else {
-				// handle file
-				Part filePart = request.getPart("img");
-				String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString(); // MSIE fix.
-				System.out.println(fileName);
-				// InputStream fileContent = filePart.getInputStream();
+		if (ServletFileUpload.isMultipartContent(request)) {
+			DiskFileItemFactory factory = new DiskFileItemFactory();
+			ServletFileUpload upload = new ServletFileUpload(factory);
+			List<FileItem> formItems = upload.parseRequest(new ServletRequestContext(request));
+
+			if (formItems != null && formItems.size() > 0) {
+				for (FileItem item : formItems) {
+					if (!item.isFormField()) {
+						// File Input
+						String fileName = new File(item.getName()).getName();
+						fileName = currentTime + "-" + fileName;
+						String filePath = BASE_DIR + fileName;
+						File storeFile = new File(filePath);
+						try {
+							item.write(storeFile);
+							data.put("Image", fileName);
+							System.out.println("File" + fileName + " has uploaded successfully!");
+
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+					} else {
+						// Other than file form elements
+						String fieldName = item.getFieldName();
+						String fieldValue = item.getString();
+						System.out.println("" + fieldName + " : " + fieldValue);
+						data.put(fieldName, fieldValue);
+					}
+				}
 			}
 		}
 
-		System.out.println();
-		Product product = new Product(201, data.get("productName"), "Electronics",
-				data.get("productDescription"), Double.parseDouble(data.get("actualPrice")),
-				Integer.parseInt(data.get("quantity")), "/sample/path/logo.jpg", 100);
+		Product product = new Product(201, data.get("productName"), "Electronics", data.get("productDescription"),
+				Double.parseDouble(data.get("actualPrice")), Integer.parseInt(data.get("quantity")), data.get("Image"),
+				100);
 		System.out.println(product);
-		
+
 		SellerDao sellerImplobj = new SellerDaoImpl();
 
 		try {
@@ -141,7 +131,7 @@ public class SellerController extends HttpServlet {
 
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }
