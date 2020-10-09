@@ -40,9 +40,6 @@ create table OnlineAuctionDB.Product (
 	ActualPrice double NOT NULL,
 	Quantity INTEGER NOT NULL,
 	Image varchar(255) NOT NULL,
-	MinBidValue INTEGER NOT NULL,
-	BidStartDate timestamp,
-	BidEndDate timestamp,
 	SellerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
 	PRIMARY KEY(ProductID)
 );
@@ -60,6 +57,9 @@ create table OnlineAuctionDB.Bid (
 create table OnlineAuctionDB.ProductBid (
 	BuyerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
 	ProductID INTEGER NOT NULL references OnlineAuctionDB.Product(ProductID),
+	MinBidValue INTEGER NOT NULL,
+	BidStartDate timestamp,
+	BidEndDate timestamp,
 	SoldPrice double NOT NULL,
 	Status INTEGER NOT NULL
 	-- Status has 4 values : 1 -> New Product for bid;
