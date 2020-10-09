@@ -5,44 +5,44 @@ package com.auctivity.model;
 
 public class Category {
 
-	private int categoryId;
-	private String categoryName;
-	private String categoryDescription;
+	private int CategoryId;
+	private String CategoryName;
+	private String CategoryDescription;
 	/**
 	 * @return the categoryId
 	 */
 	public int getCategoryId() {
-		return categoryId;
+		return CategoryId;
 	}
 	/**
 	 * @param categoryId the categoryId to set
 	 */
 	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
+		this.CategoryId = categoryId;
 	}
 	/**
 	 * @return the categoryName
 	 */
 	public String getCategoryName() {
-		return categoryName;
+		return CategoryName;
 	}
 	/**
 	 * @param categoryName the categoryName to set
 	 */
 	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
+		this.CategoryName = categoryName;
 	}
 	/**
 	 * @return the categoryDescription
 	 */
 	public String getCategoryDescription() {
-		return categoryDescription;
+		return CategoryDescription;
 	}
 	/**
 	 * @param categoryDescription the categoryDescription to set
 	 */
 	public void setCategoryDescription(String categoryDescription) {
-		this.categoryDescription = categoryDescription;
+		this.CategoryDescription = categoryDescription;
 	}
 	/**
 	 * Constructor of Super class
@@ -58,15 +58,15 @@ public class Category {
 	 */
 	public Category(int categoryId, String categoryName, String categoryDescription) {
 		super();
-		this.categoryId = categoryId;
-		this.categoryName = categoryName;
-		this.categoryDescription = categoryDescription;
+		this.CategoryId = categoryId;
+		this.CategoryName = categoryName;
+		this.CategoryDescription = categoryDescription;
 	}
 	
 	@Override
 	public String toString() {
-		return "ProductCategory [categoryId=" + categoryId + ", categoryName=" + categoryName + ", categoryDescription="
-				+ categoryDescription + "]";
+		return "ProductCategory [categoryId=" + CategoryId + ", categoryName=" + CategoryName + ", categoryDescription="
+				+ CategoryDescription + "]";
 	}
 	
 	

@@ -1,171 +1,22 @@
 /*
- * This java file is a class that model the class User
+  * This java file is a class that model the class User
  */
 package com.auctivity.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class User {
 	
-	private int userId;
-	private String userName;
-	private Date userDob;
-	private String userEmail;
-	private String userPhoneNumber;
-	private String userUserName;
-	private String userPassword;
-	private String userAddress;
-	private String userType;
-	private double userWalletAmount;
-	
-	/**
-	 * @return the userId
-	 */
-	public int getUserId() {
-		return userId;
-	}
-	/**
-	 * @param userId the userId to set
-	 */
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	/**
-	 * @return the userName
-	 */
-	public String getUserName() {
-		return userName;
-	}
-	/**
-	 * @param userName the userName to set
-	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	/**
-	 * @return the userDob
-	 */
-	public Date getUserDob() {
-		return userDob;
-	}
-	/**
-	 * @param userDob the userDob to set
-	 */
-	public void setUserDob(Date userDob) {
-		this.userDob = userDob;
-	}
-	/**
-	 * @return the userEmail
-	 */
-	public String getUserEmail() {
-		return userEmail;
-	}
-	/**
-	 * @param userEmail the userEmail to set
-	 */
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}
-	/**
-	 * @return the userPhoneNumber
-	 */
-	public String getUserPhoneNumber() {
-		return userPhoneNumber;
-	}
-	/**
-	 * @param userPhoneNumber the userPhoneNumber to set
-	 */
-	public void setUserPhoneNumber(String userPhoneNumber) {
-		this.userPhoneNumber = userPhoneNumber;
-	}
-	/**
-	 * @return the userUserName
-	 */
-	public String getUserUserName() {
-		return userUserName;
-	}
-	/**
-	 * @param userUserName the userUserName to set
-	 */
-	public void setUserUserName(String userUserName) {
-		this.userUserName = userUserName;
-	}
-	/**
-	 * @return the userPassword
-	 */
-	public String getUserPassword() {
-		return userPassword;
-	}
-	/**
-	 * @param userPassword the userPassword to set
-	 */
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
-	}
-	/**
-	 * @return the userAddress
-	 */
-	public String getUserAddress() {
-		return userAddress;
-	}
-	/**
-	 * @param userAddress the userAddress to set
-	 */
-	public void setUserAddress(String userAddress) {
-		this.userAddress = userAddress;
-	}
-	/**
-	 * @return the userType
-	 */
-	public String getUserType() {
-		return userType;
-	}
-	/**
-	 * @param userType the userType to set
-	 */
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
-	/**
-	 * @return the userWalletAmount
-	 */
-	public double getUserWalletAmount() {
-		return userWalletAmount;
-	}
-	/**
-	 * @param userWalletAmount the userWalletAmount to set
-	 */
-	public void setUserWalletAmount(double userWalletAmount) {
-		this.userWalletAmount = userWalletAmount;
-	}
-	
-	/**
-	 * @param userName
-	 * @param userId
-	 * @param userDob
-	 * @param userEmail
-	 * @param userPhoneNumber
-	 * @param userUserName
-	 * @param userPassword
-	 * @param userAddress
-	 * @param userType
-	 * @param userWalletAmount
-	 */
-	public User(String userName, int userId, Date userDob, String userEmail, String userPhoneNumber, String userUserName,
-			String userPassword, String userAddress, String userType, double userWalletAmount) {
-		super();
-		this.userName = userName;
-		this.userId = userId;
-		this.userDob = userDob;
-		this.userEmail = userEmail;
-		this.userPhoneNumber = userPhoneNumber;
-		this.userUserName = userUserName;
-		this.userPassword = userPassword;
-		this.userAddress = userAddress;
-		this.userType = userType;
-		this.userWalletAmount = userWalletAmount;
-	}
-	
+	private int userid;
+	private String name;
+	private LocalDate dob;
+	private String email;
+	private String phonenumber;
+	private String username;
+	private String password;
+	private String address;
+	private int usertype;
+	private double wallet;
 	/**
 	 * Constructor of Super class
 	 */
@@ -173,13 +24,157 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+	/**
+	 * @param userid
+	 * @param name
+	 * @param dob
+	 * @param email
+	 * @param phonenumber
+	 * @param username
+	 * @param password
+	 * @param address
+	 * @param usertype
+	 * @param wallet
+	 */
+	public User(int userid, String name, LocalDate dob, String email, String phonenumber, String username,
+			String password, String address, int usertype, double wallet) {
+		super();
+		this.userid = userid;
+		this.name = name;
+		this.dob = dob;
+		this.email = email;
+		this.phonenumber = phonenumber;
+		this.username = username;
+		this.password = password;
+		this.address = address;
+		this.usertype = usertype;
+		this.wallet = wallet;
+	}
+	/**
+	 * @return the userid
+	 */
+	public int getUserid() {
+		return userid;
+	}
+	/**
+	 * @param userid the userid to set
+	 */
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	/**
+	 * @return the dob
+	 */
+	public LocalDate getDob() {
+		return dob;
+	}
+	/**
+	 * @param dob the dob to set
+	 */
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
+	}
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	/**
+	 * @return the phonenumber
+	 */
+	public String getPhonenumber() {
+		return phonenumber;
+	}
+	/**
+	 * @param phonenumber the phonenumber to set
+	 */
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
+	}
+	/**
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	/**
+	 * @return the address
+	 */
+	public String getAddress() {
+		return address;
+	}
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	/**
+	 * @return the usertype
+	 */
+	public int getUsertype() {
+		return usertype;
+	}
+	/**
+	 * @param usertype the usertype to set
+	 */
+	public void setUsertype(int usertype) {
+		this.usertype = usertype;
+	}
+	/**
+	 * @return the wallet
+	 */
+	public double getWallet() {
+		return wallet;
+	}
+	/**
+	 * @param wallet the wallet to set
+	 */
+	public void setWallet(double wallet) {
+		this.wallet = wallet;
+	}
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", userDob=" + userDob + ", userEmail=" + userEmail
-				+ ", userPhoneNumber=" + userPhoneNumber + ", userUserName=" + userUserName + ", userPassword="
-				+ userPassword + ", userAddress=" + userAddress + ", userType=" + userType + ", userWalletAmount="
-				+ userWalletAmount + "]";
+		return "User [userid=" + userid + ", name=" + name + ", dob=" + dob + ", email=" + email + ", phonenumber="
+				+ phonenumber + ", username=" + username + ", password=" + password + ", address=" + address
+				+ ", usertype=" + usertype + ", wallet=" + wallet + "]";
 	}
 	
 	

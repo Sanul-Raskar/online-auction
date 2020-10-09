@@ -7,66 +7,67 @@ package com.auctivity.model;
 
 public class Bid {
 	
-	private int bidId;
+	private int BidId;
 	// @bidderID must be registered as @userId  
-	private int bidderId;
+	private int BidderId;
 	// @biddedProductId must be same as the @productId in DB
-	private int biddedProductId;
-	private double bidValue;
+	private int BiddedProductId;
+	private double BidValue;
+	private int Status;
 	private int bidStatus;
 	/**
 	 * @return the bidId
 	 */
 	public int getBidId() {
-		return bidId;
+		return BidId;
 	}
 	/**
 	 * @param bidId the bidId to set
 	 */
 	public void setBidId(int bidId) {
-		this.bidId = bidId;
+		this.BidId = bidId;
 	}
 	/**
 	 * @return the bidderId
 	 */
 	public int getBidderId() {
-		return bidderId;
+		return BidderId;
 	}
 	/**
 	 * @param bidderId the bidderId to set
 	 */
 	public void setBidderId(int bidderId) {
-		this.bidderId = bidderId;
+		this.BidderId = bidderId;
 	}
 	/**
 	 * @return the biddedProductId
 	 */
 	public int getBiddedProductId() {
-		return biddedProductId;
+		return BiddedProductId;
 	}
 	/**
 	 * @param biddedProductId the biddedProductId to set
 	 */
 	public void setBiddedProductId(int biddedProductId) {
-		this.biddedProductId = biddedProductId;
+		this.BiddedProductId = biddedProductId;
 	}
 	/**
 	 * @return the bidValue
 	 */
 	public double getBidValue() {
-		return bidValue;
+		return BidValue;
 	}
 	/**
 	 * @param bidValue the bidValue to set
 	 */
 	public void setBidValue(double bidValue) {
-		this.bidValue = bidValue;
+		this.BidValue = bidValue;
 	}
 	/**
 	 * @return the bidStatus
 	 */
 	public int getBidStatus() {
-		return bidStatus;
+		return getBidStatus();
 	}
 	/**
 	 * @param bidStatus the bidStatus to set
@@ -77,10 +78,10 @@ public class Bid {
 	
 	public Bid(int bidId, int bidderId, int biddedProductId, double bidValue, int bidStatus) {
 		super();
-		this.bidId = bidId;
-		this.bidderId = bidderId;
-		this.biddedProductId = biddedProductId;
-		this.bidValue = bidValue;
+		this.BidId = bidId;
+		this.BidderId = bidderId;
+		this.BiddedProductId = biddedProductId;
+		this.BidValue = bidValue;
 		this.bidStatus = bidStatus;
 	}
 	
@@ -95,8 +96,8 @@ public class Bid {
 	
 	@Override
 	public String toString() {
-		return "Bid [bidId=" + bidId + ", bidderId=" + bidderId + ", biddedProductId=" + biddedProductId + ", bidValue="
-				+ bidValue + ", bidStatus=" + bidStatus + "]";
+		return "Bid [bidId=" + BidId + ", bidderId=" + BidderId + ", biddedProductId=" + BiddedProductId + ", bidValue="
+				+ BidValue + ", bidStatus=" + bidStatus + "]";
 	}
 	
 	

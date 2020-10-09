@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-    <link rel="stylesheet" href="../resources/css/registration.css"/>
+    <style><%@include file="../resources/css/style.css"%></style>
+    <style><%@include file="../resources/css/registration.css"%></style>
+    
   </head>
-
+	<%@ include file="../Common/navbar.jsp"%>  
     <body>
     <div class="text-center">
       <h1>User Registration</h1>
@@ -150,5 +152,9 @@
     <div style="height: 50px"></div>
     <script src="../resources/js/inputValidation.js"></script>
     <script src="../resources/js/register.js"></script>
+    
+    <script> <%@include file="../resources/js/inputValidation.js"%></script>
+    <script> <%@include file="../resources/js/register.js"%></script>
+    
   </body>
 </html>
