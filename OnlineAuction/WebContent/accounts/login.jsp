@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login</title>
     <style><%@include file="../resources/css/style.css"%></style>
-    <style><%@include file="../resources/css/login.css"%></style>
+    <style><%@include file="../resources/css/accounts/login.css"%></style>
     
   </head>
   <body>
-  	<%@ include file="../Common/navbar.jsp"%>
+  	<%@ include file="../common/navbar.jsp"%>
   <br/><br/><br/>
   	<div class="wrapper">
   	<div class="login-container">
@@ -54,9 +54,9 @@
     </form>
     </div></div>
     <div style="height:80px"></div>
- 	<%@ include file="../Common/footer.jsp" %>
-    <script> <%@include file="../resources/js/inputValidation.js"%></script>
-    <script> <%@include file="../resources/js/login.js"%></script>
+ 	<%@ include file="../common/footer.jsp" %>
+    <script> <%@include file="../resources/js/utility/inputValidation.js"%></script>
+    <script> <%@include file="../resources/js/accounts/login.js"%></script>
     
   </body>
 </html>

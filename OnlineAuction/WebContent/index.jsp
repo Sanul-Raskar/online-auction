@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	<%@ include file="./Common/navbar.jsp"%>
+	<%@ include file="./common/navbar.jsp"%>
 	<br />
 	<h1 class="text-center">Home Page</h1>
 
@@ -23,7 +23,7 @@
 		<div id="productsContainer" class="grid-row"></div>
 	</div>
 	<br />
-	<%@ include file="./Common/footer.jsp"%>
+	<%@ include file="./common/footer.jsp"%>
 	<script> <%@include file="../resources/js/index.js"%></script>
 	<script> <%@include file="./resources/js/home.js"%></script>
 

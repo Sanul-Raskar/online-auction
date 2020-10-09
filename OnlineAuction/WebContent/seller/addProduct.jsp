@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Add Product</title>
 <style><%@include file="../resources/css/style.css"%></style>
-<style><%@include file="../resources/css/addProducts.css"%></style>
+<style><%@include file="../resources/css/seller/addProducts.css"%></style>
 
 
 </head>
 <body>
-	<%@ include file="../Common/navbar.jsp"%>
+	<%@ include file="../common/navbar.jsp"%>
 
 	<div class="text-center">
 		<h1>Add Products</h1>
@@ -72,10 +72,10 @@
 
 	<div style="height: 60px"></div>
 
-	<%@ include file="../Common/footer.jsp"%>
+	<%@ include file="../common/footer.jsp"%>
 	<script> <%@include file="../resources/js/index.js"%></script>
-	<script> <%@include file="../resources/js/inputValidation.js"%></script>
-	<script> <%@include file="../resources/js/addProducts.js"%></script>
+	<script> <%@include file="../resources/js/utility/inputValidation.js"%></script>
+	<script> <%@include file="../resources/js/seller/addProducts.js"%></script>
 
 </body>
 </html>

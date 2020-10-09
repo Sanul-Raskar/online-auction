@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
+    <title>Registration</title>
     <style><%@include file="../resources/css/style.css"%></style>
-    <style><%@include file="../resources/css/registration.css"%></style>
+    <style><%@include file="../resources/css/accounts/registration.css"%></style>
     
   </head>
-	<%@ include file="../Common/navbar.jsp"%>  
+	<%@ include file="../common/navbar.jsp"%>  
     <body>
     <div class="text-center">
       <h1>User Registration</h1>
@@ -153,8 +153,8 @@
     <script src="../resources/js/inputValidation.js"></script>
     <script src="../resources/js/register.js"></script>
     
-    <script> <%@include file="../resources/js/inputValidation.js"%></script>
-    <script> <%@include file="../resources/js/register.js"%></script>
+    <script> <%@include file="../resources/js/utility/inputValidation.js"%></script>
+    <script> <%@include file="../resources/js/accounts/register.js"%></script>
     
   </body>
 </html>

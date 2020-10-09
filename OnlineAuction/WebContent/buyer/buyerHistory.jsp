@@ -8,12 +8,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Online Auction</title>
+<title>Buyer History</title>
 <style><%@include file="../resources/css/style.css"%></style>
-<style><%@include file="../resources/css/SellerPage.css"%></style>
+<style><%@include file="../resources/css/seller/SellerPage.css"%></style>
 </head>
 <body>
-	<%@ include file="../Common/navbar.jsp"%>
+	<%@ include file="../common/navbar.jsp"%>
 	<script src="../resources/js/buyerPagePurchasedProducts1.js"></script>
 	
 	<%
@@ -37,7 +37,7 @@
 	
 
 	
-	<%@ include file="../Common/footer.jsp"%>
+	<%@ include file="../common/footer.jsp"%>
 	<script> <%@include file="../resources/js/index.js"%></script>
 	
 
