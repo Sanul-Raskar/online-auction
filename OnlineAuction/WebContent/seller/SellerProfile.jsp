@@ -19,9 +19,9 @@
  	%>
  	
  	
- 	<form id="buyerDetails" method="post" class="details">
+ 	<form id="sellerDetails" method="post" class="details">
       <div class="detail-box">
-        <h2 style="font-family: Arial">Buyer Details</h2>
+        <h2 style="font-family: Arial">Seller Details</h2>
         <hr />
         <label>Name :</label>
         <input
