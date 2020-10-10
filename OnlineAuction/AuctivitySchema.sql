@@ -31,7 +31,7 @@ create table OnlineAuctionDB.Usertable (
 --insert into OnlineAuctionDB.usertable values(next value for OnlineAuctionDB.user_sequence,"Jayesh","Jayesh@123");
 
 create table OnlineAuctionDB.Category (
-	CategoryID INTEGER  PRIMARY KEY,
+	CategoryID INTEGER NOT NULL UNIQUE,
 	CategoryName varchar(255) NOT NULL,
 	CategoryDesc varchar(255) NOT NULL,
 	PRIMARY KEY(CategoryName)
@@ -45,7 +45,7 @@ create table OnlineAuctionDB.Product (
 	ActualPrice double NOT NULL,
 	Quantity INTEGER NOT NULL,
 	Image varchar(255) NOT NULL,
-	SellerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
+	SellerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID)
 );
 
 create table OnlineAuctionDB.Bid (
