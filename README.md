@@ -42,3 +42,113 @@ http://localhost:8080/media/myImage.jpg
 3. Click on the *Modules* tab.
 4. Select *Add External Web Module*.
 5. Enter *Document Base* and *Path*.
+
+
+## Layered Architecture
+
+```bash
+.
+├── AuctivitySchema.sql
+├── WebContent
+│   ├── META-INF
+│   │   └── MANIFEST.MF
+│   ├── WEB-INF
+│   │   ├── lib
+│   │   │   └── jstl-1.2.jar
+│   │   ├── properties
+│   │   │   ├── connection.properties
+│   │   │   ├── queries.properties
+│   │   │   └── status.properties
+│   │   └── web.xml
+│   ├── accounts
+│   │   ├── login.jsp
+│   │   ├── profile.jsp
+│   │   └── registration.jsp
+│   ├── buyer
+│   │   └── buyerHistory.jsp
+│   ├── common
+│   │   ├── footer.jsp
+│   │   └── navbar.jsp
+│   ├── error
+│   │   ├── comingSoon.jsp
+│   │   ├── forbiddenAccessError.jsp
+│   │   └── pageNotFoundError.jsp
+│   ├── index.jsp
+│   ├── resources
+│   │   ├── css
+│   │   │   ├── accounts
+│   │   │   │   ├── login.css
+│   │   │   │   └── registration.css
+│   │   │   ├── buyer
+│   │   │   │   ├── buyerPagePurchasedProducts1.css
+│   │   │   │   └── buyerProfile.css
+│   │   │   ├── home.css
+│   │   │   ├── seller
+│   │   │   │   ├── SellerNavbar.css
+│   │   │   │   ├── SellerPage.css
+│   │   │   │   └── addProducts.css
+│   │   │   └── style.css
+│   │   ├── img
+│   │   │   └── logo.jpg
+│   │   └── js
+│   │       ├── accounts
+│   │       │   ├── login.js
+│   │       │   └── register.js
+│   │       ├── buyer
+│   │       ├── home.js
+│   │       ├── index.js
+│   │       ├── seller
+│   │       │   └── addProducts.js
+│   │       └── utility
+│   │           └── inputValidation.js
+│   └── seller
+│       ├── addProduct.jsp
+│       ├── scheduleAuction.jsp
+│       └── sellerHistory.jsp
+└── src
+    └── com
+        └── auctivity
+            ├── controller
+            │   ├── AddProductController.java
+            │   ├── BuyerHistoryController.java
+            │   ├── DefaultController.java
+            │   ├── ExceptionController.java
+            │   ├── LogOutController.java
+            │   ├── LoginController.java
+            │   ├── ProfileController.java
+            │   ├── RegistrationController.java
+            │   ├── ScheduleAuctionController.java
+            │   └── SellerHistoryController.java
+            ├── exceptions
+            │   ├── ForbiddenAccessException.java
+            │   ├── InsufficientBalanceException.java
+            │   ├── InvalidDataFormatException.java
+            │   └── UserNotFoundException.java
+            ├── model
+            │   ├── beans
+            │   │   ├── Bid.java
+            │   │   ├── Category.java
+            │   │   ├── Product.java
+            │   │   ├── ProductForAuction.java
+            │   │   └── User.java
+            │   ├── dao
+            │   │   ├── IProductDao.java
+            │   │   ├── IProductSchedulerDao.java
+            │   │   ├── IUserDao.java
+            │   │   ├── ProductDaoImpl.java
+            │   │   ├── ProductSchedulerDaoImpl.java
+            │   │   └── UserDaoImpl.java
+            │   └── service
+            │       ├── IProductSchedulerService.java
+            │       ├── IProductService.java
+            │       ├── IUserService.java
+            │       ├── ProductSchedulerServiceImpl.java
+            │       ├── ProductServiceImpl.java
+            │       └── UserServiceImpl.java
+            └── utility
+                ├── DBConnection.java
+                ├── InputValidation.java
+                ├── Logger.java
+                ├── ObjectFactory.java
+                └── PasswordEncrypter.java
+```
