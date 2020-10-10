@@ -120,7 +120,6 @@
           <div class="form-group">
             <label for="userType">How do you want to use Auctivity? <span style="color:red">*</span></label><br />
             <select class="form-input" name="userType" id="userType" required>
-              <option value="">Select</option>
               <option value="0">Buy products</option>
               <option value="1">Sell products</option>
             </select>

@@ -7,10 +7,10 @@ function validateLoginForm(event) {
 	 * send to server
 	 */
 	let data = {};
-	
+
 	let loginForm = document.getElementById("loginForm");
 	let validData = true;
-	
+
 	if (validateUsername(loginForm["username"].value)) {
 		data.username = loginForm["username"].value;
 	} else {
@@ -24,7 +24,7 @@ function validateLoginForm(event) {
 		validData = false;
 		document.getElementById("passwordError").innerHTML = "Please enter password";
 	}
-	
+
 	if (validData) {
 		console.log(data);
 		/* Send data variable to server using XMLHttpRequest() */
@@ -48,7 +48,11 @@ function validateLoginForm(event) {
 
 }
 
-/*add onSubmit event listener to user login form so that input
- * field values can be validated before submitting form to server */
-/*document.getElementById("loginForm").addEventListener("submit",
-		validateLoginForm);*/
+/*
+ * add onSubmit event listener to user login form so that input field values can
+ * be validated before submitting form to server
+ */
+/*
+ * document.getElementById("loginForm").addEventListener("submit",
+ * validateLoginForm);
+ */

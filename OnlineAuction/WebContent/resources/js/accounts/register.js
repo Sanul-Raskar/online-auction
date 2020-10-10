@@ -1,5 +1,3 @@
-//import * as validate from "./inputValidation";
-
 function validateForm(event) {
 	// Prevent form from automatic submit
 	event.preventDefault()
@@ -92,31 +90,34 @@ function validateForm(event) {
 				+ "&dob=" + data.dob + "&password=" + data.confirmPassword
 				+ "&address=" + data.address + "&userType=" + data.userType
 				+ "&walletAmount=" + data.walletAmount;
-		http.open('POST', "register", true);
-	
+
+		// Make a POST request to controller with endpoint /register
+		http.open('POST', "/OnlineAuction/register", true);
+
 		// Send the proper header information along with the request
 		http.setRequestHeader('Content-type',
 				'application/x-www-form-urlencoded');
 
 		// Call a function when the state changes.
 		http.onreadystatechange = function() {
-			if (http.readyState == 4 && http.status==999) {
+			if (http.readyState == 4 && http.status == 999) {
 				alert("Username/Email already exist")
 				location.replace("register")
-				}
-			if (http.readyState == 4 && http.status==200) {
+			}
+			if (http.readyState == 4 && http.status == 200) {
 				alert("Registration successful");
-				location.replace("home")  
+				location.replace("home")
 			}
-			}
-			
-		
+		}
+
 		console.log(params);
 		http.send(params);
 	}
 }
 
-/*add onSubmit event listener to user registration form so that input
- * field values can be validated before submitting form to server */
+/*
+ * add onSubmit event listener to user registration form so that input field
+ * values can be validated before submitting form to server
+ */
 document.getElementById("userRegisterForm").addEventListener("submit",
 		validateForm);

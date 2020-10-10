@@ -12,14 +12,14 @@
 <body>
 	<%@ include file="./common/navbar.jsp"%>
 	<br />
-	<h1><% 
+	<%-- <h1><% 
 		User u= (User)session.getAttribute("user");
     String name="";
 	if(u!=null)
 		name = u.getName();
 		System.out.println("In INDEX JSP ::"+u+":::errorcode:"+request.getAttribute("errorcode"));
  	%></h1>
-			<h3>Welcome:<%=name%></h3>
+			<h3>Welcome:<%=name%></h3> --%>
 	
 	<h1 class="text-center">Home Page</h1>
 

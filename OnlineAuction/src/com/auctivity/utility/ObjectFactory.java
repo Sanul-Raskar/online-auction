@@ -1,35 +1,41 @@
 package com.auctivity.utility;
 
+import com.auctivity.model.dao.IProductDao;
+import com.auctivity.model.dao.IProductSchedulerDao;
+import com.auctivity.model.dao.IUserDao;
+import com.auctivity.model.dao.ProductDaoImpl;
 import com.auctivity.model.dao.ProductSchedulerDaoImpl;
 import com.auctivity.model.dao.UserDaoImpl;
+import com.auctivity.model.service.IProductSchedulerService;
+import com.auctivity.model.service.IProductService;
+import com.auctivity.model.service.IUserService;
 import com.auctivity.model.service.ProductSchedulerServiceImpl;
 import com.auctivity.model.service.ProductServiceImpl;
 import com.auctivity.model.service.UserServiceImpl;
-import com.auctivity.model.dao.ProductDaoImpl;
 
 public class ObjectFactory {
 
-	public static ProductSchedulerDaoImpl createProductSchedulerDaoImplObj() {
+	public IProductSchedulerDao createProductSchedulerDaoImplObj() {
 		return new ProductSchedulerDaoImpl();
 	}
 
-	public static ProductDaoImpl createProductDaoImplObj() {
+	public IProductDao createProductDaoImplObj() {
 		return new ProductDaoImpl();
 	}
 
-	public static UserDaoImpl createUserDaoImplObj() {
+	public IUserDao createUserDaoImplObj() {
 		return new UserDaoImpl();
 	}
 
-	public static ProductSchedulerServiceImpl createProductSchedulerServiceImplObj() {
+	public IProductSchedulerService createProductSchedulerServiceImplObj() {
 		return new ProductSchedulerServiceImpl();
 	}
 
-	public static ProductServiceImpl createProductServiceImplObj() {
+	public IProductService createProductServiceImplObj() {
 		return new ProductServiceImpl();
 	}
 
-	public static UserServiceImpl createUserServiceImplObj() {
+	public IUserService createUserServiceImplObj() {
 		return new UserServiceImpl();
 	}
 

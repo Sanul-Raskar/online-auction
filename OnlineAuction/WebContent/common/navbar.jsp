@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="com.auctivity.model.beans.User"%>
 
 <% 
 		
@@ -11,13 +12,17 @@
 			userType=(int)session.getAttribute("userType");
 		}
 		
+		User u= (User)session.getAttribute("user");
+		if(u!=null){
+			session.setAttribute("name", u.getName());
+		}
  %>
-
-
+ 
 <div id="bottomHeader">
 	<div id="mySidebar" class="sidebar">
 		<% if(isUserAuthenticated && userType == 0){ %>
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<h3>Hello <%=session.getAttribute("name")%></h3>
 			<a href="/OnlineAuction">Home</a>
 			<a href="/OnlineAuction/profile">My Profile</a>
 			<a href="/OnlineAuction/buyerhistory">Purchased Products</a>
@@ -25,6 +30,7 @@
 			
 		<%} else if(isUserAuthenticated && userType == 1){ %>
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<h3>Hello <%=session.getAttribute("name")%></h3>
 			<a href="/OnlineAuction">Home</a>
 			<a href="/OnlineAuction/profile">My Profile</a>
 			<a href="/OnlineAuction/addproduct">Add Product</a>

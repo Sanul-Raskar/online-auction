@@ -1,5 +1,5 @@
 package com.auctivity.model.dao;
 
-public class ProductSchedulerDaoImpl {
+public class ProductSchedulerDaoImpl implements IProductSchedulerDao {
 
 }
