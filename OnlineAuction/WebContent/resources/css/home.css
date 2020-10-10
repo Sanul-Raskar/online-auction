@@ -13,8 +13,8 @@
 }
 
 .card {
-	width: 340px;
-	height: 400px;
+	width: 360px;
+	height: 420px;
 	margin: 14px;
 	padding-left: 18px;
 	padding-right: 18px;
@@ -36,8 +36,8 @@
 }
 
 .grid-item {
-	width: 340px;
-	height: 400px;
+	width: 360px;
+	height: 420px;
 	flex-basis: 40%;
 	-ms-flex: auto;
 	position: relative;
@@ -45,29 +45,6 @@
 	box-sizing: border-box;
 }
 
-@media ( max-width : 1333px) {
-	.grid-item {
-		flex-basis: 33.33%;
-	}
-}
-
-@media ( max-width : 1073px) {
-	.grid-item {
-		flex-basis: 33.33%;
-	}
-}
-
-@media ( max-width : 815px) {
-	.grid-item {
-		flex-basis: 50%;
-	}
-}
-
-@media ( max-width : 555px) {
-	.grid-item {
-		flex-basis: 100%;
-	}
-}
 
 @media only screen and (max-width: 575) {
 	.grid-item {

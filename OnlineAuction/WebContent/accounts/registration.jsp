@@ -145,13 +145,12 @@
         </form>
         <br />
         <h4 class="text-center">
-          Already a member? <span class="font-bold"><a href="">Log In</a></span>
+          Already a member? <span class="font-bold"><a href="/OnlineAuction/login">Log In</a></span>
         </h4>
       </div>
     </section>
-    <div style="height: 50px"></div>
-    <script src="../resources/js/inputValidation.js"></script>
-    <script src="../resources/js/register.js"></script>
+    <div style="height: 100px"></div>
+    <%@ include file="../common/footer.jsp" %>
     
     <script> <%@include file="../resources/js/utility/inputValidation.js"%></script>
     <script> <%@include file="../resources/js/accounts/register.js"%></script>

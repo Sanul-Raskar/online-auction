@@ -47,7 +47,7 @@
         <h4 class="text-center">
           Don't have a account?
           <span class="font-bold"
-            ><a href="./registration.html" style="color: #404040;">Sign Up</a></span
+            ><a href="/OnlineAuction/register" style="color: #404040;">Sign Up</a></span
           >
         </h4>
       </div>

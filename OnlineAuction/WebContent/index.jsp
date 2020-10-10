@@ -24,7 +24,7 @@
 	</div>
 	<br />
 	<%@ include file="./common/footer.jsp"%>
-	<script> <%@include file="../resources/js/index.js"%></script>
+	<script> <%@include file="./resources/js/index.js"%></script>
 	<script> <%@include file="./resources/js/home.js"%></script>
 
 </body>

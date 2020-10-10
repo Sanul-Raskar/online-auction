@@ -2,13 +2,24 @@
 	pageEncoding="UTF-8"%>
 
 
-<%!boolean isUserAuthenticated = false;%>
+<%!boolean isUserAuthenticated = false; int userType=0;%>
 
 <div id="bottomHeader">
 	<div id="mySidebar" class="sidebar">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times</a>
-		<a href="#">My Products</a> <a href="#">Add Products</a> <a href="#">Start
-			Auction</a> <a href="#">Log Out</a>
+		<% if(isUserAuthenticated && userType == 0){ %>
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="#">Home</a>
+			<a href="#">My Profile</a>
+			<a href="#">Purchased Products</a>
+			<a href="#">Log Out</a>
+			
+		<%} else if(isUserAuthenticated && userType == 1){ %>
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="#">Home</a>
+			<a href="#">Add Product</a>
+			<a href="#">Product History</a>
+			<a href="#">Log Out</a>
+		<%} %>
 	</div>
 
 	<%
@@ -22,8 +33,8 @@
 	%>
 	<div id="main">
 	<div style="float:right">
-	<a href="./accounts/login.jsp" class="navbarButton">Login</a>
-	<a href="./accounts/registration.jsp" class="navbarButton">Sign Up</a>
+	<a href="/OnlineAuction/login" class="navbarButton">Login</a>
+	<a href="/OnlineAuction/register" class="navbarButton">Sign Up</a>
 	</div>
 	</div>
 	<%
