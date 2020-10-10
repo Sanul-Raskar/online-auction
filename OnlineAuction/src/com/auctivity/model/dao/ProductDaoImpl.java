@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.auctivity.model.beans.Product;
 
-public class ProductServiceDaoImpl implements IProductDao{
+public class ProductDaoImpl implements IProductDao{
 
 	@Override
 	public List<Product> getBidProducts() {

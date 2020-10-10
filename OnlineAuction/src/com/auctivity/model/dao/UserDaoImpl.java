@@ -2,7 +2,7 @@ package com.auctivity.model.dao;
 
 import com.auctivity.model.beans.User;
 
-public class UserServiceDaoImpl implements IUserDao{
+public class UserDaoImpl implements IUserDao{
 
 	@Override
 	public int addUser(User user) {
