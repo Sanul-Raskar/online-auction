@@ -4,7 +4,7 @@ import com.auctivity.model.beans.User;
 
 public interface IUserDao {
 	int addUser(User user);
-	User getUser();
+	User getUser(String username,String password);
 	int deleteUser();
 	int updateUser();
 }

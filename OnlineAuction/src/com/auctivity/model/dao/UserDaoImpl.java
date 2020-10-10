@@ -11,11 +11,11 @@ public class UserDaoImpl implements IUserDao{
 	}
 
 	@Override
-	public User getUser() {
+	public User getUser(String username, String password) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
 	public int deleteUser() {
 		// TODO Auto-generated method stub
@@ -27,5 +27,6 @@ public class UserDaoImpl implements IUserDao{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 }

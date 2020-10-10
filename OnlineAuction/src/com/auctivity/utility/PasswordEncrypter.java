@@ -6,10 +6,7 @@ package com.auctivity.utility;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
-/**
- * @author Jayesh
- *
- */
+
 public class PasswordEncrypter {
 	
 	public static String getSHA(String input) {
