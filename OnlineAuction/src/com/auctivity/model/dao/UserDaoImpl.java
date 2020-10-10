@@ -9,7 +9,7 @@ import com.auctivity.model.beans.User;
 import com.auctivity.utility.DBConnection;
 import com.auctivity.utility.PasswordEncrypter;
 
-public class UserDaoImpl implements IUserDao{
+public class UserDaoImpl implements IUserDao {
 	static Connection conn = null;
 	@Override
 	public int addUser(User user) {
@@ -20,7 +20,7 @@ public class UserDaoImpl implements IUserDao{
 			Connection conn = DBConnection.getConnectionId();	
 			PreparedStatement ps;
 			try {
-				ps = conn.prepareStatement("insert into OnlineAuctionDB.Usertable (Name,dob,email,phonenumber,username,password,address,user_type,wallet) values (?,?,?,?,?,?,?,?,?)");
+				ps = conn.prepareStatement("insert into OnlineAuctionDB.Usertable values (next value for OnlineAuctionDB.user_sequence,?,?,?,?,?,?,?,?,?)");
 				ps.setString(1, user.getName());
 				ps.setDate(2,  java.sql.Date.valueOf(user.getDob()));
 				ps.setString(3, user.getEmail());
