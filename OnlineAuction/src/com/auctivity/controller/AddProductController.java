@@ -1,12 +1,24 @@
 //This controller used for Adding product from seller side
 package com.auctivity.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
+
+import com.auctivity.model.beans.Product;
 
 /**
  * Servlet implementation class AddProductController
@@ -14,29 +26,73 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/addproduct")
 public class AddProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddProductController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public AddProductController() {
+		super();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.getRequestDispatcher("/seller/addProduct.jsp").include(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String BASE_DIR = "/Users/sanul/Documents/uploads/";
+		String currentTime = Long.toString((int) (new Date().getTime() / 10000));
+		HashMap<String, String> data = new HashMap<String, String>();
+
+		if (ServletFileUpload.isMultipartContent(request)) {
+			DiskFileItemFactory factory = new DiskFileItemFactory();
+			ServletFileUpload upload = new ServletFileUpload(factory);
+			List<FileItem> formItems = upload.parseRequest(new ServletRequestContext(request));
+
+			if (formItems != null && formItems.size() > 0) {
+				for (FileItem item : formItems) {
+					if (!item.isFormField()) {
+						// File Input
+						String fileName = new File(item.getName()).getName();
+						fileName = currentTime + "-" + fileName;
+						String filePath = BASE_DIR + fileName;
+						File storeFile = new File(filePath);
+						try {
+							item.write(storeFile);
+							data.put("Image", fileName);
+							System.out.println("File: " + fileName + " has uploaded successfully!");
+
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+					} else {
+						// Other than file form elements
+						String fieldName = item.getFieldName();
+						String fieldValue = item.getString();
+						System.out.println("" + fieldName + " : " + fieldValue);
+						data.put(fieldName, fieldValue);
+					}
+				}
+			}
+		}
+
+		Product product = new Product(201, data.get("productName"), "Electronics", data.get("productDescription"),
+				Double.parseDouble(data.get("actualPrice")), Integer.parseInt(data.get("quantity")), data.get("Image"),
+				100);
+		System.out.println(product);
+
 	}
 
 }

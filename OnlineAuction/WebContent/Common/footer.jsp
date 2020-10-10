@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <div id="footer" style="color: #fff">
-	Copyright ©
+	Copyright &copy;
 	<%=java.time.LocalDate.now().getYear()%>
 	auctivity.com
 </div>

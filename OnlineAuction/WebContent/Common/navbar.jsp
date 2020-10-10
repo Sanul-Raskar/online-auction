@@ -2,23 +2,25 @@
 	pageEncoding="UTF-8"%>
 
 
-<%!boolean isUserAuthenticated = false; int userType=0;%>
+<%!boolean isUserAuthenticated = false; int userType=1;%>
 
 <div id="bottomHeader">
 	<div id="mySidebar" class="sidebar">
 		<% if(isUserAuthenticated && userType == 0){ %>
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="#">Home</a>
-			<a href="#">My Profile</a>
-			<a href="#">Purchased Products</a>
-			<a href="#">Log Out</a>
+			<a href="/OnlineAuction">Home</a>
+			<a href="/OnlineAuction/profile">My Profile</a>
+			<a href="/OnlineAuction/buyerhistory">Purchased Products</a>
+			<a href="/OnlineAuction/logout">Log Out</a>
 			
 		<%} else if(isUserAuthenticated && userType == 1){ %>
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="#">Home</a>
-			<a href="#">Add Product</a>
-			<a href="#">Product History</a>
-			<a href="#">Log Out</a>
+			<a href="/OnlineAuction">Home</a>
+			<a href="/OnlineAuction/profile">My Profile</a>
+			<a href="/OnlineAuction/addproduct">Add Product</a>
+			<a href="/OnlineAuction/scheduleauction">Schedule Auction</a>
+			<a href="/OnlineAuction/sellerhistory">Product History</a>
+			<a href="/OnlineAuction/logout">Log Out</a>
 		<%} %>
 	</div>
 

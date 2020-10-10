@@ -57,9 +57,7 @@ function validateAddProductForm(event) {
 	if (validData) {
 		/* Send data variable to server using XMLHttpRequest() */
 		var http = new XMLHttpRequest();
-		http.open('POST', "/OnlineAuction/addProduct", true);
-		
-		//http.setRequestHeader( 'Content-Type', 'multipart/form-data' );
+		http.open('POST', "/OnlineAuction/addproduct", true);
 
 		// Call a function when the state changes.
 		http.onreadystatechange = function() {

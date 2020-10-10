@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Add Product</title>
+<title>Add Product | Online Auction</title>
 <style><%@include file="../resources/css/style.css"%></style>
 <style><%@include file="../resources/css/seller/addProducts.css"%></style>
 
@@ -13,7 +13,7 @@
 	<%@ include file="../common/navbar.jsp"%>
 
 	<div class="text-center">
-		<h1>Add Products</h1>
+		<h1>Add Product</h1>
 		<h3>Please fill the product details...</h3>
 	</div>
 
@@ -70,7 +70,7 @@
 		</form>
 	</div>
 
-	<div style="height: 60px"></div>
+	<div style="height: 100px"></div>
 
 	<%@ include file="../common/footer.jsp"%>
 	<script> <%@include file="../resources/js/index.js"%></script>
