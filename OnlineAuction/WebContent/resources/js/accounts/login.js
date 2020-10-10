@@ -30,7 +30,7 @@ function validateLoginForm(event) {
 		/* Send data variable to server using XMLHttpRequest() */
 		var http = new XMLHttpRequest();
 		var params = "username=" + data.username + "&password=" + data.password;
-		http.open('POST', "./login", true);
+		http.open('POST', "/OnlineAuction/login", true);
 
 		// Send the proper header information along with the request
 		http.setRequestHeader('Content-type',
@@ -50,5 +50,5 @@ function validateLoginForm(event) {
 
 /*add onSubmit event listener to user login form so that input
  * field values can be validated before submitting form to server */
-document.getElementById("loginForm").addEventListener("submit",
-		validateLoginForm);
+/*document.getElementById("loginForm").addEventListener("submit",
+		validateLoginForm);*/

@@ -6,6 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.auctivity.exceptions.UserNotFoundException;
+import com.auctivity.model.beans.User;
+import com.auctivity.model.service.IUserService;
+import com.auctivity.model.service.UserServiceImpl;
 
 /**
  * Servlet implementation class LoginController
@@ -13,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    IUserService userService = new UserServiceImpl();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,8 +33,25 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		User userInSession = (User)session.getAttribute("user");
+		if(userInSession==null)
+			request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
+		else {
+			if(userInSession.getUserType() == 1) {
+				System.out.println("In seller:"+(User)session.getAttribute("user"));
+				response.sendRedirect("sellerhistory");
+				//request.getRequestDispatcher("sellerhistory").forward(request, response);
+			}
+			else if(userInSession.getUserType()==0) {
+				System.out.println("In buyer:"+(User)session.getAttribute("user"));
+				response.sendRedirect("home");
+				//request.getRequestDispatcher("home").forward(request, response);
+			}
+			else {
+				System.out.println("something error from loginservlet");
+			}
+		}
 
 	}
 
@@ -36,8 +59,58 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		HttpSession session=request.getSession();  
+		User sessionuser = (User) session.getAttribute("user");
+		if(sessionuser==null) {
+			User temp;
+			try {
+				temp = userService.getUser(username, password);
+				if(temp!=null){
+					session.setAttribute("user", temp);
+					session.setAttribute("isUserAuthenticated", true);
+					session.setAttribute("userType", temp.getUserType());
+					if(temp.getUserType() == 1) {
+						System.out.println("In seller:"+(User)session.getAttribute("user"));
+						response.sendRedirect("sellerhistory");
+						//request.getRequestDispatcher("sellerhistory").forward(request, response);
+					}
+					else if(temp.getUserType()==0) {
+						System.out.println("In buyer:"+(User)session.getAttribute("user"));
+
+						response.sendRedirect("home");
+						//request.getRequestDispatcher("home").forward(request, response);
+						//response.sendRedirect(request.getContextPath() + "/buyer/BuyerProfile.jsp");
+					}
+					else {
+						System.out.println("something error from loginservlet");
+					}
+				}
+			} catch (UserNotFoundException e) {
+				//USER NOT FOUND
+				System.out.println("Exception::"+e.getMessage());
+				
+				//response.sendRedirect("home");
+				
+			}
+			//System.out.println("Taking user object::"+temp);
+			
+		}
+		else {
+			System.out.println("session is not null");
+//			User userInSession = (User) session.getAttribute("user");
+//			if(userInSession.getUserType()==1) {
+//				System.out.println("In seller:"+userInSession);
+//				request.getRequestDispatcher("/seller/SellerProfile.jsp").forward(request, response);
+//			}
+//			else if(userInSession.getUserType()==0) {
+//				System.out.println("In buyer:"+userInSession);
+//
+//				request.getRequestDispatcher("/buyer/BuyerProfile.jsp").forward(request, response);
+//				//response.sendRedirect(request.getContextPath() + "/buyer/BuyerProfile.jsp");
+//			}
+		}
 	}
 
 }

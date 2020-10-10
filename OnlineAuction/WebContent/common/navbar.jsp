@@ -1,8 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<% 
+		
+		System.out.println("IN NAVBAR isUserAuthenticated:"+session.getAttribute("isUserAuthenticated"));
+		
+		boolean isUserAuthenticated = session.getAttribute("isUserAuthenticated")!=null?true:false;
+		int userType=1;
+		if(session.getAttribute("userType")!=null){
+			userType=(int)session.getAttribute("userType");
+		}
+		
+ %>
 
-<%!boolean isUserAuthenticated = false; int userType=1;%>
 
 <div id="bottomHeader">
 	<div id="mySidebar" class="sidebar">

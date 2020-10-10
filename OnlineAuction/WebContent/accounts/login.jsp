@@ -13,7 +13,7 @@
   <br/><br/><br/>
   	<div class="wrapper">
   	<div class="login-container">
-    <form id="loginForm" method="post" >
+    <form id="loginForm" method="post" action="/OnlineAuction/login">
       <div class="login-box">
         <h2>Login Page</h2>
         <hr />

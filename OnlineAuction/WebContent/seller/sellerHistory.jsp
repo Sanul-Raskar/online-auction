@@ -9,6 +9,7 @@
 </head>
 <body>
 	<%@ include file="../common/navbar.jsp"%>
+	
 	<h1>Seller Products History</h1>
 	
 	

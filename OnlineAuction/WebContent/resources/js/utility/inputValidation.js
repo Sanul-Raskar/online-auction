@@ -107,7 +107,7 @@ function validateAddress(address) {
  */
 function validateUsertype(userType) {
 	/* userType should be either buyer or seller */
-	const types = [ "buyer", "seller" ];
+	const types = [ "0", "1" ];
 	if (userType !== null && userType !== "" && userType !== " "
 			&& types.includes(userType)) {
 		return true;
