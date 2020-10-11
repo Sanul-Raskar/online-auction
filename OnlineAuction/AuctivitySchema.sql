@@ -65,10 +65,13 @@ create table OnlineAuctionDB.ProductBid (
 	ProductID INTEGER NOT NULL references OnlineAuctionDB.Product(ProductID),
 	SoldPrice double,
 	Status INTEGER NOT NULL
-	-- Status has 4 values : 1 -> New Product for bid;
+	-- Status has 4 values : 0 -> New Product for bid;
+	--						 1 -> Product bid is open and accepting bids.
 	--                       2 -> Product bid is completed and unsold
 	--                       3 -> Product bid is completed and sold;
-	--                       4 -> Product bid is open and accepting bids.	
+	--                       	
 );
 
+--drop table OnlineAuctionDB.ProductBid;
+--select * from  OnlineAuctionDB.ProductBid;
 --select ProductId,ProductName from OnlineAuctionDB.Product where SellerID=101;

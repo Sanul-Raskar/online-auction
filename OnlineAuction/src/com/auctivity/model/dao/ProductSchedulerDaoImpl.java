@@ -27,7 +27,7 @@ public class ProductSchedulerDaoImpl implements IProductSchedulerDao {
 		ResultSet resultset;
 		int productId = 0;
 		try {
-			ps = conn.prepareStatement("insert into OnlineAuctionDB.ProductBid(MinBidValue,BidStartDate,BidEndDate,BuyerID,ProductID,SoldPrice,Status) values(?,?,?,?,?,?,?)");
+			ps = conn.prepareStatement("insert into OnlineAuctionDB.ProductBid(MinBidValue,BidStartDate,BidEndDate,ProductID,Status) values(?,?,?,?,?)");
 			//ps1=conn.prepareStatement("select ProductID from OnlineAuctionDB.Product where ProductName = '"+productAuction.getProductName()+"'");
 //			
 //			resultset=ps1.executeQuery();
@@ -40,10 +40,10 @@ public class ProductSchedulerDaoImpl implements IProductSchedulerDao {
 			ps.setDouble(1,productAuction.getMinBidValue());		
 			ps.setTimestamp(2,new Timestamp(java.sql.Date.valueOf(productAuction.getBidStartDate()).getTime()));
 			ps.setTimestamp(3,new Timestamp(java.sql.Date.valueOf(productAuction.getBidEndDate()).getTime()));
-			ps.setInt(4,300);
-			ps.setInt(5,productAuction.getProductId());
-			ps.setDouble(6,0);
-			ps.setInt(7,productAuction.getBidStatus());
+			//ps.setInt(4,300);
+			ps.setInt(4,productAuction.getProductId());
+			//ps.setDouble(6,0);
+			ps.setInt(5,productAuction.getBidStatus());
 			status = ps.executeUpdate();
 			System.out.println("Schedule Auction status::"+status);
 		} catch (SQLException e) {
