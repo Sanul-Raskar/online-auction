@@ -56,22 +56,22 @@ create table OnlineAuctionDB.Bid (
 	Status INTEGER NOT NULL
 	--Status has 3 values : 1 -> Bid is Open; 2 -> Bid is Lost; 3 -> Bid is Won.
 );
-insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYID", "CATEGORYNAME", "CATEGORYDESC") values(next value for onlineauctiondb.category_sequence, 'Electronics', 'Sensors');
-insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYID", "CATEGORYNAME", "CATEGORYDESC") values(next value for onlineauctiondb.category_sequence, 'Cloths', 'Stylish');
-insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYID", "CATEGORYNAME", "CATEGORYDESC") values(next value for onlineauctiondb.category_sequence, 'Food', 'Yummy');
-
-
 
 create table OnlineAuctionDB.ProductBid (
 	MinBidValue INTEGER NOT NULL,
 	BidStartDate timestamp,
 	BidEndDate timestamp,
-	BuyerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
+	BuyerID INTEGER references OnlineAuctionDB.Usertable(UserID),
 	ProductID INTEGER NOT NULL references OnlineAuctionDB.Product(ProductID),
-	SoldPrice double NOT NULL,
+	SoldPrice double,
 	Status INTEGER NOT NULL
-	-- Status has 4 values : 1 -> New Product for bid;
+	-- Status has 4 values : 0 -> New Product for bid;
+	--						 1 -> Product bid is open and accepting bids.
 	--                       2 -> Product bid is completed and unsold
 	--                       3 -> Product bid is completed and sold;
-	--                       4 -> Product bid is open and accepting bids.	
+	--                       	
 );
+
+drop table OnlineAuctionDB.ProductBid;
+--select * from  OnlineAuctionDB.ProductBid;
+--select ProductId,ProductName from OnlineAuctionDB.Product where SellerID=101;

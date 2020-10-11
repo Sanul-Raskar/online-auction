@@ -4,16 +4,21 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.auctivity.model.beans.Product;
 import com.auctivity.model.beans.ProductForAuction;
+import com.auctivity.model.beans.User;
 import com.auctivity.model.beans.ProductForAuction.status;
 import com.auctivity.model.service.IProductSchedulerService;
+import com.auctivity.model.service.IProductService;
 import com.auctivity.model.service.IUserService;
 import com.auctivity.utility.ObjectFactory;
 
@@ -37,9 +42,37 @@ public class ScheduleAuctionController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+		User userInSession = (User)session.getAttribute("user");
+		if(userInSession==null)
+		{
+			request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
+		}
+		else 
+		{
+			if(userInSession.getUserType() == 0) 
+			{
+				response.sendRedirect("home");
+
+			}
+			else if(userInSession.getUserType()==1) {
+				System.out.println("Seller:"+(User)session.getAttribute("user"));
+				int sellerId=userInSession.getUserid();
+				
+				ObjectFactory objectFactory = new ObjectFactory();
+				IProductSchedulerService productSchedule = objectFactory.createProductSchedulerServiceImplObj(); 
+				List<Product> productList=productSchedule.getProductList(sellerId);
+				request.setAttribute("productList", productList);
+				for(Product product : productList ) {
+					System.out.println(product);
+				}
+			}
+			else {
+				System.out.println("Error");
+			}
+		}
 		request.getRequestDispatcher("/seller/scheduleAuction.jsp").forward(request, response);
 
 	}
@@ -50,26 +83,18 @@ public class ScheduleAuctionController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//doGet(request, response);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
 		String products=request.getParameter("products");
+		int productId=Integer.parseInt(request.getParameter("products"));
 		double minimumBidValue=Double.parseDouble(request.getParameter("minimumBidValue"));
 		
 		//parsing date in required format
 		LocalDate sDate = LocalDate.parse(request.getParameter("startDate"));
-		//java.sql.Date startDate = java.sql.Date.valueOf(formatter.format(sDate));
-		
 		LocalDate eDate = LocalDate.parse(request.getParameter("endDate"));
-//		LocalTime timePart = LocalTime.parse("07:00:00");
-//	    LocalDateTime edt = LocalDateTime.of(eDate, timePart);
-		//String endTime = String.valueOf(eDate+);
-		//java.sql.Date endDate = java.sql.Date.valueOf(formatter.format(eDate));
-		
-		
-		
-       // Timestamp endDateTime = Timestamp.valueOf(endTime);
-
-		//response.getWriter().append(products);
+	
 		System.out.println(products);
+		System.out.println(productId);
 		System.out.println(minimumBidValue);
 //		System.out.println(request.getParameter("startDate"));
 //		System.out.println(request.getParameter("endDate"));
@@ -83,7 +108,7 @@ public class ScheduleAuctionController extends HttpServlet {
 	
 		ProductForAuction productAuction=new ProductForAuction();
 		productAuction.setProductName(products);
-		productAuction.setProductId(101);
+		productAuction.setProductId(productId);
 		productAuction.setMinBidValue(minimumBidValue);
 		productAuction.setBidStartDate(sDate.now());
 		productAuction.setBidEndDate(eDate);
