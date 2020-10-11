@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
+    <title>Registration</title>
     <style><%@include file="../resources/css/style.css"%></style>
-    <style><%@include file="../resources/css/registration.css"%></style>
+    <style><%@include file="../resources/css/accounts/registration.css"%></style>
     
   </head>
-	<%@ include file="../Common/navbar.jsp"%>  
+	<%@ include file="../common/navbar.jsp"%>  
     <body>
     <div class="text-center">
       <h1>User Registration</h1>
@@ -120,9 +120,8 @@
           <div class="form-group">
             <label for="userType">How do you want to use Auctivity? <span style="color:red">*</span></label><br />
             <select class="form-input" name="userType" id="userType" required>
-              <option value="">Select</option>
-              <option value="buyer">Buy products</option>
-              <option value="seller">Sell products</option>
+              <option value="0">Buy products</option>
+              <option value="1">Sell products</option>
             </select>
             <p id="userTypeError" style="margin-top:4px;color:red"></p>
           </div>
@@ -145,16 +144,15 @@
         </form>
         <br />
         <h4 class="text-center">
-          Already a member? <span class="font-bold"><a href="">Log In</a></span>
+          Already a member? <span class="font-bold"><a href="/OnlineAuction/login">Log In</a></span>
         </h4>
       </div>
     </section>
-    <div style="height: 50px"></div>
-    <script src="../resources/js/inputValidation.js"></script>
-    <script src="../resources/js/register.js"></script>
+    <div style="height: 100px"></div>
+    <%@ include file="../common/footer.jsp" %>
     
-    <script> <%@include file="../resources/js/inputValidation.js"%></script>
-    <script> <%@include file="../resources/js/register.js"%></script>
+    <script> <%@include file="../resources/js/utility/inputValidation.js"%></script>
+    <script> <%@include file="../resources/js/accounts/register.js"%></script>
     
   </body>
 </html>

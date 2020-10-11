@@ -15,7 +15,7 @@
 
 	<servlet>
 		<servlet-name>index</servlet-name>
-		<servlet-class>com.auctivity.controller.HomeController</servlet-class>
+		<servlet-class>com.auctivity.controller.DefaultController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>index</servlet-name>

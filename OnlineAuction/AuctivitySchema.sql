@@ -11,55 +11,58 @@
 --                          6) User.wallet is an optional entity and is not set to "NOT NULL";
 --                          7) Primary key of respective tables have been provided at the end of each table;
 
+create sequence OnlineAuctionDB.user_sequence as int start with 100;
+create sequence OnlineAuctionDB.category_sequence as int start with 200;
+create sequence OnlineAuctionDB.product_sequence as int start with 300;
+create sequence OnlineAuctionDB.bid_sequence as int start with 400;
+
 create table OnlineAuctionDB.Usertable (
-	UserID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 100, INCREMENT BY 1),
+	UserID INTEGER PRIMARY KEY,
     Name varchar(255) NOT NULL,
     dob date,
-    email varchar(255) NOT NULL,
+    email varchar(255) NOT NULL UNIQUE,
     phonenumber varchar(12) NOT NULL,
-    username varchar(255) NOT NULL,
+    username varchar(255) NOT NULL UNIQUE,
     password varchar(255) NOT NULL,
     address varchar(255) NOT NULL,
     user_type int NOT NULL,
-    wallet double,
-    PRIMARY KEY (UserID)
+    wallet double
 );
+--insert into OnlineAuctionDB.usertable values(next value for OnlineAuctionDB.user_sequence,"Jayesh","Jayesh@123");
 
 create table OnlineAuctionDB.Category (
-	CategoryID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 200, INCREMENT BY 1),
+	CategoryID INTEGER NOT NULL UNIQUE,
 	CategoryName varchar(255) NOT NULL,
 	CategoryDesc varchar(255) NOT NULL,
 	PRIMARY KEY(CategoryName)
 );
 
 create table OnlineAuctionDB.Product (
-	ProductID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 300, INCREMENT BY 1),
+	ProductID INTEGER PRIMARY KEY,
 	ProductName varchar(255) NOT NULL,
 	ProductCategory varchar(255) NOT NULL references OnlineAuctionDB.Category(CategoryName),
 	ProductDesc varchar(255) NOT NULL,
 	ActualPrice double NOT NULL,
 	Quantity INTEGER NOT NULL,
 	Image varchar(255) NOT NULL,
-	SellerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
-	PRIMARY KEY(ProductID)
+	SellerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID)
 );
 
 create table OnlineAuctionDB.Bid (
-	BidID INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 400, INCREMENT BY 1),
+	BidID INTEGER PRIMARY KEY,
 	BidderID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
 	BidProductID INTEGER NOT NULL references OnlineAuctionDB.Product(ProductID),
 	BidValue double NOT NULL,
-	Status INTEGER NOT NULL,
-	PRIMARY KEY(BidID)
+	Status INTEGER NOT NULL
 	--Status has 3 values : 1 -> Bid is Open; 2 -> Bid is Lost; 3 -> Bid is Won.
 );
 
 create table OnlineAuctionDB.ProductBid (
-	BuyerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
-	ProductID INTEGER NOT NULL references OnlineAuctionDB.Product(ProductID),
 	MinBidValue INTEGER NOT NULL,
 	BidStartDate timestamp,
 	BidEndDate timestamp,
+	BuyerID INTEGER NOT NULL references OnlineAuctionDB.Usertable(UserID),
+	ProductID INTEGER NOT NULL references OnlineAuctionDB.Product(ProductID),
 	SoldPrice double NOT NULL,
 	Status INTEGER NOT NULL
 	-- Status has 4 values : 1 -> New Product for bid;

@@ -1,22 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Schedule an Auction</title>
+<meta charset="UTF-8">
+<title>Schedule Auction</title>
 <style><%@include file="../resources/css/style.css"%></style>
-<style><%@include file="../resources/css/SellerPage.css"%></style>
-
+<style><%@include file="../resources/css/seller/SellerPage.css"%></style>
 
 </head>
 <body>
-
-	<%@ include file="../Common/navbar.jsp"%>
+	<%@ include file="../common/navbar.jsp"%>
 	
 	<div style="height:70px"></div>
 	<div class="schedule-form">
-		<a href="./SellerPage.jsp">
+		<a href="/OnlineAuction/sellerhistory">
 			<button class="back">Back</button>
 		</a>
 		<form action="" method="POST">
@@ -36,7 +34,7 @@
 	</div>
 	<br/><br/>
 	<div style="height:150px"></div>
-	<%@ include file="../Common/footer.jsp"%>
+	<%@ include file="../common/footer.jsp"%>
 	<script> <%@include file="../resources/js/index.js"%></script>
 </body>
 </html>

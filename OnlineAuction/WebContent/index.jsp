@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.auctivity.model.beans.User"%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -9,8 +10,17 @@
 
 </head>
 <body>
-	<%@ include file="./Common/navbar.jsp"%>
+	<%@ include file="./common/navbar.jsp"%>
 	<br />
+	<%-- <h1><% 
+		User u= (User)session.getAttribute("user");
+    String name="";
+	if(u!=null)
+		name = u.getName();
+		System.out.println("In INDEX JSP ::"+u+":::errorcode:"+request.getAttribute("errorcode"));
+ 	%></h1>
+			<h3>Welcome:<%=name%></h3> --%>
+	
 	<h1 class="text-center">Home Page</h1>
 
 	<label for="sortProducts">Sort products by:</label>
@@ -23,8 +33,8 @@
 		<div id="productsContainer" class="grid-row"></div>
 	</div>
 	<br />
-	<%@ include file="./Common/footer.jsp"%>
-	<script> <%@include file="../resources/js/index.js"%></script>
+	<%@ include file="./common/footer.jsp"%>
+	<script> <%@include file="./resources/js/index.js"%></script>
 	<script> <%@include file="./resources/js/home.js"%></script>
 
 </body>

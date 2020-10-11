@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login</title>
     <style><%@include file="../resources/css/style.css"%></style>
-    <style><%@include file="../resources/css/login.css"%></style>
+    <style><%@include file="../resources/css/accounts/login.css"%></style>
     
   </head>
   <body>
-  	<%@ include file="../Common/navbar.jsp"%>
+  	<%@ include file="../common/navbar.jsp"%>
   <br/><br/><br/>
   	<div class="wrapper">
   	<div class="login-container">
-    <form id="loginForm" method="post" >
+    <form id="loginForm" method="post" action="/OnlineAuction/login">
       <div class="login-box">
         <h2>Login Page</h2>
         <hr />
@@ -47,16 +47,16 @@
         <h4 class="text-center">
           Don't have a account?
           <span class="font-bold"
-            ><a href="./registration.html" style="color: #404040;">Sign Up</a></span
+            ><a href="/OnlineAuction/register" style="color: #404040;">Sign Up</a></span
           >
         </h4>
       </div>
     </form>
     </div></div>
     <div style="height:80px"></div>
- 	<%@ include file="../Common/footer.jsp" %>
-    <script> <%@include file="../resources/js/inputValidation.js"%></script>
-    <script> <%@include file="../resources/js/login.js"%></script>
+ 	<%@ include file="../common/footer.jsp" %>
+    <script> <%@include file="../resources/js/utility/inputValidation.js"%></script>
+    <script> <%@include file="../resources/js/accounts/login.js"%></script>
     
   </body>
 </html>
