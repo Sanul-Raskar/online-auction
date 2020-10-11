@@ -51,7 +51,9 @@ public class AddProductController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String BASE_DIR = "C:\\Users\\admin\\Documents\\OnlineAuctionImages\\";
+		String BASE_DIR = "/Users/sanul/Documents/uploads/";
+		String DEFAULT_FILENAME = "/resources/img/logo.jpg";
+		boolean filePresent = false;
 		String currentTime = Long.toString((int) (new Date().getTime() / 10000));
 		HashMap<String, String> data = new HashMap<String, String>();
 
@@ -65,6 +67,8 @@ public class AddProductController extends HttpServlet {
 					if (!item.isFormField()) {
 						// File Input
 						String fileName = new File(item.getName()).getName();
+						System.out.println("Filename :" + fileName);
+						fileName = fileName.replaceAll("\\s+", "");
 						fileName = currentTime + "-" + fileName;
 						String filePath = BASE_DIR + fileName;
 						File storeFile = new File(filePath);
@@ -77,6 +81,7 @@ public class AddProductController extends HttpServlet {
 							e.printStackTrace();
 						}
 
+						filePresent = true;
 					} else {
 						// Other than file form elements
 						String fieldName = item.getFieldName();
@@ -85,6 +90,10 @@ public class AddProductController extends HttpServlet {
 						data.put(fieldName, fieldValue);
 					}
 				}
+			}
+
+			if (!filePresent) {
+				data.put("Image", DEFAULT_FILENAME);
 			}
 		}
 
