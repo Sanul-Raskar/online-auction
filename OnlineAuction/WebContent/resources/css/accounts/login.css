@@ -21,14 +21,16 @@
 }
 
 .login-button {
-	background-color: #DB0011;
+	font-size: 18px;
+	background-color : #DB0011;
 	color: white;
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
 	cursor: pointer;
-	border-radius: 5px;
+	border-radius: 6px;
 	width: 100%;
+	background-color: #DB0011;
 }
 
 .login-button:hover {
@@ -53,6 +55,6 @@
 @media ( max-width : 555px) {
 	.login-box {
 		padding: 18px;
-		width:300px;
+		width: 300px;
 	}
 }

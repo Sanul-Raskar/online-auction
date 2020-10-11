@@ -123,16 +123,21 @@ nav {
 	}
 }
 
-.navbarButton {
+.navbar-button {
 	background-color: #DB0011;
 	border: none;
 	color: white;
-	padding: 15px 32px;
+	padding: 10px 18px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 16px;
-	margin: 4px 2px;
+	font-size: 18px;
+	margin: 4px 4px;
 	cursor: pointer;
-	border-radius: 10px;
+	border-radius: 6px;
+	opacity: 1;
+}
+
+.navbar-button:hover {
+	opactiy: 0.8;
 }
