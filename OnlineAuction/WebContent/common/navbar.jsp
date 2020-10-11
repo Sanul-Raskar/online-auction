@@ -4,8 +4,8 @@
 
 <% 
 		
-		System.out.println("IN NAVBAR isUserAuthenticated:"+session.getAttribute("isUserAuthenticated"));
-		
+/* 		System.out.println("IN NAVBAR isUserAuthenticated:"+session.getAttribute("isUserAuthenticated"));
+ */		
 		boolean isUserAuthenticated = session.getAttribute("isUserAuthenticated")!=null?true:false;
 		int userType=1;
 		if(session.getAttribute("userType")!=null){

@@ -91,7 +91,52 @@ function loadProducts() {
   });
 }
 
-loadProducts();
+// loadProducts();
+
+var productArray = [];
+function createProductArray() {
+  let arr = [];
+
+  let productContainerElement = document.getElementById(
+    "productsContainer"
+  ).childNodes;
+  for (let i = 0; i < productContainerElement.length; i++) {
+    let product = productContainerElement[i].childNodes;
+
+    if (product.length != 0) {
+      let data = {};
+      console.log(product);
+      data.productName = product[3].innerText;
+      data.category = product.item(5).innerText.replace("Category:", "");
+      data.description = product.item(7).innerText.replace("Description:","");
+      data.quantity = product.item(9).innerText("Quantity:","");
+      data.actualPrice = product
+        .item(11)
+        .innerText.replace("Actual Price:", "");
+      data.minBidAmount = product
+        .item(13)
+        .innerText.replace("Min Bid Amount:", "");
+      data.startTime = product
+        .item(15)
+        .innerText.replace("Bit Start Time:", "");
+      data.endTime = product
+        .item(17)
+        .innerText.replace("Bit End Time:", "");
+      console.log(data);
+      productArray.push(data);
+    }
+  }
+}
+
+createProductArray();
+
+
+function filterByCategory(category) {
+    let result = productArray.filter((el) => el.category == category);
+    return result;
+}
+
+
 
 function sortProducts() {
   let sortType = document.getElementById("sortProducts").value;
@@ -165,3 +210,47 @@ function sortProducts() {
 document
   .getElementById("sortProducts")
   .addEventListener("change", sortProducts);
+
+
+function validateBidValue(productId){
+	console.log("hello");
+	let bidInputValue = document.getElementById(`bidValue\${productId}`).value;
+	let minBidValue = document.getElementById(`minBidAmount\${productId}`).textContent;
+	console.log(minBidValue);
+	var minBidNumber = minBidValue.match(/(\d+)/); 
+	if(parseInt(bidInputValue,10) < parseInt(minBidNumber[0],10)){
+		alert("Enter amount greater than minimum bid amount");
+		return false;
+	}
+	else{
+		let bidStatus= document.getElementById(`bidStatus\${productId}`).textContent;
+		bidStatus = bidStatus.replace("Status:","");
+		console.log(bidStatus);
+		var http = new XMLHttpRequest();
+		var params = "productId="+productId+"&bidStatus="+bidStatus;
+
+		// Make a POST request to controller with endpoint /register
+		http.open('POST', "/OnlineAuction/placebid", true);
+
+		// Send the proper header information along with the request
+		http.setRequestHeader('Content-type',
+				'application/x-www-form-urlencoded');
+
+		// Call a function when the state changes.
+		http.onreadystatechange = function() {
+			if (http.readyState == 4 && http.status == 999) {
+				alert("Username/Email already exist")
+				location.replace("register")
+			}
+			if (http.readyState == 4 && http.status == 200) {
+				alert("Registration successful");
+			}
+		}
+
+		console.log(params);
+		//http.send(params);
+
+	}
+	
+	//return true;
+}

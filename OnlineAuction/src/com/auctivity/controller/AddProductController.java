@@ -52,7 +52,7 @@ public class AddProductController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String BASE_DIR = "/Users/sanul/Documents/uploads/";
-		String DEFAULT_FILENAME = "/resources/img/logo.jpg";
+		String DEFAULT_FILENAME = "./resources/img/logo.jpg";
 		boolean filePresent = false;
 		String currentTime = Long.toString((int) (new Date().getTime() / 10000));
 		HashMap<String, String> data = new HashMap<String, String>();

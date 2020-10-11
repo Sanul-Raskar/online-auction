@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.auctivity.model.beans.Bid;
 import com.auctivity.model.beans.Product;
 import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.beans.ProductForAuction.status;
@@ -43,8 +44,8 @@ public class ProductDaoImpl implements IProductDao {
 				// ProductForAuction pfa= new ProductForAuction();
 
 				int stat = rs.getInt("Status");
-				status cond = status.valueOf("stat");
-
+				status cond = status.valueOf(stat);
+								
 				prodList.add(new ProductForAuction(pid, pName, pCat, pDesc, price, pQuan, img, minBid, sDate, eDate,
 						sPrice, cond));
 			}
@@ -58,33 +59,55 @@ public class ProductDaoImpl implements IProductDao {
 
 	@Override
 	public List<ProductForAuction> getProductHistory(int user_id) {
-				List<ProductForAuction> prodList = new ArrayList<ProductForAuction>();
-				conn = DBConnection.getConnectionId();
-				ResultSet rs = null;
-				Product pa = new Product();
-				try {
-					String getQuery = "select prod_bid.BidEndDate,prod.ProductName,prod.Image,prod_bid.SoldPrice, prod_bid.Status From OnlineAuctionDB.ProductBid prod_bid inner join OnlineAuctionDB.Product prod on prod_bid.ProductID=prod.ProductID where prod_bid.BuyerID=?";
-					PreparedStatement ps = conn.prepareStatement(getQuery);
-					ps.setInt(1,user_id);
-					rs = ps.executeQuery();
-					while (rs.next()) {
-						LocalDate eDate = rs.getTimestamp("BidEndDate").toLocalDateTime().toLocalDate();
-						String pName = rs.getString("ProductName");
-						String img = rs.getString("Image");
-						double sPrice= rs.getInt("SoldPrice");
-						
-						//ProductForAuction pfa= new ProductForAuction();
-						
-						int stat =rs.getInt("Status");
-						status cond = status.valueOf("stat");
+		List<ProductForAuction> prodList = new ArrayList<ProductForAuction>();
+		conn = DBConnection.getConnectionId();
+		ResultSet rs = null;
+		Product pa = new Product();
+		try {
+			String getQuery = "select prod_bid.BidEndDate,prod.ProductName,prod.Image,prod_bid.SoldPrice, prod_bid.Status From OnlineAuctionDB.ProductBid prod_bid inner join OnlineAuctionDB.Product prod on prod_bid.ProductID=prod.ProductID where prod_bid.BuyerID=?";
+			PreparedStatement ps = conn.prepareStatement(getQuery);
+			ps.setInt(1, user_id);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				LocalDate eDate = rs.getTimestamp("BidEndDate").toLocalDateTime().toLocalDate();
+				String pName = rs.getString("ProductName");
+				String img = rs.getString("Image");
+				double sPrice = rs.getInt("SoldPrice");
 
-						prodList.add(new ProductForAuction(pName, img, sPrice, eDate, cond)); 
-					}
-				}catch (SQLException e) {
-					// TODO: handle exception
-					e.printStackTrace();
-				}
-				
-				return prodList;
+				// ProductForAuction pfa= new ProductForAuction();
+
+				int stat = rs.getInt("Status");
+				status cond = status.valueOf(stat);
+
+				prodList.add(new ProductForAuction(pName, img, eDate,sPrice, cond));
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
+
+		return prodList;
+	}
+
+	@Override
+	public int placeBid(Bid bid) {
+		int status = 0;
+		Connection conn = DBConnection.getConnectionId();
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(
+					"insert into OnlineAuctionDB.Bid values (next value for OnlineAuctionDB.bid_sequence,?,?,?,?)");
+			ps.setInt(1, bid.getBidderID());
+			ps.setInt(2, bid.getBidProductID());
+			ps.setDouble(3, bid.getBidValue());
+			ps.setInt(4, 4);
+			status = ps.executeUpdate();
+			System.out.println("Bid success status:" + status);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return status;
+	}
 }
