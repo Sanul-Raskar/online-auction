@@ -1,5 +1,7 @@
 package com.auctivity.model.service;
 
-public interface IProductSchedulerService {
+import com.auctivity.model.beans.ProductForAuction;
 
+public interface IProductSchedulerService {
+	int scheduleAuction(ProductForAuction productAuction);
 }

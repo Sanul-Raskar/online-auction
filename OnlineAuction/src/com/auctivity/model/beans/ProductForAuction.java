@@ -5,22 +5,57 @@
 package com.auctivity.model.beans;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.auctivity.model.beans.User.type;
 
 public class ProductForAuction extends Product {
 
 	public enum status {
-		NEW, OPEN, UNSOLD, SOLD;
+		NEW(0), OPEN(1), UNSOLD(2), SOLD(3);
+		
+		private final int statusCode;
+		private static Map map = new HashMap<>();
+		
+		status(int statusCode) {
+			this.statusCode = statusCode;
+		}
+				
+		static {
+	        for (status bidStatus : status.values()) {
+	            map.put(bidStatus.statusCode, bidStatus);
+	        }
+	    }
+
+	    public static status valueOf(int bidStatus) {
+	        return (status) map.get(bidStatus);
+	    }
+
+	    public int getValue() {
+	        return statusCode;
+	    }
 	}
 	
 	private int bidProductID;
 	private double minBidValue;
-	private Timestamp bidStartDate;
-	private Timestamp bidEndDate;
+	private LocalDate bidStartDate;
+	private LocalDate bidEndDate;
 	// @buyerId must be registered with @userId
 	private int userID;
 	private double soldPrice;
 	private status bidStatus;
+	
+	
+	/**
+	 * 
+	 */
+	public ProductForAuction() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * @param bidProductID
 	 * @param minBidValue
@@ -29,8 +64,9 @@ public class ProductForAuction extends Product {
 	 * @param userID
 	 * @param soldPrice
 	 * @param bidStatus
+	 * 
 	 */
-	public ProductForAuction(int bidProductID, double minBidValue, Timestamp bidStartDate, Timestamp bidEndDate,
+	public ProductForAuction(int bidProductID, double minBidValue, LocalDate bidStartDate, LocalDate bidEndDate,
 			int userID, double soldPrice, status bidStatus) {
 		super();
 		this.bidProductID = bidProductID;
@@ -68,25 +104,25 @@ public class ProductForAuction extends Product {
 	/**
 	 * @return the bidStartDate
 	 */
-	public Timestamp getBidStartDate() {
+	public LocalDate getBidStartDate() {
 		return bidStartDate;
 	}
 	/**
 	 * @param bidStartDate the bidStartDate to set
 	 */
-	public void setBidStartDate(Timestamp bidStartDate) {
+	public void setBidStartDate(LocalDate bidStartDate) {
 		this.bidStartDate = bidStartDate;
 	}
 	/**
 	 * @return the bidEndDate
 	 */
-	public Timestamp getBidEndDate() {
+	public LocalDate getBidEndDate() {
 		return bidEndDate;
 	}
 	/**
 	 * @param bidEndDate the bidEndDate to set
 	 */
-	public void setBidEndDate(Timestamp bidEndDate) {
+	public void setBidEndDate(LocalDate bidEndDate) {
 		this.bidEndDate = bidEndDate;
 	}
 	/**
@@ -116,9 +152,16 @@ public class ProductForAuction extends Product {
 	/**
 	 * @return the bidStatus
 	 */
-	public status getBidStatus() {
-		return bidStatus;
+	public int getBidStatus() {
+		return bidStatus.statusCode;
 	}
+	/**
+	 * @param bidStatus the bidStatus to set
+	 */
+	public void setBidStatus(int bidStatus) {
+		this.bidStatus = status.valueOf(bidStatus);
+	}
+	
 	/**
 	 * @param bidStatus the bidStatus to set
 	 */
