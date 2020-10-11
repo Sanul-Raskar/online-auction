@@ -124,6 +124,43 @@ public class ProductDaoImpl implements IProductDao {
 		return prodList;
 	}
 	
-	
+	public int addProducts(Product product) {
+		String insert="insert into OnlineAuctionDB.Product (ProductID,ProductName,ProductCategory,ProductDesc,ActualPrice,Quantity,Image,SellerID) values(next value for OnlineAuctionDB.product_sequence,?,?,?,?,?,?,?)";
+				int status = 0;	
+				conn = DBConnection.getConnectionId();
+				try {
+					 PreparedStatement ps = conn.prepareStatement(insert);
+					 ps.setString(1,product.getProductName());
+					 ps.setString(2,product.getProductCategory());
+					 
+					 System.out.println(product.getProductDescription());
+					 
+					 ps.setString(3,product.getProductDescription());
+					 ps.setDouble(4,product.getProductPrice());
+					 ps.setInt(5,product.getProductQuantity());
+					 ps.setString(6,product.getProductImage());
+					 ps.setInt(7,product.getProductSellerId());
+					 
+					 status = ps.executeUpdate();
+					 return status;
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				 finally {
+					 try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				 }
+				
+				
+				
+				
+				return status;
+				
+				
+			}
 	
 }

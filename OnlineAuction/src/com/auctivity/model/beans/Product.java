@@ -170,6 +170,29 @@ public class Product {
 		this.Image=image;
 		this.ProductName=productName;
 	}
+	
+	
+	/**
+	 * @param productName
+	 * @param productCategory
+	 * @param productDesc
+	 * @param actualPrice
+	 * @param quantity
+	 * @param image
+	 * @param sellerId
+	 */
+	public Product(String productName, String productCategory, String productDesc, double actualPrice, int quantity,
+			String image, int sellerId) {
+		super();
+		ProductName = productName;
+		ProductCategory = productCategory;
+		ProductDesc = productDesc;
+		ActualPrice = actualPrice;
+		Quantity = quantity;
+		Image = image;
+		SellerId = sellerId;
+	}
+	
 	@Override
 	public String toString() {
 		return "Product [productId=" + ProductId + ", productName=" + ProductName + ", productCategory="

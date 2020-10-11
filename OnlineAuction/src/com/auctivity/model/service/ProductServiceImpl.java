@@ -31,5 +31,9 @@ public class ProductServiceImpl implements IProductService{
 		// TODO Auto-generated method stub
 		return productDao.getSellerProducts(user_id);
 	}
+	
+	public int addProducts(Product product) {
+		return productDao.addProducts(product);
+	}
 
 }
