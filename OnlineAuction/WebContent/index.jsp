@@ -11,7 +11,7 @@
 </head>
 <body>
 	<%@ include file="./common/navbar.jsp"%>
-	<br />
+	<br /><br/>
 	<%-- <h1><% 
 		User u= (User)session.getAttribute("user");
     String name="";
@@ -20,15 +20,27 @@
 		System.out.println("In INDEX JSP ::"+u+":::errorcode:"+request.getAttribute("errorcode"));
  	%></h1>
 			<h3>Welcome:<%=name%></h3> --%>
-	
-	<h1 class="text-center">Home Page</h1>
 
-	<label for="sortProducts">Sort products by:</label>
-	<select name="sortProduct" id="sortProducts">
-		<option value="name">Name</option>
-		<option value="category">Category</option>
-		<option value="bidEndDate">Bid End Date</option>
-	</select>
+
+	<div class="customizeWrapper">
+		<div style="margin:6px;">
+			<label for="sortProducts">Sort products by:</label>
+			<select class="inputField" name="sortProduct" id="sortProducts">
+				<option value="name">Name</option>
+				<option value="category">Category</option>
+				<option value="bidEndDate">Bid End Date</option>
+			</select>
+		</div>
+		<div style="margin:6px;">
+			<label for="filterCategory">Filter products by category:</label>
+			<select class="inputField" name="filterCategory" id="filterCategory">
+				<option value="name">Category1</option>
+				<option value="category">Category2</option>
+				<option value="bidEndDate">Category3</option>
+			</select>
+		</div>
+	</div>
+	
 	<div class="container">
 		<div id="productsContainer" class="grid-row"></div>
 	</div>
