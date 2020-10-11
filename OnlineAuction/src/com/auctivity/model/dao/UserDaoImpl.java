@@ -20,11 +20,7 @@ public class UserDaoImpl implements IUserDao {
 			Connection conn = DBConnection.getConnectionId();	
 			PreparedStatement ps;
 			try {
-<<<<<<< Updated upstream
 				ps = conn.prepareStatement("insert into OnlineAuctionDB.Usertable values (next value for OnlineAuctionDB.user_sequence,?,?,?,?,?,?,?,?,?)");
-=======
-				ps = conn.prepareStatement("insert into OnlineAuctionDB.Usertable values (next value for onlineauctiondb.user_sequence,?,?,?,?,?,?,?,?,?)");
->>>>>>> Stashed changes
 				ps.setString(1, user.getName());
 				ps.setDate(2,  java.sql.Date.valueOf(user.getDob()));
 				ps.setString(3, user.getEmail());
