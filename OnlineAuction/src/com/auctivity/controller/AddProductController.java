@@ -12,7 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
@@ -20,10 +19,6 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
 import com.auctivity.model.beans.Product;
-import com.auctivity.model.beans.User;
-import com.auctivity.model.dao.IProductDao;
-import com.auctivity.model.service.IProductService;
-import com.auctivity.utility.ObjectFactory;
 
 /**
  * Servlet implementation class AddProductController
@@ -56,7 +51,7 @@ public class AddProductController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String BASE_DIR = "/Users/sanul/Documents/uploads/";
+		String BASE_DIR = "C:\\Users\\hp\\Documents\\onlineauction\\Images\\";
 		String DEFAULT_FILENAME = "/resources/img/logo.jpg";
 		boolean filePresent = false;
 		String currentTime = Long.toString((int) (new Date().getTime() / 10000));
@@ -101,19 +96,12 @@ public class AddProductController extends HttpServlet {
 				data.put("Image", DEFAULT_FILENAME);
 			}
 		}
-		
-		HttpSession session = request.getSession();
-		User userInSession = (User)session.getAttribute("user");
-		
-		Product product = new Product(data.get("productName"), "Electronics", data.get("productDescription"),
+
+		Product product = new Product(201, data.get("productName"), "Electronics", data.get("productDescription"),
 				Double.parseDouble(data.get("actualPrice")), Integer.parseInt(data.get("quantity")), data.get("Image"),
-				userInSession.getUserid());
+				100);
 		System.out.println(product);
-		ObjectFactory objectFactory = new ObjectFactory();
-		IProductService iProductService = objectFactory.createProductServiceImplObj();
-		int status = iProductService.addProducts(product);
-		if(status>0)
-			System.out.println("Product Added");
+
 	}
 
 }
