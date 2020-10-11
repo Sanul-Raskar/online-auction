@@ -1,8 +1,8 @@
 package com.auctivity.model.service;
 
 import java.util.List;
-
 import com.auctivity.model.beans.Bid;
+import com.auctivity.model.beans.Category;
 import com.auctivity.model.beans.Product;
 import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.dao.IProductDao;
@@ -26,8 +26,28 @@ public class ProductServiceImpl implements IProductService{
 	}
 
 	@Override
+
 	public int placeBid(Bid bid) {
 		return productDao.placeBid(bid);
+	}
+	public List<ProductForAuction> getSellerProducts(int user_id) {
+		// TODO Auto-generated method stub
+		return productDao.getSellerProducts(user_id);
+	}
+	
+	public int addProducts(Product product) {
+		return productDao.addProducts(product);
+	}
+
+	@Override
+
+	public List<Category> getCategoryList() {
+		// TODO Auto-generated method stub
+		return productDao.getCategoryList();
+	}
+
+	public void scheduleTask() {
+		productDao.scheduleTask();
 	}
 
 }

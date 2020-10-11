@@ -18,6 +18,7 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
+import com.auctivity.model.beans.Category;
 import com.auctivity.model.beans.Product;
 
 /**
@@ -41,7 +42,14 @@ public class AddProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.getRequestDispatcher("/seller/addProduct.jsp").include(request, response);
+		ObjectFactory objectFactory = new ObjectFactory();
+		IProductService iProductService = objectFactory.createProductServiceImplObj();
+		List<Category> catList = iProductService.getCategoryList();
+		request.setAttribute("categoryList", catList);
+		for(Category category : catList ) {
+			System.out.println(category);
+		}
+		request.getRequestDispatcher("/seller/addProduct.jsp").forward(request, response);
 	}
 
 	/**
@@ -50,6 +58,7 @@ public class AddProductController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 
 		String BASE_DIR = "/Users/sanul/Documents/uploads/";
 		String DEFAULT_FILENAME = "./resources/img/logo.jpg";
@@ -97,7 +106,11 @@ public class AddProductController extends HttpServlet {
 			}
 		}
 
-		Product product = new Product(201, data.get("productName"), "Electronics", data.get("productDescription"),
+		
+		HttpSession session = request.getSession();
+		User userInSession = (User)session.getAttribute("user");
+		
+		Product product = new Product(data.get("productName"), data.get("category"), data.get("productDescription"),
 				Double.parseDouble(data.get("actualPrice")), Integer.parseInt(data.get("quantity")), data.get("Image"),
 				100);
 		System.out.println(product);

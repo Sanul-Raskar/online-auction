@@ -17,6 +17,7 @@ import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.beans.User;
 import com.auctivity.model.beans.ProductForAuction.status;
 import com.auctivity.model.service.IProductService;
+import com.auctivity.utility.MyTimerTask;
 import com.auctivity.utility.ObjectFactory;
 
 /**
@@ -25,6 +26,19 @@ import com.auctivity.utility.ObjectFactory;
 @WebServlet("/home")
 public class DefaultController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+	//Initialising scheduler for start schedule
+	@Override
+	public void init() throws ServletException {
+		MyTimerTask.scheduleAcution();
+	}
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public DefaultController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#HttpServlet()

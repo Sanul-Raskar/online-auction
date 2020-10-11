@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,12 +30,13 @@
 			</div>
 
 			<div class="form-group">
-				<label for="category"><b>Category</b></label> <select
-					class="form-input" id="category" name="category" required>
-					<option value="category1">Category1</option>
-					<option value="category2">Category2</option>
-					<option value="category3">Category3</option>
-				</select>
+				<label for="category"><b>Category</b></label> 
+				<select	class="form-input" id="category" name="category" required>
+					<option value="" disabled selected hidden>Choose a category</option>
+				<c:forEach items="${categoryList}" var="cat">
+       				 <option value="${cat.categoryName}">${cat.categoryName}</option>
+    			</c:forEach>	
+					</select>
 				<p id="categoryError" style="margin-top: 4px; color: red"></p>
 			</div>
 

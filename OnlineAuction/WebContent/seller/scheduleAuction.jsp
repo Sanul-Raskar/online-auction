@@ -1,8 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ page import="java.sql.*, com.auctivity.utility.DBConnection" %>
-<%ResultSet resultset =null;Statement ps=null;%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -18,23 +17,17 @@
 	<div class="schedule-form">
 		<a href="/OnlineAuction/sellerhistory">
 			<button class="back">Back</button>
+			
 		</a>
 		<form  id="scheduleAuctionForm" method="POST">
-		<% try
-		{
-			//Class.forName("com.mysql.jdbc.Driver").newInstance();
-			Connection connection = DBConnection.getConnectionId();
-			ps=connection.createStatement();
-			resultset =ps.executeQuery("select * from  OnlineAuctionDB.Product") ;
-		%>
-
+		
 			<h2>Schedule An Auction</h2>
 			<div>
 			<select class="product-dropdown" name="products" required>
 				<option value="" disabled selected hidden>Choose a product</option>
-				<%  while(resultset.next()){ %>
-            	<option><%= resultset.getString(2)%></option>
-      			<% } %>
+				<c:forEach items="${productList}" var="product">
+       				 <option value="${product.productId}">${product.productName}</option>
+    			</c:forEach>
 			</select> 
 			<p id="productsError" style="margin-top:4px;color:red"></p>
 			</div>
@@ -45,7 +38,12 @@
 			</div>
 			
 			<div>
+			<!-- THIS IS WORKING -->
 		    <input class="start-date" type="date" name="startDate"> 
+				<!-- NEWLY ADDED -->
+				<!-- <input type="date" name="startDate" list="appointmentdateslist"> -->
+				
+				<!--  -->
 		    <p id="startDateError" style="margin-top:4px;color:red"></p>
 		    </div>
 		    
@@ -56,16 +54,22 @@
 		    
 		    <div>
 		    <button class="submit" type="submit">Schedule Auction</button> 
+		    <input style="margin-left:2%"type="reset"value="Reset"/>
 		    </div>
-		    <%
-		        }
-		        catch(Exception e)
-		        {
-		             out.println("wrong entry"+e);
-		        }
-			%>
 		    
 		</form>
+		<!-- <datalist id="appointmentdateslist">
+
+					<option value="2015-05-05">
+
+						<option value="2015-05-12">
+
+  
+					<option value="2015-05-19">
+
+  
+					<option value="2015-05-26">
+			</datalist> -->
 	</div>
 	<br/><br/>
 	<div style="height:150px"></div>

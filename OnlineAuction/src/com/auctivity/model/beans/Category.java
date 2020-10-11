@@ -5,44 +5,44 @@ package com.auctivity.model.beans;
 
 public class Category {
 
-	private int CategoryId;
-	private String CategoryName;
-	private String CategoryDescription;
+	private int categoryId;
+	private String categoryName;
+	private String categoryDescription;
 	/**
 	 * @return the categoryId
 	 */
 	public int getCategoryId() {
-		return CategoryId;
+		return categoryId;
 	}
 	/**
 	 * @param categoryId the categoryId to set
 	 */
 	public void setCategoryId(int categoryId) {
-		this.CategoryId = categoryId;
+		this.categoryId = categoryId;
 	}
 	/**
 	 * @return the categoryName
 	 */
 	public String getCategoryName() {
-		return CategoryName;
+		return categoryName;
 	}
 	/**
 	 * @param categoryName the categoryName to set
 	 */
 	public void setCategoryName(String categoryName) {
-		this.CategoryName = categoryName;
+		this.categoryName = categoryName;
 	}
 	/**
 	 * @return the categoryDescription
 	 */
 	public String getCategoryDescription() {
-		return CategoryDescription;
+		return categoryDescription;
 	}
 	/**
 	 * @param categoryDescription the categoryDescription to set
 	 */
 	public void setCategoryDescription(String categoryDescription) {
-		this.CategoryDescription = categoryDescription;
+		this.categoryDescription = categoryDescription;
 	}
 	/**
 	 * Constructor of Super class
@@ -58,15 +58,25 @@ public class Category {
 	 */
 	public Category(int categoryId, String categoryName, String categoryDescription) {
 		super();
-		this.CategoryId = categoryId;
-		this.CategoryName = categoryName;
-		this.CategoryDescription = categoryDescription;
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+		this.categoryDescription = categoryDescription;
 	}
 	
+	
+	/**
+	 * @param categoryId
+	 * @param categoryName
+	 */
+	public Category(int categoryId, String categoryName) {
+		super();
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+	}
 	@Override
 	public String toString() {
-		return "ProductCategory [categoryId=" + CategoryId + ", categoryName=" + CategoryName + ", categoryDescription="
-				+ CategoryDescription + "]";
+		return "ProductCategory [categoryId=" + categoryId + ", categoryName=" + categoryName + ", categoryDescription="
+				+ categoryDescription + "]";
 	}
 	
 	

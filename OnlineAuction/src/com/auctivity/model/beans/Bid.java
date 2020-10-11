@@ -11,28 +11,29 @@ import java.util.Map;
 public class Bid {
 
 	public enum status {
-		OPEN(0), LOST(1), WON(2), PLACED(4);
-
+		OPEN (0), LOST (1), WON (2);
+		
 		private final int statusCode;
 		private static Map map = new HashMap<>();
-
+		
 		status(int statusCode) {
 			this.statusCode = statusCode;
 		}
-
+		
 		static {
-			for (status userstatus : status.values()) {
-				map.put(userstatus.statusCode, userstatus);
-			}
-		}
+	        for (status userstatus : status.values()) {
+	            map.put(userstatus.statusCode, userstatus);
+	        }
+	    }
 
-		public static status valueOf(int userstatus) {
-			return (status) map.get(userstatus);
-		}
+	    public static status valueOf(int userstatus) {
+	        return (status) map.get(userstatus);
+	    }
 
-		public int getValue() {
-			return statusCode;
-		}
+	    public int getValue() {
+	        return statusCode;
+	    }
+
 	}
 
 	private int bidID;

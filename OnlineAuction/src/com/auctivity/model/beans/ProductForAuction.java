@@ -94,15 +94,17 @@ public class ProductForAuction extends Product {
 		this.bidStatus = bidStatus;
 	}
 
-	
-	public ProductForAuction(String productName, String image, LocalDate bidEndDate, double soldPrice,
-			status bidStatus) {
-		super(productName, image);
-		this.bidEndDate = bidEndDate;
-		this.soldPrice = soldPrice;
-		this.bidStatus = bidStatus;
+	public ProductForAuction(String pName, String img, double sPrice, LocalDate sDate, LocalDate eDate, status cond) {
+		// TODO Auto-generated constructor stub
+		super(pName,img);
+		this.bidStartDate = sDate;
+		this.bidEndDate = eDate;
+		this.soldPrice = sPrice;
+		this.bidStatus = cond;
 	}
-
+	/**
+	 * @return the bidProductID
+	 */
 	public int getBidProductID() {
 		return bidProductID;
 	}
