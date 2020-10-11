@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>My Profile</title>
     <style><%@include file="../resources/css/style.css"%></style>
-	<style><%@include file="../resources/css/buyer/buyerProfile.css"%></style>
+	<style><%@include file="../resources/css/accounts/profile.css"%></style>
 </head>
 <body>
 	<%@ include file="../common/navbar.jsp" %>
@@ -14,58 +14,50 @@
 	<%@page import="java.util.List"%>
 	<%@page import="com.auctivity.model.beans.User"%>
 	
-	<% 
-		List<User> list = (ArrayList<User>)request.getAttribute("users");
- 	%>
- 	
- 	
- 	<form id="sellerDetails" method="post" class="details">
+	
+ 	<form id="Details" method="post" class="details">
       <div class="detail-box">
-        <h2 style="font-family: Arial">Seller Details</h2>
+        <%
+        	User sessionUser = (User) session.getAttribute("user");
+        	if(sessionUser.getUserType() == 0){
+        %>
+        		<h2 style="font-family: Arial"><b>Hey There Buyer!</b></h2>
+        <%
+        	}else{
+        %>
+        		<h2 style="font-family: Arial"><b>Hey There Seller!</b></h2>
+        <%
+        	}
+        	
+        %>
         <hr />
-        <label>Name :</label>
-        <input
-        id="name"
-          type="text"
-          name="name"
-          value="<%= list.get(0).getName() %>"
-        />
+        <br />
+        <label>Your Name : </label>
+        <p><%= sessionUser.getName() %></p>
 
         <br />
-        <label>Date of Birth : </label>
-        <input
-          id="dob"
-          type="text"
-          name="dob"
-          value ="<%= list.get(0).getDob() %>"
-        />
+        <label>Your Date of Birth : </label>
+        <p><%= sessionUser.getDob() %></p>
         
         <br />
-        <label>Email ID : </label>
-        <input
-          id="email"
-          type="text"
-          name="email"
-          value="<%= list.get(0).getEmail()%>"
-        />
+        <label>Your Email ID : </label>
+        <p><%= sessionUser.getEmail() %></p>
 	
 		<br />
-        <label>Phone Number :</label>
-        <input
-          id="phnNumber"
-          type="text"
-          name="phnNumber"
-          value="<%= list.get(0).getPhonenumber() %>"
-        />
+        <label>Your Phone Number :</label>
+        <p><%= sessionUser.getPhonenumber() %></p>
         
         <br />
-        <label>Wallet Amount : </label>
-        <input
-          id="amount"
-          type="text"
-          name="amount"
-          value="<%= list.get(0).getWallet()%>"
-        />
+        <label>Your Username :</label>
+        <p><%= sessionUser.getUsername() %></p>
+        
+        <br />
+        <label>Your Address :</label>
+        <p><%= sessionUser.getAddress() %></p>
+        
+        <br />
+        <label>Your Wallet Amount : </label>
+        <p><%= sessionUser.getWallet() %></p>
 
         <br />
       </div>
