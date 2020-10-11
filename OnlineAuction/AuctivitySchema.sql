@@ -56,6 +56,11 @@ create table OnlineAuctionDB.Bid (
 	Status INTEGER NOT NULL
 	--Status has 3 values : 1 -> Bid is Open; 2 -> Bid is Lost; 3 -> Bid is Won.
 );
+insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYID", "CATEGORYNAME", "CATEGORYDESC") values(next value for onlineauctiondb.category_sequence, 'Electronics', 'Sensors');
+insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYID", "CATEGORYNAME", "CATEGORYDESC") values(next value for onlineauctiondb.category_sequence, 'Cloths', 'Stylish');
+insert into "ONLINEAUCTIONDB"."CATEGORY" ("CATEGORYID", "CATEGORYNAME", "CATEGORYDESC") values(next value for onlineauctiondb.category_sequence, 'Food', 'Yummy');
+
+
 
 create table OnlineAuctionDB.ProductBid (
 	MinBidValue INTEGER NOT NULL,

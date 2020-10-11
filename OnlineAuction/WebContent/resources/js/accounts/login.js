@@ -24,7 +24,6 @@ function validateLoginForm(event) {
 		validData = false;
 		document.getElementById("passwordError").innerHTML = "Please enter password";
 	}
-
 	if (validData) {
 		console.log(data);
 		/* Send data variable to server using XMLHttpRequest() */
@@ -36,14 +35,20 @@ function validateLoginForm(event) {
 		http.setRequestHeader('Content-type',
 				'application/x-www-form-urlencoded');
 
-		// Call a function when the state changes.
+			// Call a function when the state changes.
 		http.onreadystatechange = function() {
+
+			if (http.readyState == 4 && http.status == 999) {
+				alert("Invalid credentials")
+				location.replace("login")
+			}
 			if (http.readyState == 4 && http.status == 200) {
-				alert(http.responseText);
+				console.log("Login successful");
+				location.replace("home")
 			}
 		}
 		console.log(params);
-		// http.send(params);
+		http.send(params);
 	}
 
 }
@@ -52,7 +57,7 @@ function validateLoginForm(event) {
  * add onSubmit event listener to user login form so that input field values can
  * be validated before submitting form to server
  */
-/*
- * document.getElementById("loginForm").addEventListener("submit",
- * validateLoginForm);
- */
+
+  document.getElementById("loginForm").addEventListener("submit",
+  validateLoginForm);
+ 

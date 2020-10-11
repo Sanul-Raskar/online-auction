@@ -141,6 +141,24 @@ public class Product {
 		this.SellerId = productSellerId;
 	}
 	
+	
+	public Product(int productId, String productName, String productCategory, String productDesc, double actualPrice,
+			int quantity, String image) {
+		super();
+		this.ProductId = productId;
+		this.ProductName = productName;
+		this.ProductCategory = productCategory;
+		this.ProductDesc = productDesc;
+		this.ActualPrice = actualPrice;
+		this.Quantity = quantity;
+		this.Image = image;
+	}
+	public Product(String productName, String image)
+	{
+		super();
+		this.Image=image;
+		this.ProductName=productName;
+	}
 	@Override
 	public String toString() {
 		return "Product [productId=" + ProductId + ", productName=" + ProductName + ", productCategory="

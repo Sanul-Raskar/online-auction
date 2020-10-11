@@ -77,6 +77,24 @@ public class ProductForAuction extends Product {
 		this.soldPrice = soldPrice;
 		this.bidStatus = bidStatus;
 	}
+	
+	public ProductForAuction(int productId, String productName, String productCategory, String productDescription,
+			double productPrice, int productQuantity, String productImage,
+			double minBidValue, LocalDate bidStartDate, LocalDate bidEndDate, double soldPrice,
+			status bidStatus) {
+		super(productId, productName, productCategory, productDescription, productPrice, productQuantity, productImage);
+		this.minBidValue = minBidValue;
+		this.bidStartDate = bidStartDate;
+		this.bidEndDate = bidEndDate;
+		this.soldPrice = soldPrice;
+		this.bidStatus = bidStatus;
+	}
+	public ProductForAuction(String productName, String productImage,double soldPrice,LocalDate bidEndDate,status bidStatus) {
+		super(productName,productImage);
+		this.bidEndDate = bidEndDate;
+		this.soldPrice = soldPrice;
+		this.bidStatus = bidStatus;
+	}
 	/**
 	 * @return the bidProductID
 	 */
