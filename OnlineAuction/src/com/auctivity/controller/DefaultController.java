@@ -34,8 +34,7 @@ public class DefaultController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 		User userInSession = (User)session.getAttribute("user");
 		if(userInSession==null)
 			request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
@@ -58,7 +57,7 @@ public class DefaultController extends HttpServlet {
 				System.out.println("something error from loginservlet");
 			}
 		}
-
+		 */
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
