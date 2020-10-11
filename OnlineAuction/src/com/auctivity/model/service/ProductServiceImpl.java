@@ -26,4 +26,10 @@ public class ProductServiceImpl implements IProductService{
 		return productDao.getProductHistory(user_id);
 	}
 
+	@Override
+	public List<ProductForAuction> getSellerProducts(int user_id) {
+		// TODO Auto-generated method stub
+		return productDao.getSellerProducts(user_id);
+	}
+
 }

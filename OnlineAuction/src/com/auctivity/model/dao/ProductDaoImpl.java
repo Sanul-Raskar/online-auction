@@ -87,4 +87,43 @@ public class ProductDaoImpl implements IProductDao {
 				
 				return prodList;
 		}
+
+	@Override
+	public List<ProductForAuction> getSellerProducts(int user_id) {
+		// TODO Auto-generated method stub
+		List<ProductForAuction> prodList = new ArrayList<ProductForAuction>();
+		conn = DBConnection.getConnectionId();
+		ResultSet rs = null;
+		Product pa = new Product();
+		String getQuery = "select * From OnlineAuctionDB.ProductBid prod_bid inner join OnlineAuctionDB.Product prod on prod_bid.ProductID=prod.ProductID where prod_bid.BuyerID=?";
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(getQuery);
+			ps.setInt(1,user_id);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				LocalDate eDate = rs.getTimestamp("BidEndDate").toLocalDateTime().toLocalDate();
+				LocalDate sDate = rs.getTimestamp("BidStartDate").toLocalDateTime().toLocalDate();
+				//int minBidValue = rs.getInt("MinBidValue");
+				String pName = rs.getString("ProductName");
+				String img = rs.getString("Image");
+				double sPrice= rs.getInt("SoldPrice");
+				
+				//ProductForAuction pfa= new ProductForAuction();
+				
+				int stat =rs.getInt("Status");
+				status cond = status.valueOf("stat");
+
+				prodList.add(new ProductForAuction(pName, img, sPrice,sDate, eDate, cond)); 
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return prodList;
+	}
+	
+	
+	
 }

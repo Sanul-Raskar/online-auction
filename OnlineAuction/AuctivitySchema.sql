@@ -72,6 +72,6 @@ create table OnlineAuctionDB.ProductBid (
 	--                       	
 );
 
---drop table OnlineAuctionDB.ProductBid;
+drop table OnlineAuctionDB.ProductBid;
 --select * from  OnlineAuctionDB.ProductBid;
 --select ProductId,ProductName from OnlineAuctionDB.Product where SellerID=101;
