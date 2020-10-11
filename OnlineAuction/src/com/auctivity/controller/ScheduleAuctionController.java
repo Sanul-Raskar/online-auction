@@ -43,6 +43,7 @@ public class ScheduleAuctionController extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
+
 	public ScheduleAuctionController() {
 		super();
 	}
@@ -74,9 +75,9 @@ public class ScheduleAuctionController extends HttpServlet {
 				IProductSchedulerService productSchedule = objectFactory.createProductSchedulerServiceImplObj(); 
 				List<Product> productList=productSchedule.getProductList(sellerId);
 				request.setAttribute("productList", productList);
-				for(Product product : productList ) {
-					System.out.println(product);
-				}
+//				for(Product product : productList ) {
+//					System.out.println(product);
+//				}
 			}
 			else {
 				System.out.println("Error");
@@ -152,50 +153,3 @@ public class ScheduleAuctionController extends HttpServlet {
 	}
 
 }
-
-class MyTimerTask extends TimerTask {
-	Statement stmt,stmt1 = null;
-	PreparedStatement pstmt=null;
-	Connection con  = DBConnection.getConnectionId();
-      String sql = "SELECT * FROM OnlineAuctionDb.productbid";
-	  public void run() {
-	    System.out.println("Timer task executed.");
-//	    try {
-//			stmt = con.createStatement();
-//		      ResultSet rs = stmt.executeQuery(sql);
-//		      while(rs.next()) {
-//		    		//double minimumBidValue = rs.getDouble("minbidvalue");
-//		    		Timestamp bidStartDate = rs.getTimestamp("bidstartdate");
-//		    		Timestamp bidEndDate = rs.getTimestamp("bidenddate");
-//		    		// @buyerId must be registered with @userId
-//		    		//int buyerId = rs.getInt("buyerid");
-//		    		//double soldPrice = rs.getDouble("soldprice");
-//		    		//int auctionStatus = rs.getInt("status");
-//		    		int productId = rs.getInt("productid");
-//		    		int response = ScheduleAuctionController.getTime(bidStartDate);
-//		    		System.out.println("response::"+response);
-//		    		if(response==1) {
-//			    		System.out.println("productId inner::"+productId);
-//			    		pstmt = con.prepareStatement("update OnlineAuctionDb.productbid set status=4 where productid=? and status!=4");
-//		    			pstmt.setInt(1,productId);
-//			    		int i = pstmt.executeUpdate();
-//		    			System.out.println(i>0?"Bid started successfull "+i:"Error starting bid:"+i);
-//		    		}
-//		      }
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-	  }
-	  
-		public void scheduleAcution() {
-			System.out.println("in doSchedule");	
-			
-			//Creating object of class file
-		      MyTimerTask myTask = new MyTimerTask();
-		      
-		      //Timer for scheduling class at specific interval
-		      Timer myTimer = new Timer();
-		      myTimer.schedule(myTask, 0, 1000);
-		}
-	}

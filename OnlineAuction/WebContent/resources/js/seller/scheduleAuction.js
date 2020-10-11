@@ -63,11 +63,13 @@ function validateScheduleAuctionForm(event)
 		http.onreadystatechange = function() 
 		{
 			if (http.readyState == 4 && http.status == 999) {
-				alert("Error")
+				alert("Product already scheduled/Error occured")
+				document.getElementById("scheduleAuctionForm").reset();
 				//location.replace("register")
 			}
 			if (http.readyState == 4 && http.status == 200) 
 			{
+				document.getElementById("scheduleAuctionForm").reset();
 				alert("Scheduling successful");
 			}
 		}

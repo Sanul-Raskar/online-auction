@@ -8,4 +8,5 @@ import com.auctivity.model.beans.ProductForAuction;
 public interface IProductSchedulerDao {
 	int scheduleAuction(ProductForAuction productAuction);
 	List<Product> getProductList(int sellerId);
+	boolean checkIfBidScheduled(int productId);
 }

@@ -36,4 +36,9 @@ public class ProductServiceImpl implements IProductService{
 		return productDao.addProducts(product);
 	}
 
+	@Override
+	public void scheduleTask() {
+		productDao.scheduleTask();
+	}
+
 }

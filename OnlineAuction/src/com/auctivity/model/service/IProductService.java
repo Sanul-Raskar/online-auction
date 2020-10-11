@@ -10,4 +10,5 @@ public interface IProductService {
 	List<ProductForAuction> getProductHistory(int user_id);
 	List<ProductForAuction> getSellerProducts(int user_id);
 	int addProducts(Product product);
+	void scheduleTask();
 }

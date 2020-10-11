@@ -17,6 +17,7 @@
 	<div class="schedule-form">
 		<a href="/OnlineAuction/sellerhistory">
 			<button class="back">Back</button>
+			
 		</a>
 		<form  id="scheduleAuctionForm" method="POST">
 		
@@ -37,7 +38,12 @@
 			</div>
 			
 			<div>
+			<!-- THIS IS WORKING -->
 		    <input class="start-date" type="date" name="startDate"> 
+				<!-- NEWLY ADDED -->
+				<!-- <input type="date" name="startDate" list="appointmentdateslist"> -->
+				
+				<!--  -->
 		    <p id="startDateError" style="margin-top:4px;color:red"></p>
 		    </div>
 		    
@@ -48,9 +54,22 @@
 		    
 		    <div>
 		    <button class="submit" type="submit">Schedule Auction</button> 
+		    <input style="margin-left:2%"type="reset"value="Reset"/>
 		    </div>
 		    
 		</form>
+		<!-- <datalist id="appointmentdateslist">
+
+					<option value="2015-05-05">
+
+						<option value="2015-05-12">
+
+  
+					<option value="2015-05-19">
+
+  
+					<option value="2015-05-26">
+			</datalist> -->
 	</div>
 	<br/><br/>
 	<div style="height:150px"></div>

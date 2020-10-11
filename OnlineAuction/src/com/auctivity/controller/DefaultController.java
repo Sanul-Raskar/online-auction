@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.beans.User;
 import com.auctivity.model.service.IProductService;
+import com.auctivity.utility.MyTimerTask;
 import com.auctivity.utility.ObjectFactory;
 
 /**
@@ -22,6 +23,11 @@ import com.auctivity.utility.ObjectFactory;
 public class DefaultController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	//Initialising scheduler for start schedule
+	@Override
+	public void init() throws ServletException {
+		MyTimerTask.scheduleAcution();
+	}
     /**
      * @see HttpServlet#HttpServlet()
      */
