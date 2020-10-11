@@ -38,9 +38,15 @@ public class ProductServiceImpl implements IProductService{
 	}
 
 	@Override
+
 	public List<Category> getCategoryList() {
 		// TODO Auto-generated method stub
 		return productDao.getCategoryList();
+	}
+
+	public void scheduleTask() {
+		productDao.scheduleTask();
+
 	}
 
 }

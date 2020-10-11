@@ -4,12 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.auctivity.model.beans.Category;
+
+import com.auctivity.controller.ScheduleAuctionController;
+
 import com.auctivity.model.beans.Product;
 import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.beans.ProductForAuction.status;
@@ -165,6 +170,7 @@ public class ProductDaoImpl implements IProductDao {
 			}
 
 	@Override
+
 	public List<Category> getCategoryList() {
 		// TODO Auto-generated method stub
 		List<Category> cateList = new ArrayList<Category>();
@@ -192,6 +198,42 @@ public class ProductDaoImpl implements IProductDao {
 			e.printStackTrace();
 		}
 		return cateList;
+	}
+
+	public void scheduleTask() {
+		 Statement stmt,stmt1 = null;
+			PreparedStatement pstmt=null;
+			Connection con  = DBConnection.getConnectionId();
+		      String sql = "SELECT * FROM OnlineAuctionDb.productbid";
+	    System.out.println("Timer task executed.");
+	    try {
+			stmt = con.createStatement();
+		      ResultSet rs = stmt.executeQuery(sql);
+		      while(rs.next()) {
+		    		//double minimumBidValue = rs.getDouble("minbidvalue");
+		    		Timestamp bidStartDate = rs.getTimestamp("bidstartdate");
+		    		Timestamp bidEndDate = rs.getTimestamp("bidenddate");
+		    		// @buyerId must be registered with @userId
+		    		//int buyerId = rs.getInt("buyerid");
+		    		//double soldPrice = rs.getDouble("soldprice");
+		    		//int auctionStatus = rs.getInt("status");
+		    		int productId = rs.getInt("productid");
+		    		int response = ScheduleAuctionController.getTime(bidStartDate);
+		    		System.out.println("response::"+response);
+		    		if(response==1) {
+			    		System.out.println("productId inner::"+productId);
+			    		pstmt = con.prepareStatement("update OnlineAuctionDb.productbid set status=4 where productid=? and status!=4");
+		    			pstmt.setInt(1,productId);
+			    		int i = pstmt.executeUpdate();
+		    			System.out.println(i>0?"Bid started successfull "+i:"Error starting bid:"+i);
+		    		}
+		      }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
 	}
 	
 }
