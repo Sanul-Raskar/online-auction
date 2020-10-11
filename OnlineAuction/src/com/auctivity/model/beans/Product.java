@@ -118,6 +118,17 @@ public class Product {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	/**
+	 * @param productId
+	 * @param productName
+	 */
+	public Product(int productId, String productName) {
+		super();
+		ProductId = productId;
+		ProductName = productName;
+	}
 	/**
 	 * @param productId
 	 * @param productName
