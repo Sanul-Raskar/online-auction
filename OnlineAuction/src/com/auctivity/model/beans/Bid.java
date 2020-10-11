@@ -5,10 +5,34 @@
 
 package com.auctivity.model.beans;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Bid {
 
 	public enum status {
-		OPEN, LOST, WON;
+		OPEN (0), LOST (1), WON (2);
+		
+		private final int statusCode;
+		private static Map map = new HashMap<>();
+		
+		status(int statusCode) {
+			this.statusCode = statusCode;
+		}
+		
+		static {
+	        for (status userstatus : status.values()) {
+	            map.put(userstatus.statusCode, userstatus);
+	        }
+	    }
+
+	    public static status valueOf(int userstatus) {
+	        return (status) map.get(userstatus);
+	    }
+
+	    public int getValue() {
+	        return statusCode;
+	    }
 	}
 	
 	private int bidID;
