@@ -32,14 +32,7 @@ public class DefaultController extends HttpServlet {
 	public void init() throws ServletException {
 		MyTimerTask.scheduleAcution();
 	}
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DefaultController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
+ 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */

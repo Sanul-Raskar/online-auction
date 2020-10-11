@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.auctivity.model.beans.Bid;
 import com.auctivity.model.beans.Category;
 
 import com.auctivity.controller.ScheduleAuctionController;
@@ -74,6 +75,7 @@ public class ProductDaoImpl implements IProductDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				LocalDate eDate = rs.getTimestamp("BidEndDate").toLocalDateTime().toLocalDate();
+				LocalDate sDate = rs.getTimestamp("BidStartDate").toLocalDateTime().toLocalDate();
 				String pName = rs.getString("ProductName");
 				String img = rs.getString("Image");
 				double sPrice = rs.getInt("SoldPrice");
@@ -83,7 +85,9 @@ public class ProductDaoImpl implements IProductDao {
 				int stat = rs.getInt("Status");
 				status cond = status.valueOf("stat");
 
-				prodList.add(new ProductForAuction(pName, img, sPrice, eDate, cond));
+				//prodList.add(new ProductForAuction(pName, img, eDate,sPrice,cond));
+				prodList.add(new ProductForAuction(pName, img, sPrice, sDate, eDate, cond));
+
 			}
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -226,6 +230,27 @@ public class ProductDaoImpl implements IProductDao {
 			e.printStackTrace();
 		}
 
+	}
+
+	@Override
+	public int placeBid(Bid bid) {
+		int status=0;
+		Connection conn = DBConnection.getConnectionId();	
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement("insert into OnlineAuctionDB.Bid values (next value for OnlineAuctionDB.bid_sequence,?,?,?,?)");
+			ps.setInt(1, bid.getBidderID());
+			ps.setInt(2, bid.getBidProductID());
+			ps.setDouble(3,bid.getBidValue());
+			ps.setInt(4, 4);
+			status = ps.executeUpdate();
+			System.out.println("Bid success status:"+status);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		return status;
 	}
 
 }

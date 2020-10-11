@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
@@ -20,6 +21,9 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
 import com.auctivity.model.beans.Category;
 import com.auctivity.model.beans.Product;
+import com.auctivity.model.beans.User;
+import com.auctivity.model.service.IProductService;
+import com.auctivity.utility.ObjectFactory;
 
 /**
  * Servlet implementation class AddProductController
