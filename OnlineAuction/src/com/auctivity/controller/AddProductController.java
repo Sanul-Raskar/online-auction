@@ -19,6 +19,7 @@ import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
+import com.auctivity.model.beans.Category;
 import com.auctivity.model.beans.Product;
 import com.auctivity.model.beans.User;
 import com.auctivity.model.dao.IProductDao;
@@ -46,7 +47,14 @@ public class AddProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.getRequestDispatcher("/seller/addProduct.jsp").include(request, response);
+		ObjectFactory objectFactory = new ObjectFactory();
+		IProductService iProductService = objectFactory.createProductServiceImplObj();
+		List<Category> catList = iProductService.getCategoryList();
+		request.setAttribute("categoryList", catList);
+		for(Category category : catList ) {
+			System.out.println(category);
+		}
+		request.getRequestDispatcher("/seller/addProduct.jsp").forward(request, response);
 	}
 
 	/**
@@ -56,8 +64,8 @@ public class AddProductController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String BASE_DIR = "/Users/sanul/Documents/uploads/";
-		String DEFAULT_FILENAME = "/resources/img/logo.jpg";
+		String BASE_DIR = "C:\\Users\\jayes\\Documents\\onlineauction\\Images\\";
+		String DEFAULT_FILENAME = "\\resources\\img\\logo.jpg";
 		boolean filePresent = false;
 		String currentTime = Long.toString((int) (new Date().getTime() / 10000));
 		HashMap<String, String> data = new HashMap<String, String>();
@@ -105,7 +113,7 @@ public class AddProductController extends HttpServlet {
 		HttpSession session = request.getSession();
 		User userInSession = (User)session.getAttribute("user");
 		
-		Product product = new Product(data.get("productName"), "Electronics", data.get("productDescription"),
+		Product product = new Product(data.get("productName"), data.get("category"), data.get("productDescription"),
 				Double.parseDouble(data.get("actualPrice")), Integer.parseInt(data.get("quantity")), data.get("Image"),
 				userInSession.getUserid());
 		System.out.println(product);

@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.auctivity.model.beans.Category;
 import com.auctivity.model.beans.Product;
 import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.beans.ProductForAuction.status;
@@ -162,5 +163,35 @@ public class ProductDaoImpl implements IProductDao {
 				
 				
 			}
+
+	@Override
+	public List<Category> getCategoryList() {
+		// TODO Auto-generated method stub
+		List<Category> cateList = new ArrayList<Category>();
+		conn = DBConnection.getConnectionId();
+		ResultSet rs = null;
+		PreparedStatement ps;
+		try
+		{
+			ps = conn.prepareStatement("select CategoryID,CategoryName from OnlineAuctionDB.Category");
+			rs = ps.executeQuery();
+			while (rs.next())
+			{
+				int categoryID = rs.getInt(1);
+                String categoryName = rs.getString(2);
+                
+                Category category = new Category(categoryID, categoryName);
+                
+                System.out.println("Id name =="+categoryID+","+categoryName);
+                cateList.add(category);
+			}
+			
+			System.out.println(cateList);
+		}catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return cateList;
+	}
 	
 }

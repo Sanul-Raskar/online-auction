@@ -2,6 +2,7 @@ package com.auctivity.model.service;
 
 import java.util.List;
 
+import com.auctivity.model.beans.Category;
 import com.auctivity.model.beans.Product;
 import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.dao.IProductDao;
@@ -34,6 +35,12 @@ public class ProductServiceImpl implements IProductService{
 	
 	public int addProducts(Product product) {
 		return productDao.addProducts(product);
+	}
+
+	@Override
+	public List<Category> getCategoryList() {
+		// TODO Auto-generated method stub
+		return productDao.getCategoryList();
 	}
 
 }
