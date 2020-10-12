@@ -1,98 +1,3 @@
-var productsArr = [
-  {
-    productId: 1,
-    productName: "iPhone X",
-    category: "Mobile",
-    actualPrice: 56,
-    minBidAmount: 70,
-    productImg: "./resources/img/logo.jpg",
-    startTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-    endTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-  },
-  {
-    productId: 2,
-    productName: "MacBook Pro",
-    category: "Laptop",
-    actualPrice: 56,
-    minBidAmount: 70,
-    productImg: "./resources/img/logo.jpg",
-    startTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-    endTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-  },
-  {
-    productId: 3,
-    productName: "ViewSonic VW567",
-    category: "Monitor",
-    actualPrice: 56,
-    minBidAmount: 70,
-    productImg: "./resources/img/logo.jpg",
-    startTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-    endTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-  },
-  {
-    productId: 4,
-    productName: "Jabra V56",
-    category: "Headphone",
-    actualPrice: 56,
-    minBidAmount: 70,
-    productImg: "./resources/img/logo.jpg",
-    startTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-    endTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-  },
-  {
-    productId: 5,
-    productName: "Lenovo Thinkpad",
-    category: "Laptop",
-    actualPrice: 56,
-    minBidAmount: 70,
-    productImg: "/resources/img/logo.jpg",
-    startTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-    endTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-  },
-  {
-    productId: 6,
-    productName: "Mi A2",
-    category: "Mobile",
-    actualPrice: 56,
-    minBidAmount: 70,
-    productImg: "./resources/img/logo.jpg",
-    startTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-    endTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-  },
-  {
-    productId: 7,
-    productName: "Product 7",
-    category: "Mobile",
-    actualPrice: 56,
-    minBidAmount: 70,
-    productImg: "./resources/img/logo.jpg",
-    startTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-    endTime: "Sun, 04 Oct 2020 07:14:47 GMT",
-  },
-];
-
-function loadProducts() {
-  productsArr.forEach((product) => {
-    let div = document.createElement("div");
-    div.id = product.productId;
-    div.className = "card";
-    div.innerHTML = `
-      <img src=\${product.productImg} class="productImg">
-      <br/>
-      <h2 class="text-center">\${product.productName}</h2>
-      <p><span style="font-weight:bold">Category:</span> \${product.category}</p>
-      <p><span style="font-weight:bold">Actual Price:</span>&nbsp;Rs. \${product.actualPrice}</p>
-      <p> <span style="font-weight:bold">Min Bid Amount:</span>&nbsp;Rs. \${product.minBidAmount}</p>
-      <p><span style="font-weight:bold">Bit Start Time:</span> \${product.startTime}</p>
-      <p><span style="font-weight:bold">Bit Start Time:</span> \${product.endTime}</p>
-      <br/>
-  `;
-    document.getElementById("productsContainer").appendChild(div);
-  });
-}
-
-// loadProducts();
-
 var productArray = [];
 function createProductArray() {
   let arr = [];
@@ -106,6 +11,7 @@ function createProductArray() {
     if (product.length != 0) {
       let data = {};
       console.log(product);
+      data.productId = product.id;
       data.productName = product[3].innerText;
       data.category = product.item(5).innerText.replace("Category:", "");
       data.description = product.item(7).innerText.replace("Description:","");
@@ -123,12 +29,42 @@ function createProductArray() {
         .item(17)
         .innerText.replace("Bit End Time:", "");
       console.log(data);
+      
+      data.form = "";
       productArray.push(data);
     }
   }
 }
 
 createProductArray();
+
+
+
+function loadProducts() {
+  productsArr.forEach((product) => {
+    let div = document.createElement("div");
+    div.id = product.productId;
+    div.className = "card";
+    div.innerHTML = `
+      <img src=\${product.productImg} class="productImg">
+      <br/>
+      <h2 class="text-center">\${product.productName}</h2>
+      <p><span style="font-weight:bold">Category:</span> \${product.category}</p>
+      <p><span style="font-weight:bold">Actual Price:</span>&nbsp;Rs. \${product.actualPrice}</p>
+      <p> <span style="font-weight:bold">Min Bid Amount:</span>&nbsp;Rs. \${product.minBidAmount}</p>
+      <p><span style="font-weight:bold">Bit Start Time:</span> \${product.startTime}</p>
+      <p><span style="font-weight:bold">Bit Start Time:</span> \${product.endTime}</p>
+      <br/>
+  `;
+    
+   
+    document.getElementById("productsContainer").appendChild(div);
+  });
+}
+
+// loadProducts();
+
+
 
 
 function filterByCategory(category) {
@@ -222,35 +158,6 @@ function validateBidValue(productId){
 		alert("Enter amount greater than minimum bid amount");
 		return false;
 	}
-	else{
-		let bidStatus= document.getElementById(`bidStatus\${productId}`).textContent;
-		bidStatus = bidStatus.replace("Status:","");
-		console.log(bidStatus);
-		var http = new XMLHttpRequest();
-		var params = "productId="+productId+"&bidStatus="+bidStatus;
-
-		// Make a POST request to controller with endpoint /register
-		http.open('POST', "/OnlineAuction/placebid", true);
-
-		// Send the proper header information along with the request
-		http.setRequestHeader('Content-type',
-				'application/x-www-form-urlencoded');
-
-		// Call a function when the state changes.
-		http.onreadystatechange = function() {
-			if (http.readyState == 4 && http.status == 999) {
-				alert("Username/Email already exist")
-				location.replace("register")
-			}
-			if (http.readyState == 4 && http.status == 200) {
-				alert("Registration successful");
-			}
-		}
-
-		console.log(params);
-		//http.send(params);
-
-	}
 	
-	//return true;
+	return true;
 }

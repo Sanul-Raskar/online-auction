@@ -54,8 +54,8 @@
 		      <p id="minBidAmount<%=product.getProductId()%>"><span style="font-weight:bold">Min Bid Amount:</span>&nbsp;Rs. <%=product.getMinBidValue() %></p>
 		      <p id="startTime<%=product.getProductId()%>"><span style="font-weight:bold">Bid Start Time:</span> <%=product.getBidStartDate() %></p>
 		      <p id="endTime<%=product.getProductId()%>"><span style="font-weight:bold">Bid End Time:</span> <%=product.getBidEndDate() %></p>
-		      <%System.out.println(product.getBid().getBidStatus()); %>
-		      <%if(product.getBid().getBidStatus() == 0){ %>
+		    
+		      <%-- <%if(product.getBid().getBidStatus() == 0){ %>
 		      	<p id="bidStatus<%=product.getProductId()%>"><span style="font-weight:bold">Status:</span>OPEN</p>
 		      <%}else if(product.getBid().getBidStatus() == 1){ %>
 		      	<p id="bidStatus<%=product.getProductId()%>"><span style="font-weight:bold">Status:</span>LOST</p>
@@ -63,9 +63,9 @@
 		      	<p id="bidStatus<%=product.getProductId()%>"><span style="font-weight:bold">Status:</span>WON</p>
 		      <%}else if(product.getBid().getBidStatus() == 4){ %>
 		      	<p id="bidStatus<%=product.getProductId()%>"><span style="font-weight:bold">Status:</span>PLACED</p>
-		      <%} %>
+		      <%} %> --%>
 		      
-		      <% if(showBidInput && product.getBid().getBidStatus() == 0){ %> 
+		      <%-- <% if(showBidInput && product.getBid().getBidStatus() == 0){ %> 
 		      	<form id="bidForm<%=product.getProductId()%>" method="post" action="/OnlineAuction/home" onsubmit="return validateBidValue(<%=product.getProductId()%>);">
 		      	<div class="bidForm">
 		      		<input id="bidValue<%=product.getProductId()%>" class="" type="number" name="bidValue" required/>
@@ -74,7 +74,7 @@
 		      		<button id="bidButton<%=product.getProductId()%>" class="bid-button" type="submit">Make Bid</button>
 		      	</div>
 		      	</form>
-		      <%} %>
+		      <%} %> --%>
 		      <br/>
 			</div>
 		<%} %>

@@ -49,7 +49,7 @@ public class ProductDaoImpl implements IProductDao {
 				// ProductForAuction pfa= new ProductForAuction();
 
 				int stat = rs.getInt("Status");
-				status cond = status.valueOf("stat");
+				status cond = status.valueOf(stat);
 
 				prodList.add(new ProductForAuction(pid, pName, pCat, pDesc, price, pQuan, img, minBid, sDate, eDate,
 						sPrice, cond));
