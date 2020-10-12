@@ -110,12 +110,12 @@ public class DefaultController extends HttpServlet {
 
 			ObjectFactory objectFactory = new ObjectFactory();
 			IProductService productService = objectFactory.createProductServiceImplObj();
-
+			
 			Bid bid = new Bid();
 			bid.setBidProductID(bidProductId);
 			bid.setBidderID(bidderId);
 			bid.setBidValue(bidValue);
-
+			productService.placeBid(bid);
 			response.sendRedirect("home");
 
 		}

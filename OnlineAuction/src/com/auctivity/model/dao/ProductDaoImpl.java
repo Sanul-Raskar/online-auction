@@ -219,6 +219,7 @@ public class ProductDaoImpl implements IProductDao {
 				// int auctionStatus = rs.getInt("status");
 				int productId = rs.getInt("productid");
 				int response = ScheduleAuctionController.getTime(bidStartDate);
+				int endRespose =  ScheduleAuctionController.getTime(bidEndDate);
 				System.out.println("response::" + response);
 				if (response == 1) {
 					System.out.println("productId inner::" + productId);
@@ -227,6 +228,19 @@ public class ProductDaoImpl implements IProductDao {
 					pstmt.setInt(1, productId);
 					int i = pstmt.executeUpdate();
 					System.out.println(i > 0 ? "Bid started successfull " + i : "Error starting bid:" + i);
+				}
+				else if (endRespose == 1) {
+					//Give product to user after auction
+					//pstmt = con.prepareStatement("update")
+					
+					System.out.println("productId inner::" + productId);
+					pstmt = con.prepareStatement( "update OnlineAuctionDb.bid set status=5 where productid=? and status=4");
+					pstmt.setInt(1, productId);
+					int i = pstmt.executeUpdate();
+					pstmt = con.prepareStatement( "update OnlineAuctionDb.productbid set status=5 where productid=? and status=4");
+					pstmt.setInt(1, productId);
+					int j = pstmt.executeUpdate();
+					System.out.println(i > 0 ? "Bid ended successful " + i : "Error ending bid:" + i);
 				}
 			}
 		} catch (SQLException e) {

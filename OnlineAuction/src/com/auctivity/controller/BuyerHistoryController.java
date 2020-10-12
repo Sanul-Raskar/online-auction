@@ -54,8 +54,11 @@ public class BuyerHistoryController extends HttpServlet {
 				IProductService productService = objectFactory.createProductServiceImplObj();
 				List<ProductForAuction> test=productService.getProductHistory(uid);
 				for(ProductForAuction t : test ) {
-					System.out.println(t);
+					System.out.println("buyer history::"+t);
 				}
+				request.setAttribute("products", test);
+				request.getRequestDispatcher("/buyer/buyerHistory.jsp").forward(request, response);
+
 				//response.sendRedirect("home");
 				//request.getRequestDispatcher("home").forward(request, response);
 			}
@@ -64,7 +67,6 @@ public class BuyerHistoryController extends HttpServlet {
 			}
 		}
 
-		request.getRequestDispatcher("/buyer/buyerHistory.jsp").forward(request, response);
 	}
 
 	/**
