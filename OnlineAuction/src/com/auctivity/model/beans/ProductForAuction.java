@@ -53,7 +53,9 @@ public class ProductForAuction extends Product {
 		super();
 
 	}
-
+	/**
+	 *  Parameterized constructor
+	 */
 	public ProductForAuction(int bidProductID, double minBidValue, LocalDate bidStartDate, LocalDate bidEndDate,
 			int userID, double soldPrice, status bidStatus, Bid bid) {
 		super();
@@ -67,6 +69,9 @@ public class ProductForAuction extends Product {
 		this.bid = bid;
 	}
 
+	/**
+	 *  Parameterized constructor
+	 */
 	public ProductForAuction(int productId, String productName, String productCategory, String productDescription,
 			double productPrice, int productQuantity, String productImage, int productSellerId, int bidProductID,
 			double minBidValue, LocalDate bidStartDate, LocalDate bidEndDate, int userID, double soldPrice,
@@ -82,7 +87,10 @@ public class ProductForAuction extends Product {
 		this.bidStatus = bidStatus;
 		this.bid = bid;
 	}
-
+	
+	/**
+	 *  Parameterized constructor
+	 */
 	public ProductForAuction(int productId, String productName, String productCategory, String productDesc,
 			double actualPrice, int quantity, String image, double minBidValue, LocalDate bidStartDate,
 			LocalDate bidEndDate, double soldPrice, status bidStatus) {
@@ -93,7 +101,10 @@ public class ProductForAuction extends Product {
 		this.soldPrice = soldPrice;
 		this.bidStatus = bidStatus;
 	}
-
+	
+	/**
+	 *  Parameterized constructor
+	 */
 	public ProductForAuction(String pName, String img, double sPrice, LocalDate sDate, LocalDate eDate, status cond) {
 		// TODO Auto-generated constructor stub
 		super(pName,img);
@@ -112,10 +123,14 @@ public class ProductForAuction extends Product {
 	public void setBidProductID(int bidProductID) {
 		this.bidProductID = bidProductID;
 	}
-
+	
+	/**
+	 * @return the minBidValue
+	 */
 	public double getMinBidValue() {
 		return minBidValue;
 	}
+	
 
 	public void setMinBidValue(double minBidValue) {
 		this.minBidValue = minBidValue;
@@ -144,11 +159,14 @@ public class ProductForAuction extends Product {
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-
+	
+	/**
+	 * @return the soldPrice
+	 */
 	public double getSoldPrice() {
 		return soldPrice;
 	}
-
+	
 	public void setSoldPrice(double soldPrice) {
 		this.soldPrice = soldPrice;
 	}
@@ -160,7 +178,9 @@ public class ProductForAuction extends Product {
 	public void setBidStatus(int i) {
 		this.bidStatus = status.valueOf(i);
 	}
-
+	/**
+	 * @return the bid
+	 */
 	public Bid getBid() {
 		return bid;
 	}

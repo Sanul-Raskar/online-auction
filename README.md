@@ -13,6 +13,7 @@
 2. [Apache Derby 10.13.1.1](https://db.apache.org/derby/releases/release-10.13.1.1.html)
 3. [Apache Tomcat 8.5](https://tomcat.apache.org/download-80.cgi)
 4. [jstl-1.2.jar](https://mvnrepository.com/artifact/javax.servlet/jstl/1.2)
+5. [Log4J](https://logging.apache.org/log4j/1.2/download.html)
 
 ## Serving static files from local file system in Apache Tomcat
 Seller can add product image. The images are saved on local file system of server outside of the WAR. Image name is saved in database corresponding to the product. Tomcat can be configured to read files from anywhere on disk and serve them on a specific URL.
@@ -41,9 +42,35 @@ http://localhost:8080/media/myImage.jpg
 2. Double click *Tomcat v8.5 Server at localhost*.
 3. Click on the *Modules* tab.
 4. Select *Add External Web Module*.
-5. Enter *Document Base* and *Path*.
+5. Enter *Document Base* as the path of folder you created and *Path* as /media.
 
+**Note** : Create folder to upload images outside workspace.
 
+## Add Apache Derby database credentials
+```bash
+$ cd OnlineAuction/src/com/auctivity/utility
+$ vim DBConnection.java
+```
+
+Add derby URL, username and password
+```java
+con = DriverManager.getConnection(url,username,password);
+```
+
+## Add Image upload path
+```bash
+$ cd OnlineAuction/src/com/auctivity/controller
+$ vim AddProductController.java
+```
+
+Add ```BASE_DIR``` path in doPost method
+```java
+String BASE_DIR = "/Users/sanul/Documents/";
+```
+<br/>
+## Create tables in database
+Run the ```/OnlineAuction/AuctivitySchema.sql```
+<br/>
 ## Layered Architecture
 
 ```bash
@@ -53,12 +80,8 @@ http://localhost:8080/media/myImage.jpg
 │   ├── META-INF
 │   │   └── MANIFEST.MF
 │   ├── WEB-INF
-│   │   ├── lib
-│   │   │   └── jstl-1.2.jar
 │   │   ├── properties
-│   │   │   ├── connection.properties
-│   │   │   ├── queries.properties
-│   │   │   └── status.properties
+│   │   │   └── log4j.properties
 │   │   └── web.xml
 │   ├── accounts
 │   │   ├── login.jsp
@@ -78,10 +101,10 @@ http://localhost:8080/media/myImage.jpg
 │   │   ├── css
 │   │   │   ├── accounts
 │   │   │   │   ├── login.css
+│   │   │   │   ├── profile.css
 │   │   │   │   └── registration.css
 │   │   │   ├── buyer
-│   │   │   │   ├── buyerPagePurchasedProducts1.css
-│   │   │   │   └── buyerProfile.css
+│   │   │   │   └── buyerPagePurchasedProducts1.css
 │   │   │   ├── home.css
 │   │   │   ├── seller
 │   │   │   │   ├── SellerNavbar.css
@@ -98,13 +121,15 @@ http://localhost:8080/media/myImage.jpg
 │   │       ├── home.js
 │   │       ├── index.js
 │   │       ├── seller
-│   │       │   └── addProducts.js
+│   │       │   ├── addProducts.js
+│   │       │   └── scheduleAuction.js
 │   │       └── utility
 │   │           └── inputValidation.js
 │   └── seller
 │       ├── addProduct.jsp
 │       ├── scheduleAuction.jsp
 │       └── sellerHistory.jsp
+├── derby.log
 └── src
     └── com
         └── auctivity
@@ -146,9 +171,11 @@ http://localhost:8080/media/myImage.jpg
             │       ├── ProductServiceImpl.java
             │       └── UserServiceImpl.java
             └── utility
+                ├── ContextListener.java
                 ├── DBConnection.java
                 ├── InputValidation.java
-                ├── Logger.java
+                ├── MyTimerTask.java
                 ├── ObjectFactory.java
                 └── PasswordEncrypter.java
+
 ```

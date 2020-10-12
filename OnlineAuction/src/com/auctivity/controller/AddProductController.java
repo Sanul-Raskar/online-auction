@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
@@ -32,6 +33,7 @@ import com.auctivity.utility.ObjectFactory;
 public class AddProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	static final Logger LOGGER = Logger.getLogger(AddProductController.class);
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -45,10 +47,13 @@ public class AddProductController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		//User session starts
 		HttpSession session = request.getSession();
 		User userInSession = (User) session.getAttribute("user");
-
+		/**
+		 * If user session type is 1 then it is Seller, if it is 0 then it is Buyer.
+		 */
 		if (userInSession == null) {
 			request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
 		} else {
@@ -64,6 +69,8 @@ public class AddProductController extends HttpServlet {
 				request.getRequestDispatcher("/seller/addProduct.jsp").forward(request, response);
 			} else {
 				request.getRequestDispatcher("/error/forbiddenAccessError.jsp").forward(request, response);
+				//logging forbidden access
+				LOGGER.info("User tried to access forbidden url");
 			}
 
 		}
@@ -76,7 +83,8 @@ public class AddProductController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		//User Session Starts
 		HttpSession session = request.getSession();
 		User userInSession = (User) session.getAttribute("user");
 
@@ -84,9 +92,12 @@ public class AddProductController extends HttpServlet {
 			request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
 		} else {
 
+			/*
+			 * Adding an image to save locally
+			 */
 			if (userInSession.getUserType() == 1) {
-				String BASE_DIR = "/Users/sanul/Documents/uploads/";
-				String DEFAULT_FILENAME = "./resources/img/logo.jpg";
+				String BASE_DIR = "C:\\Users\\jayes\\Documents\\onlineauction\\Images\\";
+				String DEFAULT_FILENAME = ".\\resources\\img\\logo.jpg";
 				boolean filePresent = false;
 				String currentTime = Long.toString((int) (new Date().getTime() / 10000));
 				HashMap<String, String> data = new HashMap<String, String>();
@@ -130,7 +141,7 @@ public class AddProductController extends HttpServlet {
 						data.put("Image", DEFAULT_FILENAME);
 					}
 				}
-
+				//Creating an object
 				Product product = new Product(data.get("productName"), data.get("category"),
 						data.get("productDescription"), Double.parseDouble(data.get("actualPrice")),
 						Integer.parseInt(data.get("quantity")), data.get("Image"), userInSession.getUserid());
@@ -147,6 +158,8 @@ public class AddProductController extends HttpServlet {
 				}
 			} else {
 				request.getRequestDispatcher("/error/forbiddenAccessError.jsp").forward(request, response);
+				//logging forbidden access
+				LOGGER.info("User tried to access forbidden url");
 			}
 		}
 

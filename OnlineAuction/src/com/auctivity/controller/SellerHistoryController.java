@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.beans.User;
 import com.auctivity.model.service.IProductService;
@@ -21,6 +23,7 @@ import com.auctivity.utility.ObjectFactory;
 @WebServlet("/sellerhistory")
 public class SellerHistoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	static final Logger LOGGER = Logger.getLogger(SellerHistoryController.class);
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -58,6 +61,8 @@ public class SellerHistoryController extends HttpServlet {
 			}
 			else {
 				System.out.println("something error from loginservlet");
+				//logging wrong access
+				LOGGER.info("Unregistered user tried to use services");
 			}
 		}
 	}

@@ -82,3 +82,16 @@ input[type=submit] {
 	border-radius: 5px;
 	color: white;
 }
+
+.btn {
+	font-size: 18px;
+	background-color : #DB0011;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	border-radius: 6px;
+	width: 100%;
+	background-color: #DB0011;
+}

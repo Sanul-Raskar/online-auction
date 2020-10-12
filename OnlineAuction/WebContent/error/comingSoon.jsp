@@ -7,6 +7,9 @@
 <title>Coming Soon</title>
 </head>
 <body>
-
+<div style="text-align: center">
+		<h1>Coming Soon</h1>
+		<a href="/OnlineAuction/">Auctivity Home</a>
+	</div>
 </body>
 </html>

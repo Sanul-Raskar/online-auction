@@ -15,19 +15,26 @@ import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.beans.ProductForAuction.status;
 import com.auctivity.utility.DBConnection;
 
+/**
+ * 
+ * Implementation of Product Scheduler from Product Interface Scheduler 
+ *
+ */
 public class ProductSchedulerDaoImpl implements IProductSchedulerDao {
 
+	/**
+	 * Function to add data into the database while scheduling an auction
+	 */
 	@Override
 	public int scheduleAuction(ProductForAuction productAuction) {
-		// TODO Auto-generated method stub
-		
+
 		int status=0;
 		
 		Connection conn = DBConnection.getConnectionId();	
 		PreparedStatement ps,ps1;
 		ResultSet resultset;
 		int productId = 0;
-		if(!checkIfBidScheduled(productAuction.getBidProductID())) {
+		if(checkIfBidScheduled(productAuction.getProductId())) {
 			status=999;
 			return status;
 		}
@@ -65,10 +72,13 @@ public class ProductSchedulerDaoImpl implements IProductSchedulerDao {
 		return status;
 	}
 
+	/**
+	 * Function to get the list of Products based on Seller Id
+	 */
 	@Override
 	public List<Product> getProductList(int sellerId) 
 	{
-		// TODO Auto-generated method stub
+		 
 		List<Product> productList = new ArrayList<Product>();
 		Connection conn = DBConnection.getConnectionId();	
 		PreparedStatement ps;
@@ -76,6 +86,7 @@ public class ProductSchedulerDaoImpl implements IProductSchedulerDao {
 
 		try
 		{
+			//Query to get thhe product Id and Name 
 			ps = conn.prepareStatement("select ProductID,ProductName from OnlineAuctionDB.Product where SellerID=?");
 			ps.setInt(1,sellerId);
 			resultset = ps.executeQuery();
@@ -98,6 +109,9 @@ public class ProductSchedulerDaoImpl implements IProductSchedulerDao {
 		return productList;
 	}
 
+	/**
+	 * Function to check if the bid was scheduled or not based on product Id
+	 */
 	@Override
 	public boolean checkIfBidScheduled(int productId) {
 		Connection conn = DBConnection.getConnectionId();	
@@ -120,6 +134,7 @@ public class ProductSchedulerDaoImpl implements IProductSchedulerDao {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("Product id NOT EXIST:"+productId);
 		return false;
 	}
 }

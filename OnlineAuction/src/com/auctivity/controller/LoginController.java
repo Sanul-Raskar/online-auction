@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.auctivity.exceptions.UserNotFoundException;
 import com.auctivity.model.beans.User;
 import com.auctivity.model.service.IUserService;
@@ -20,6 +22,8 @@ import com.auctivity.model.service.UserServiceImpl;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     IUserService userService = new UserServiceImpl();
+    
+    static final Logger LOGGER = Logger.getLogger(LoginController.class);
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,9 +36,14 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		//Get the user session
 		HttpSession session = request.getSession();
 		User userInSession = (User)session.getAttribute("user");
+		
+		/**
+		 * If the user session type is 1 then it is Seller, if it is 0 then it is Buyer
+		 */
 		if(userInSession==null)
 			request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
 		else {
@@ -50,6 +59,8 @@ public class LoginController extends HttpServlet {
 			}
 			else {
 				System.out.println("something error from loginservlet");
+				//logging wrong access
+				LOGGER.info("Unregistered user tried to use services");
 			}
 		}
 
@@ -87,6 +98,8 @@ public class LoginController extends HttpServlet {
 					else {
 						response.setStatus(999);
 						System.out.println("something error from loginservlet");
+						//logging wrong access
+						LOGGER.info("Unregistered user tried to use services");
 					}
 				}
 			} catch (UserNotFoundException e) {

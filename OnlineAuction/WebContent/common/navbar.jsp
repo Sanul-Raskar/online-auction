@@ -44,12 +44,14 @@
 		if (isUserAuthenticated) {
 	%>
 	<div id="main">
+	<img src="./resources/img/logo.jpg" style="width:50px;height: 50px;margin-left:16px">
 		<button class="openbtn" onclick="openNav()">&#9776;</button>
 	</div>
 	<%
 		} else {
 	%>
 	<div id="main">
+	<img src="./resources/img/logo.jpg" style="width:50px;height: 50px;margin-left:16px">
 	<div style="float:right">
 	<a href="/OnlineAuction/login" class="navbar-button">Login</a>
 	<a href="/OnlineAuction/register" class="navbar-button">Sign Up</a>

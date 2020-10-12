@@ -6,7 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Add Product | Online Auction</title>
+
+<!-- Including CSS files -->
 <style><%@include file="../resources/css/style.css"%></style>
 <style><%@include file="../resources/css/seller/addProducts.css"%></style>
 
@@ -15,6 +18,8 @@
 <body>
 	<%@ include file="../common/navbar.jsp"%>
 
+		<!-- Add product form -->
+	
 	<div class="text-center">
 		<h1>Add Product</h1>
 		<h3>Please fill the product details...</h3>
@@ -75,6 +80,8 @@
 	</div>
 
 	<div style="height: 100px"></div>
+	
+	<!-- Including footer and Validaiton javascript files -->
 
 	<%@ include file="../common/footer.jsp"%>
 	<script> <%@include file="../resources/js/index.js"%></script>

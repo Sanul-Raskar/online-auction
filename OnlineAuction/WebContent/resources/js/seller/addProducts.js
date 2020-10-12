@@ -62,9 +62,11 @@ function validateAddProductForm(event) {
 		// Call a function when the state changes.
 		http.onreadystatechange = function() {
 			if (http.readyState == 4 && http.status == 200) {
+				document.getElementById("addProductForm").reset()
 				alert("Product added successfully!");
 			}
 			if (http.readyState == 4 && http.status == 501) {
+				document.getElementById("addProductForm").reset()
 				alert("Sorry, the product was not added. Please try again later.");
 			}
 		}

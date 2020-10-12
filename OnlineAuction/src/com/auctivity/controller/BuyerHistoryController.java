@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.beans.User;
 import com.auctivity.model.service.IProductService;
@@ -25,6 +27,7 @@ import com.auctivity.utility.ObjectFactory;
 public class BuyerHistoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	static final Logger LOGGER = Logger.getLogger(BuyerHistoryController.class);
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -33,10 +36,11 @@ public class BuyerHistoryController extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet #doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		 
+		//Get the user session
 		HttpSession session = request.getSession();
 		User userInSession = (User)session.getAttribute("user");
 		if(userInSession==null)
@@ -54,17 +58,21 @@ public class BuyerHistoryController extends HttpServlet {
 				IProductService productService = objectFactory.createProductServiceImplObj();
 				List<ProductForAuction> test=productService.getProductHistory(uid);
 				for(ProductForAuction t : test ) {
-					System.out.println(t);
+					System.out.println("buyer history::"+t);
 				}
+				request.setAttribute("products", test);
+				request.getRequestDispatcher("/buyer/buyerHistory.jsp").forward(request, response);
+
 				//response.sendRedirect("home");
 				//request.getRequestDispatcher("home").forward(request, response);
 			}
 			else {
 				System.out.println("something error from loginservlet");
+				//logging wrong access
+				LOGGER.info("Unregistered user tried to use services");
 			}
 		}
 
-		request.getRequestDispatcher("/buyer/buyerHistory.jsp").forward(request, response);
 	}
 
 	/**

@@ -9,6 +9,11 @@ import com.auctivity.model.beans.User;
 import com.auctivity.utility.DBConnection;
 import com.auctivity.utility.PasswordEncrypter;
 
+/**
+ * 
+ * Implementation of User DAO from User Interface DAO
+ *
+ */
 public class UserDaoImpl implements IUserDao {
 	static Connection conn = null;
 	@Override
@@ -16,10 +21,14 @@ public class UserDaoImpl implements IUserDao {
 		int status=0;
 		boolean ifUserExist = getUserIfExist(user.getUsername(), user.getEmail());
 		
+		/**
+		 * If the user does not exist then insert its details
+		 */
 		if(!ifUserExist) {
 			Connection conn = DBConnection.getConnectionId();	
 			PreparedStatement ps;
 			try {
+				//Query for inserting the details into the database
 				ps = conn.prepareStatement("insert into OnlineAuctionDB.Usertable values (next value for OnlineAuctionDB.user_sequence,?,?,?,?,?,?,?,?,?)");
 				ps.setString(1, user.getName());
 				ps.setDate(2,  java.sql.Date.valueOf(user.getDob()));
@@ -42,12 +51,16 @@ public class UserDaoImpl implements IUserDao {
 		return status;
 	}
 
+	/**
+	 * Function to get the user object based on username and password
+	 */
 	@Override
 	public User getUser(String username, String password) throws UserNotFoundException {
 		conn = DBConnection.getConnectionId();
 		ResultSet rs = null;
 		User u = new User();
 		try {	
+			//Query to get the user
 			String getQuery = "select * from OnlineAuctionDB.usertable where username=? and password=?";
 			PreparedStatement ps = conn.prepareStatement(getQuery);
 			ps.setString(1, username.toLowerCase());
@@ -79,17 +92,19 @@ public class UserDaoImpl implements IUserDao {
 
 	@Override
 	public int updateUser() {
-		// TODO Auto-generated method stub
+		 
 		return 0;
 	}
 
 
 	@Override
 	public int deleteUser() {
-		// TODO Auto-generated method stub
+		 
 		return 0;
 	}
-
+	/*
+	 * Function to get user if the user exists
+	 */
 	@Override
 	public boolean getUserIfExist(String username, String email){
 		conn = DBConnection.getConnectionId();

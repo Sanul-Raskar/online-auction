@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Home | Online Auction</title>
+<!-- Including the CSS files -->
 <style><%@include file="./resources/css/style.css"%></style>
 <style><%@include file="./resources/css/home.css"%></style>
 </head>
@@ -15,6 +16,7 @@
 	<%@ include file="./common/navbar.jsp"%>
 	<br /><br/>
 	
+	<!-- Displaying the products from the database -->
 	<% List<ProductForAuction> products = (ArrayList<ProductForAuction>)session.getAttribute("products");
 	 List<Category> categories = (ArrayList<Category>)session.getAttribute("categories");
 
@@ -46,6 +48,8 @@
 		</div>
 	</div>
 	
+	
+	<!-- Displaying the products from the database -->
 	<div class="container">
 		<div id="productsContainer" class="grid-row">
 		<%for(ProductForAuction product: products){ %>
@@ -97,6 +101,8 @@
 		</div>
 	</div>
 	<br />
+	
+	<!-- Including the footer and Javascript files -->
 	<%@ include file="./common/footer.jsp"%>
 	<script> <%@include file="./resources/js/index.js"%></script>
 	<script> <%@include file="./resources/js/home.js"%></script>

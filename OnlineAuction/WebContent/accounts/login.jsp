@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login</title>
     <style><%@include file="../resources/css/style.css"%></style>
-    <style><%@include file="../resources/css/loader.css"%></style>
     <style><%@include file="../resources/css/accounts/login.css"%></style>
     <style>#footer{
     position: fixed;
@@ -20,16 +19,14 @@
       <h1>User Login</h1>
       <h3>Login using your Auctivity account</h3>
     </div>
-<!--     
-<div class="loadingio-spinner-spinner-lu5nkl29vt"id="loader"style="display:none"><div class="ldio-3x124cjzrpb">
-<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-</div></div> -->
 
+
+	<!-- Login Form -->
   	<div class="wrapper">
   	<div class="login-container">
     <form id="loginForm" method="post">
       <div class="login-box">
-        <label style="font-weight:bold;">Username or Email:</label>
+        <label style="font-weight:bold;">Username:</label>
         <input
           class="inputField"
           id="username"
@@ -38,7 +35,6 @@
           placeholder="Enter username or email"
           required
         />
-        <a href="#" style="color: #404040;">Forgot Username/Email?</a>
         <p id="usernameError" style="margin-top:4px;color:red"></p>
         <br />
         <label style="font-weight:bold;">Password: </label>
@@ -50,7 +46,7 @@
           placeholder="Enter password"
           required
         />  
-        <a href="#" style="color: #404040;">Forgot password?</a>
+        <a href="/OnlineAuction/error/comingSoon.jsp" style="color: #404040;">Forgot Username/Email?</a>
 		<p id="passwordError" style="margin-top:4px;color:red"></p>
 		<p id="authenticationError" style="margin-top:4px;margin-botton:4px;color:red"></p>
         <input class="login-button" type="submit" name="submit" value="Login" />
