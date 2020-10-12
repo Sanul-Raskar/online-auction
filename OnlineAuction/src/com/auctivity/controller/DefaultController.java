@@ -57,7 +57,7 @@ public class DefaultController extends HttpServlet {
 			IProductService productService = objectFactory.createProductServiceImplObj();
 			List<ProductForAuction> test = productService.getBidProducts();
 			for (ProductForAuction t : test) {
-				System.out.println(t);
+				System.out.println(t); 
 			}
 			session.setAttribute("products", test);
 			
