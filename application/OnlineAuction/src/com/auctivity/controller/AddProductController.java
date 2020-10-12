@@ -92,8 +92,8 @@ public class AddProductController extends HttpServlet {
 			 * Adding an image to save locally
 			 */
 			if (userInSession.getUserType() == 1) {
-				String BASE_DIR = "C:\\Users\\jayes\\Documents\\onlineauction\\Images\\";
-				String DEFAULT_FILENAME = ".\\resources\\img\\logo.jpg";
+				String BASE_DIR = "/User/sanul/Documents/uploads/";
+				String DEFAULT_FILENAME = "./resources/img/logo.jpg";
 				boolean filePresent = false;
 				String currentTime = Long.toString((int) (new Date().getTime() / 10000));
 				HashMap<String, String> data = new HashMap<String, String>();

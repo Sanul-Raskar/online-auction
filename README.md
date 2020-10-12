@@ -1,5 +1,5 @@
 <p align="center">
-<img style="padding:4px" src="/screenshots/logo.jpg" width="320"/>
+<img style="padding:4px" src="/video/logo.jpg" width="320"/>
 </p>
 <br/>
 
