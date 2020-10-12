@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login</title>
     <style><%@include file="../resources/css/style.css"%></style>
-    <style><%@include file="../resources/css/loader.css"%></style>
     <style><%@include file="../resources/css/accounts/login.css"%></style>
     <style>#footer{
     position: fixed;
@@ -20,10 +19,6 @@
       <h1>User Login</h1>
       <h3>Login using your Auctivity account</h3>
     </div>
-<!--     
-<div class="loadingio-spinner-spinner-lu5nkl29vt"id="loader"style="display:none"><div class="ldio-3x124cjzrpb">
-<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-</div></div> -->
 
   	<div class="wrapper">
   	<div class="login-container">
