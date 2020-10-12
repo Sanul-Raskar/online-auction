@@ -29,7 +29,7 @@
   	<div class="login-container">
     <form id="loginForm" method="post">
       <div class="login-box">
-        <label style="font-weight:bold;">Username or Email:</label>
+        <label style="font-weight:bold;">Username:</label>
         <input
           class="inputField"
           id="username"
@@ -38,7 +38,6 @@
           placeholder="Enter username or email"
           required
         />
-        <a href="#" style="color: #404040;">Forgot Username/Email?</a>
         <p id="usernameError" style="margin-top:4px;color:red"></p>
         <br />
         <label style="font-weight:bold;">Password: </label>
@@ -50,7 +49,7 @@
           placeholder="Enter password"
           required
         />  
-        <a href="#" style="color: #404040;">Forgot password?</a>
+        <a href="/OnlineAuction/error/comingSoon.jsp" style="color: #404040;">Forgot Username/Email?</a>
 		<p id="passwordError" style="margin-top:4px;color:red"></p>
 		<p id="authenticationError" style="margin-top:4px;margin-botton:4px;color:red"></p>
         <input class="login-button" type="submit" name="submit" value="Login" />
