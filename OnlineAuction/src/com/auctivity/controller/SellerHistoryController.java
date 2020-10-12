@@ -35,13 +35,13 @@ public class SellerHistoryController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User userInSession = (User)session.getAttribute("user");
-		if(userInSession==null)
+		if(userInSession==null) {
 			request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
+		}
 		else {
 			if(userInSession.getUserType() == 0) {
 				System.out.println("In Buyer:"+(User)session.getAttribute("user"));
-				response.sendRedirect("buyerhistory");
-				//request.getRequestDispatcher("sellerhistory").forward(request, response);
+				request.getRequestDispatcher("/error/forbiddenAccessError.jsp").forward(request, response);
 			}
 			else if(userInSession.getUserType()==1) {
 				System.out.println("In Seller:"+(User)session.getAttribute("user"));
@@ -52,15 +52,14 @@ public class SellerHistoryController extends HttpServlet {
 				for(ProductForAuction t : test ) {
 					System.out.println(t);
 				}
-				//response.sendRedirect("home");
-				//request.getRequestDispatcher("home").forward(request, response);
+				
+				request.setAttribute("products",test);
+				request.getRequestDispatcher("/seller/sellerHistory.jsp").forward(request, response);
 			}
 			else {
 				System.out.println("something error from loginservlet");
 			}
 		}
-
-		request.getRequestDispatcher("/seller/sellerHistory.jsp").forward(request, response);
 	}
 
 	/**
