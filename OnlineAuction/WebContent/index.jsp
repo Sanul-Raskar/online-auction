@@ -29,6 +29,7 @@
 		<div style="margin:6px;">
 			<label for="sortProducts">Sort products by:</label>
 			<select class="inputField" name="sortProduct" id="sortProducts">
+				<option value="" disabled">Select option to sort</option>
 				<option value="name">Name</option>
 				<option value="category">Category</option>
 				<option value="bidEndDate">Bid End Date</option>
@@ -37,7 +38,7 @@
 		<div style="margin:6px;">
 			<label for="filterCategory">Filter products by category:</label>
 			<select class="inputField" name="filterCategory" id="filterCategory">
-			<option value="" hidden disabled">Select Category</option>
+			<option value="" disabled">Select Category</option>
 			<%for(Category category: categories){ %>
 				<option value="<%=category.getCategoryName()%>"><%=category.getCategoryName()%></option>
 			<%} %>
