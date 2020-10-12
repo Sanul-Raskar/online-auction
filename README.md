@@ -80,12 +80,8 @@ Run the ```/OnlineAuction/AuctivitySchema.sql```
 │   ├── META-INF
 │   │   └── MANIFEST.MF
 │   ├── WEB-INF
-│   │   ├── lib
-│   │   │   └── jstl-1.2.jar
 │   │   ├── properties
-│   │   │   ├── connection.properties
-│   │   │   ├── queries.properties
-│   │   │   └── status.properties
+│   │   │   └── log4j.properties
 │   │   └── web.xml
 │   ├── accounts
 │   │   ├── login.jsp
@@ -105,10 +101,10 @@ Run the ```/OnlineAuction/AuctivitySchema.sql```
 │   │   ├── css
 │   │   │   ├── accounts
 │   │   │   │   ├── login.css
+│   │   │   │   ├── profile.css
 │   │   │   │   └── registration.css
 │   │   │   ├── buyer
-│   │   │   │   ├── buyerPagePurchasedProducts1.css
-│   │   │   │   └── buyerProfile.css
+│   │   │   │   └── buyerPagePurchasedProducts1.css
 │   │   │   ├── home.css
 │   │   │   ├── seller
 │   │   │   │   ├── SellerNavbar.css
@@ -125,13 +121,15 @@ Run the ```/OnlineAuction/AuctivitySchema.sql```
 │   │       ├── home.js
 │   │       ├── index.js
 │   │       ├── seller
-│   │       │   └── addProducts.js
+│   │       │   ├── addProducts.js
+│   │       │   └── scheduleAuction.js
 │   │       └── utility
 │   │           └── inputValidation.js
 │   └── seller
 │       ├── addProduct.jsp
 │       ├── scheduleAuction.jsp
 │       └── sellerHistory.jsp
+├── derby.log
 └── src
     └── com
         └── auctivity
@@ -173,9 +171,11 @@ Run the ```/OnlineAuction/AuctivitySchema.sql```
             │       ├── ProductServiceImpl.java
             │       └── UserServiceImpl.java
             └── utility
+                ├── ContextListener.java
                 ├── DBConnection.java
                 ├── InputValidation.java
-                ├── Logger.java
+                ├── MyTimerTask.java
                 ├── ObjectFactory.java
                 └── PasswordEncrypter.java
+
 ```

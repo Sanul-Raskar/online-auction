@@ -72,6 +72,8 @@ create table OnlineAuctionDB.ProductBid (
 	--                       	
 );
 
-drop table OnlineAuctionDB.ProductBid;
---select * from  OnlineAuctionDB.ProductBid;
---select ProductId,ProductName from OnlineAuctionDB.Product where SellerID=101;
+--insert categories
+insert into ONLINEAUCTIONDB.CATEGORY values(next value for OnlineAuctionDB.category_sequence,'Electronics', 'Sensors');
+insert into ONLINEAUCTIONDB.CATEGORY values(next value for OnlineAuctionDB.category_sequence,'Cosmetics', 'Facial');
+insert into ONLINEAUCTIONDB.CATEGORY values(next value for OnlineAuctionDB.category_sequence,'Art', 'Paintings');
+insert into ONLINEAUCTIONDB.CATEGORY values(next value for OnlineAuctionDB.category_sequence,'Antiques', 'Wooden Antiques'); 
