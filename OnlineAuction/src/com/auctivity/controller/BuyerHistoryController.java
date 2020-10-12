@@ -33,10 +33,11 @@ public class BuyerHistoryController extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet #doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		 
+		//Get the user session
 		HttpSession session = request.getSession();
 		User userInSession = (User)session.getAttribute("user");
 		if(userInSession==null)

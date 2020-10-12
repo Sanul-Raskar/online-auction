@@ -32,9 +32,14 @@ public class LoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		//Get the user session
 		HttpSession session = request.getSession();
 		User userInSession = (User)session.getAttribute("user");
+		
+		/**
+		 * If the user session type is 1 then it is Seller, if it is 0 then it is Buyer
+		 */
 		if(userInSession==null)
 			request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
 		else {
