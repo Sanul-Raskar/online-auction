@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.derby.tools.sysinfo;
 
 import com.auctivity.model.beans.Bid;
+import com.auctivity.model.beans.Category;
 import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.beans.User;
 import com.auctivity.model.beans.ProductForAuction.status;
@@ -65,6 +66,10 @@ public class DefaultController extends HttpServlet {
 					System.out.println(t);
 				}
 				session.setAttribute("products", test);
+				
+				List<Category> categories = productService.getCategoryList();
+				session.setAttribute("categories", categories);
+				
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
 			} else {
 				System.out.println("something error from loginservlet");
