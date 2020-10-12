@@ -1,3 +1,4 @@
+<%@page import="com.auctivity.model.beans.ProductForAuction.status"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
@@ -38,7 +39,10 @@
 			      <p><span style="font-weight:bold">Sold Price:</span>&nbsp;Rs. <%=product.getSoldPrice() %></p>
 			      <p><span style="font-weight:bold">Bid Start Time:</span> <%=product.getBidStartDate() %></p>
 			      <p><span style="font-weight:bold">Bid End Time:</span> <%=product.getBidEndDate() %></p>
-			      <p><span style="font-weight:bold">Status:</span><%=product.getBidStatus()%></p>
+			      <%int bidStat = product.getBidStatus();
+			      	status bidstatus = status.valueOf(bidStat);
+			      %>
+			      <p><span style="font-weight:bold">Status:</span><%=bidstatus%></p>
 			      <br/>
 				</div>
 			<%} %>
