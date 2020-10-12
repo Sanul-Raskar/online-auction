@@ -10,7 +10,7 @@ function createProductArray() {
 
     if (product.length != 0) {
       let data = {};
-      console.log(product);
+//      console.log(product);
       data.productId = productContainerElement[i].id;
       data.img = product.item(1);
       data.productName = product[3].innerText;
@@ -43,12 +43,13 @@ function createProductArray() {
       
       let form = product.item(21);
       if(form != null){
-    	 data.form = form; 
+    	 data.form = true; 
+    	 data.formHTML = form;
       }else{
-    	  data.form = "";
+    	  data.form = false;
       }
       
-      console.log(data);
+//      console.log(data);
       
       productArray.push(data);
     }
@@ -56,16 +57,20 @@ function createProductArray() {
 }
 
 createProductArray();
-console.log();
 
 
 function loadProducts() {
-  productsArr.forEach((product) => {
+	productArray.forEach((product) => {
+	let formElement="";	
+	if(product.form){
+		formElement = `\${product.formHTML.outerHTML}`;
+	}
+	
     let div = document.createElement("div");
     div.id = product.productId;
     div.className = "card";
     div.innerHTML = `
-      \${product.img}
+      \${product.img.outerHTML}
       <br/>
      <h2 id="productName\${product.productId}" class="text-center">\${product.productName}</h2>
      <p id="productCategory\${product.productId}"><span style="font-weight:bold">Category:</span> \${product.category}</p>
@@ -76,22 +81,10 @@ function loadProducts() {
 	 <p id="startTime\${product.productId}"><span style="font-weight:bold">Bid Start Time:</span> \${product.startTime}</p>
 	 <p id="endTime\${product.productId}"><span style="font-weight:bold">Bid End Time:</span> \${product.endTime}</p>
 	 <p id="bidStatus\${product.productId}"><span style="font-weight:bold">Status:</span>\${product.statusDes}</p>
-    
-    \${if(\${product.form} !== ""){
-    	<form id="bidForm\${product.productId}" method="post" action="/OnlineAuction/home" onsubmit="return validateBidValue(\${product.productId});">
-		      	<div class="bidForm">
-		      		<input id="bidValue\${product.productId}" class="" type="number" name="bidValue" required/>
-		      		<input hidden name="productId" value="\${product.productId}" type="text"/>
-		      		<input hidden name="status" value="\${product.status}"/>
-		      		<button id="bidButton\${product.productId}" class="bid-button" type="submit">Make Bid</button>
-		      	</div>
-		</form>
-    }}
-
+     \${formElement} 
       <br/>
   `;
     
-   
     document.getElementById("productsContainer").appendChild(div);
   });
 }
@@ -114,7 +107,7 @@ function sortProducts() {
 
   switch (sortType) {
     case "name":
-      productsArr.sort(function (product1, product2) {
+    	productArray.sort(function (product1, product2) {
         // Use toUpperCase() to ignore character casing
         const p1 = product1.productName.toUpperCase();
         const p2 = product2.productName.toUpperCase();
@@ -138,7 +131,7 @@ function sortProducts() {
       break;
 
     case "category":
-      productsArr.sort(function (product1, product2) {
+    	productArray.sort(function (product1, product2) {
         // Use toUpperCase() to ignore character casing
         const p1 = product1.category.toUpperCase();
         const p2 = product2.category.toUpperCase();
@@ -160,7 +153,7 @@ function sortProducts() {
       break;
 
     case "bidEndDate":
-      productsArr.sort(function (product1, product2) {
+    	productArray.sort(function (product1, product2) {
         // Use toUpperCase() to ignore character casing
         const p1 = product1.endTime.toUpperCase();
         const p2 = product2.endTime.toUpperCase();
