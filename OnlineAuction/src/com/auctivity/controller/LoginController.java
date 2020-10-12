@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
-
 import com.auctivity.exceptions.UserNotFoundException;
 import com.auctivity.model.beans.User;
 import com.auctivity.model.service.IUserService;
@@ -23,7 +21,6 @@ public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     IUserService userService = new UserServiceImpl();
     
-    static final Logger LOGGER = Logger.getLogger(LoginController.class);
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -59,8 +56,6 @@ public class LoginController extends HttpServlet {
 			}
 			else {
 				System.out.println("something error from loginservlet");
-				//logging wrong access
-				LOGGER.info("Unregistered user tried to use services");
 			}
 		}
 
@@ -98,8 +93,6 @@ public class LoginController extends HttpServlet {
 					else {
 						response.setStatus(999);
 						System.out.println("something error from loginservlet");
-						//logging wrong access
-						LOGGER.info("Unregistered user tried to use services");
 					}
 				}
 			} catch (UserNotFoundException e) {
