@@ -47,10 +47,13 @@ public class AddProductController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		//User session starts
 		HttpSession session = request.getSession();
 		User userInSession = (User) session.getAttribute("user");
-
+		/**
+		 * If user session type is 1 then it is Seller, if it is 0 then it is Buyer.
+		 */
 		if (userInSession == null) {
 			request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
 		} else {
@@ -80,7 +83,8 @@ public class AddProductController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		//User Session Starts
 		HttpSession session = request.getSession();
 		User userInSession = (User) session.getAttribute("user");
 
@@ -88,6 +92,9 @@ public class AddProductController extends HttpServlet {
 			request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
 		} else {
 
+			/*
+			 * Adding an image to save locally
+			 */
 			if (userInSession.getUserType() == 1) {
 				String BASE_DIR = "C:\\Users\\jayes\\Documents\\onlineauction\\Images\\";
 				String DEFAULT_FILENAME = ".\\resources\\img\\logo.jpg";
@@ -134,7 +141,7 @@ public class AddProductController extends HttpServlet {
 						data.put("Image", DEFAULT_FILENAME);
 					}
 				}
-
+				//Creating an object
 				Product product = new Product(data.get("productName"), data.get("category"),
 						data.get("productDescription"), Double.parseDouble(data.get("actualPrice")),
 						Integer.parseInt(data.get("quantity")), data.get("Image"), userInSession.getUserid());

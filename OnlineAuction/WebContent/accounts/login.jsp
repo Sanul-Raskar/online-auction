@@ -20,6 +20,8 @@
       <h3>Login using your Auctivity account</h3>
     </div>
 
+
+	<!-- Login Form -->
   	<div class="wrapper">
   	<div class="login-container">
     <form id="loginForm" method="post">

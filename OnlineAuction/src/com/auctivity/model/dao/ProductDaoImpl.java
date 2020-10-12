@@ -1,6 +1,7 @@
 package com.auctivity.model.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,9 +21,16 @@ import com.auctivity.model.beans.ProductForAuction;
 import com.auctivity.model.beans.ProductForAuction.status;
 import com.auctivity.utility.DBConnection;
 
+/*
+ * Product DAO Implementation from Product Interface DAO
+ */
 public class ProductDaoImpl implements IProductDao {
 	static Connection conn = null;
 
+	
+	/*
+	 * Function to get the Bid Products from the database
+	 */
 	@Override
 	public List<ProductForAuction> getBidProducts() {
 		List<ProductForAuction> prodList = new ArrayList<ProductForAuction>();
@@ -30,6 +38,7 @@ public class ProductDaoImpl implements IProductDao {
 		ResultSet rs = null;
 		Product pa = new Product();
 		try {
+			//Query to get the required data from the database
 			String getQuery = "Select OnlineAuctionDB.Product.ProductID,OnlineAuctionDB.Productbid.MinBidValue,OnlineAuctionDB.ProductBid.BidStartDate,OnlineAuctionDB.ProductBid.BidEndDate,OnlineAuctionDB.Product.ProductName,OnlineAuctionDB.Product.ProductCategory,OnlineAuctionDB.Product.ProductDesc,OnlineAuctionDB.Product.ActualPrice,OnlineAuctionDB.Product.Quantity,OnlineAuctionDB.Product.Image, OnlineAuctionDB.ProductBid.Status From OnlineAuctionDB.ProductBid inner join OnlineAuctionDB.Product on OnlineAuctionDB.ProductBid.ProductID=OnlineAuctionDB.Product.ProductID";
 			PreparedStatement ps = conn.prepareStatement(getQuery);
 			rs = ps.executeQuery();
@@ -59,13 +68,17 @@ public class ProductDaoImpl implements IProductDao {
 						sPrice, cond));
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			 
 			e.printStackTrace();
 		}
 
 		return prodList;
 	}
 
+	
+	/*
+	 * Function for retrieving the Product History from the database
+	 */
 	@Override
 	public List<ProductForAuction> getProductHistory(int user_id) {
 		List<ProductForAuction> prodList = new ArrayList<ProductForAuction>();
@@ -73,6 +86,7 @@ public class ProductDaoImpl implements IProductDao {
 		ResultSet rs = null;
 		Product pa = new Product();
 		try {
+			//Query to get the required data from the database
 			String getQuery = "select prod_bid.BidEndDate,prod.ProductName,prod.Image,prod_bid.SoldPrice, prod_bid.Status From OnlineAuctionDB.ProductBid prod_bid inner join OnlineAuctionDB.Product prod on prod_bid.ProductID=prod.ProductID where prod_bid.BuyerID=?";
 			PreparedStatement ps = conn.prepareStatement(getQuery);
 			ps.setInt(1, user_id);
@@ -94,13 +108,16 @@ public class ProductDaoImpl implements IProductDao {
 
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
+			 
 			e.printStackTrace();
 		}
 
 		return prodList;
 	}
 
+	/*
+	 * Function to retrieve the Active Products from the database
+	 */
 	@Override
 	public List<ProductForAuction> getSellerProducts(int user_id) {
 		// TODO Auto-generated method stub
@@ -108,6 +125,7 @@ public class ProductDaoImpl implements IProductDao {
 		conn = DBConnection.getConnectionId();
 		ResultSet rs = null;
 		Product pa = new Product();
+		//Query to get the required data from the database
 		String getQuery = "select * From OnlineAuctionDB.ProductBid prod_bid inner join OnlineAuctionDB.Product prod on prod_bid.ProductID=prod.ProductID where prod_bid.BuyerID=?";
 		PreparedStatement ps;
 		try {
@@ -136,7 +154,10 @@ public class ProductDaoImpl implements IProductDao {
 
 		return prodList;
 	}
-
+	
+	/*
+	 * Function to insert/add the products into the database
+	 */
 	public int addProducts(Product product) {
 		String insert = "insert into OnlineAuctionDB.Product (ProductID,ProductName,ProductCategory,ProductDesc,ActualPrice,Quantity,Image,SellerID) values(next value for OnlineAuctionDB.product_sequence,?,?,?,?,?,?,?)";
 		int status = 0;
@@ -170,9 +191,12 @@ public class ProductDaoImpl implements IProductDao {
 		return status;
 
 	}
-
+	
+	
+	/*
+	 * Function to get the List of Categories from the database
+	 */
 	@Override
-
 	public List<Category> getCategoryList() {
 		// TODO Auto-generated method stub
 		List<Category> cateList = new ArrayList<Category>();
@@ -249,7 +273,9 @@ public class ProductDaoImpl implements IProductDao {
 		}
 
 	}
-
+/*
+ * Function that will place the bid on a particular product
+ */
 	@Override
 	public int placeBid(Bid bid) {
 		int status = 0;
