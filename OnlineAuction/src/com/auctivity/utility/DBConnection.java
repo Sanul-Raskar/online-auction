@@ -17,7 +17,7 @@ public class DBConnection {
 			
 			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 
-			con=DriverManager.getConnection("jdbc:derby:/Users/sanul/MyDB","admin","derby");
+			con=DriverManager.getConnection("jdbc:derby:C:\\Users\\hp\\MyDB;create=true","admin","derby");
 	 
 			
 		} catch (ClassNotFoundException e) {

@@ -36,13 +36,13 @@ nav {
 
 /* Style the footer */
 #footer {
-	background-color: #DB0011;
+	background-color: #4d4d4d;
 	text-align: center;
 	margin: 0px auto;
 	width: 100%;
-	height: 30px;
+	height: 46px;
 	float: center;
-	font-size: 12px;
+	font-size: 18px;
 	color: black;
 	padding-right: 10px;
 	padding-top: 5px;

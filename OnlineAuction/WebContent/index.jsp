@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.auctivity.model.beans.Category"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList" %>
 <%@page import="com.auctivity.model.beans.ProductForAuction"%>
@@ -15,6 +16,8 @@
 	<br /><br/>
 	
 	<% List<ProductForAuction> products = (ArrayList<ProductForAuction>)session.getAttribute("products");
+	 List<Category> categories = (ArrayList<Category>)session.getAttribute("categories");
+
 	boolean showBidInput = false;	
 	User user = (User)session.getAttribute("user");
 		if(user != null){
@@ -26,6 +29,7 @@
 		<div style="margin:6px;">
 			<label for="sortProducts">Sort products by:</label>
 			<select class="inputField" name="sortProduct" id="sortProducts">
+				<option value="" disabled">Select option to sort</option>
 				<option value="name">Name</option>
 				<option value="category">Category</option>
 				<option value="bidEndDate">Bid End Date</option>
@@ -34,9 +38,10 @@
 		<div style="margin:6px;">
 			<label for="filterCategory">Filter products by category:</label>
 			<select class="inputField" name="filterCategory" id="filterCategory">
-				<option value="name">Category1</option>
-				<option value="category">Category2</option>
-				<option value="bidEndDate">Category3</option>
+			<option value="" disabled">Select Category</option>
+			<%for(Category category: categories){ %>
+				<option value="<%=category.getCategoryName()%>"><%=category.getCategoryName()%></option>
+			<%} %>
 			</select>
 		</div>
 	</div>

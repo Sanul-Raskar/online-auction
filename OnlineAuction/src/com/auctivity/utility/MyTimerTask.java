@@ -27,6 +27,6 @@ public class MyTimerTask extends TimerTask{
 		      
 		      //Timer for scheduling class at specific interval
 		      Timer myTimer = new Timer();
-		      myTimer.schedule(myTask, 0, 30000);
+		      myTimer.schedule(myTask, 0, 60000);
 		}
 }

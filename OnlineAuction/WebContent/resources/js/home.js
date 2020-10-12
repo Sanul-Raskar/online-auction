@@ -59,8 +59,8 @@ function createProductArray() {
 createProductArray();
 
 
-function loadProducts() {
-	productArray.forEach((product) => {
+function loadProducts(productArr) {
+	productArr.forEach((product) => {
 	let formElement="";	
 	if(product.form){
 		formElement = `\${product.formHTML.outerHTML}`;
@@ -96,9 +96,9 @@ function loadProducts() {
 
 function filterByCategory(category) {
     let result = productArray.filter((el) => el.category == category);
+    console.log(result);
     return result;
 }
-
 
 
 function sortProducts() {
@@ -127,7 +127,7 @@ function sortProducts() {
       }
 
       // append nodes from sorted array to productContainer
-      loadProducts();
+      loadProducts(productArray);
       break;
 
     case "category":
@@ -149,7 +149,7 @@ function sortProducts() {
         domNodes.firstChild.remove();
       }
 
-      loadProducts();
+      loadProducts(productArray);
       break;
 
     case "bidEndDate":
@@ -166,14 +166,35 @@ function sortProducts() {
           return 0;
         }
       });
+    	
+	  while (domNodes.firstChild) {
+        domNodes.firstChild.remove();
+      }
+      loadProducts(productArray);
       break;
   }
+}
+
+function filterProducts(){
+	let filterCategory = document.getElementById("filterCategory").value;
+	let domNodes = document.getElementById("productsContainer");
+
+	let result = filterByCategory(filterCategory);
+	
+	while (domNodes.firstChild) {
+        domNodes.firstChild.remove();
+      }
+	loadProducts(result);
 }
 
 document
   .getElementById("sortProducts")
   .addEventListener("change", sortProducts);
 
+
+document
+.getElementById("filterCategory")
+.addEventListener("change", filterProducts);
 
 function validateBidValue(productId){
 	console.log("hello");
