@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun Oct 11 21:10:14 IST 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0175-1851-c794-000006e16468 
+on database directory C:\Users\admin\MyDB with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/admin/Downloads/db-derby-10.13.1.1-lib/db-derby-10.13.1.1-lib/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_261-b12
+user.dir=C:\Users\admin\Documents\GitHub\online-auction\OnlineAuction
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

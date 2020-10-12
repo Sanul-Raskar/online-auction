@@ -1,0 +1,21 @@
+.details {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 300px;
+	margin: auto;
+	text-align: center;
+}
+
+p {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 2px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+.detail-box {
+	background-color: #f6f6f6;
+	padding: 20px;
+}

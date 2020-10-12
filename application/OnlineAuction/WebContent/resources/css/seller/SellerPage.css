@@ -1,0 +1,97 @@
+/* Add some padding inside the card container */
+.container {
+	padding: 50px;
+	float: left;
+}
+
+.wrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.form-container {
+	width: 40%;
+	padding: 40px;
+	border-radius: 12px;
+	background-color: #f6f6f6;
+}
+
+@media ( max-width : 555px) {
+	.form-container {
+		padding: 18px;
+		width: 86vw;
+	}
+}
+
+.signup-btn {
+	font-size: 18px;
+	background-color: #DB0011;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	cursor: pointer;
+	border-radius: 6px;
+	width: 92%;
+	text-align: center;
+	opacity: 1;
+	border: none;
+}
+
+.schedule-form {
+	/* width: 50%; */
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+.bid-value, .start-date, .end-date, .product-dropdown {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+input[type=submit] {
+	background-color: BLACK;
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 5px;
+	color: white;
+}
+
+.back {
+	background-color: #DB0011;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 5px;
+	color: white;
+}
+
+.btn {
+	font-size: 18px;
+	background-color : #DB0011;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	border-radius: 6px;
+	width: 100%;
+	background-color: #DB0011;
+}

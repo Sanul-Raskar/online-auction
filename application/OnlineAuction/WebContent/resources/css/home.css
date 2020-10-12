@@ -1,0 +1,94 @@
+/*Home page flexbox*/
+.container {
+	display: block;
+	width: 100vw;
+	margin: 0 auto;
+	padding: 60px;
+}
+
+.grid-row {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+.card {
+	width: 360px;
+	height: 510px;
+	margin: 14px;
+	padding-left: 18px;
+	padding-right: 18px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	border: 1.6px solid #bfbfbf;
+	box-shadow: 2px 4px rgba(179, 179, 179, 0.6);
+	border-radius: 10px;
+	overflow-y:scroll; 
+}
+
+.productImg {
+	display: block;
+	width: 160px;
+	height: auto;
+	max-height: 160px;
+	background-size: cover;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.grid-item {
+	width: 360px;
+	height: 510px;
+	flex-basis: 40%;
+	-ms-flex: auto;
+	position: relative;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.customizeWrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.inputField {
+	width: 100%;
+	padding: 6px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 5px;
+	display: inline-block;
+}
+
+@media only screen and (max-width: 575) {
+	.grid-item {
+		flex-basis: 100%;
+	}
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+	.grid-item {
+		flex-basis: 100%;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.grid-item {
+		flex-basis: 50%;
+	}
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.grid-item {
+		flex-basis: 33.3%;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.grid-item {
+		flex-basis: 33.3%;
+	}
+}
