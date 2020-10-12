@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
@@ -32,6 +33,7 @@ import com.auctivity.utility.ObjectFactory;
 public class AddProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	static final Logger LOGGER = Logger.getLogger(AddProductController.class);
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -64,6 +66,8 @@ public class AddProductController extends HttpServlet {
 				request.getRequestDispatcher("/seller/addProduct.jsp").forward(request, response);
 			} else {
 				request.getRequestDispatcher("/error/forbiddenAccessError.jsp").forward(request, response);
+				//logging forbidden access
+				LOGGER.info("User tried to access forbidden url");
 			}
 
 		}
@@ -85,8 +89,8 @@ public class AddProductController extends HttpServlet {
 		} else {
 
 			if (userInSession.getUserType() == 1) {
-				String BASE_DIR = "C:\\Users\\hp\\Documents\\onlineauction\\Images\\";
-				String DEFAULT_FILENAME = "./resources/img/logo.jpg";
+				String BASE_DIR = "C:\\Users\\jayes\\Documents\\onlineauction\\Images\\";
+				String DEFAULT_FILENAME = ".\\resources\\img\\logo.jpg";
 				boolean filePresent = false;
 				String currentTime = Long.toString((int) (new Date().getTime() / 10000));
 				HashMap<String, String> data = new HashMap<String, String>();
@@ -147,6 +151,8 @@ public class AddProductController extends HttpServlet {
 				}
 			} else {
 				request.getRequestDispatcher("/error/forbiddenAccessError.jsp").forward(request, response);
+				//logging forbidden access
+				LOGGER.info("User tried to access forbidden url");
 			}
 		}
 

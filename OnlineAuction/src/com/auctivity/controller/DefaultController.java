@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.derby.tools.sysinfo;
+import org.apache.log4j.Logger;
 
 import com.auctivity.model.beans.Bid;
 import com.auctivity.model.beans.Category;
@@ -28,6 +29,7 @@ import com.auctivity.utility.ObjectFactory;
 public class DefaultController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	static final Logger LOGGER = Logger.getLogger(DefaultController.class);
 	//Initialising scheduler for start schedule
 	@Override
 	public void init() throws ServletException {
@@ -83,6 +85,8 @@ public class DefaultController extends HttpServlet {
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
 			} else {
 				System.out.println("something error from loginservlet");
+				//logging wrong access
+				LOGGER.info("Unregistered user tried to use services");
 			}
 		}
 
