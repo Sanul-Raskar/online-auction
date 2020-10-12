@@ -35,24 +35,24 @@ function validateAddProductForm(event) {
 		validData = false;
 		document.getElementById("quantityError").innerHTML = "Please enter product quantity";
 	}
-	
-	formData.append("category",addProductForm["category"].value);
-	
-	//formData.append("file",document.getElementById("file").files[0]);
-	
+
+	formData.append("category", addProductForm["category"].value);
+
+	// formData.append("file",document.getElementById("file").files[0]);
+
 	let file = document.getElementById("file");
-	formData.append("file",file.files[0]);
-	
-	//console.log(document.getElementById("img").value.replace("C:\\fakepath\\",""));
-	//console.log(document.getElementById("img").files[0]);
+	formData.append("file", file.files[0]);
 
+	// console.log(document.getElementById("img").value.replace("C:\\fakepath\\",""));
+	// console.log(document.getElementById("img").files[0]);
 
-//	if (validateUploadImage()) {
-//		formData.append("image", addProductForm["img"].files[0]);
-//	} else {
-//		validData = false;
-//		document.getElementById("imageError").innerHTML = "Accepted image formats are jpg, jpeg, png and gif";
-//	}
+	// if (validateUploadImage()) {
+	// formData.append("image", addProductForm["img"].files[0]);
+	// } else {
+	// validData = false;
+	// document.getElementById("imageError").innerHTML = "Accepted image formats
+	// are jpg, jpeg, png and gif";
+	// }
 
 	if (validData) {
 		/* Send data variable to server using XMLHttpRequest() */
@@ -62,7 +62,10 @@ function validateAddProductForm(event) {
 		// Call a function when the state changes.
 		http.onreadystatechange = function() {
 			if (http.readyState == 4 && http.status == 200) {
-				alert(http.responseText);
+				alert("Product added successfully!");
+			}
+			if (http.readyState == 4 && http.status == 501) {
+				alert("Sorry, the product was not added. Please try again later.");
 			}
 		}
 		console.log(formData);
