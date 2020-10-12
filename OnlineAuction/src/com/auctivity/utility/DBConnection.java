@@ -1,5 +1,6 @@
 package com.auctivity.utility;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class DBConnection {
 			
 			Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
 
-			con=DriverManager.getConnection("jdbc:derby:/Users/sanul/MyDB","admin","derby");
+			con=DriverManager.getConnection("jdbc:derby:C:\\Users\\jayes\\MyDB;create=true","admin","derby");
 	 
 			
 		} catch (ClassNotFoundException e) {

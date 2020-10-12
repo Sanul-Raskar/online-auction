@@ -95,7 +95,7 @@ public class ScheduleAuctionController extends HttpServlet {
 			throws ServletException, IOException {
 		//doGet(request, response);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
-		String products=request.getParameter("products");
+		//String products=request.getParameter("products");
 		int productId=Integer.parseInt(request.getParameter("products"));
 		double minimumBidValue=Double.parseDouble(request.getParameter("minimumBidValue"));
 		
@@ -103,7 +103,6 @@ public class ScheduleAuctionController extends HttpServlet {
 		LocalDate sDate = LocalDate.parse(request.getParameter("startDate"));
 		LocalDate eDate = LocalDate.parse(request.getParameter("endDate"));
 	
-		System.out.println(products);
 		System.out.println(productId);
 		System.out.println(minimumBidValue);
 //		System.out.println(request.getParameter("startDate"));
@@ -117,7 +116,6 @@ public class ScheduleAuctionController extends HttpServlet {
 		IProductSchedulerService productSchedule = objectFactory.createProductSchedulerServiceImplObj(); 
 	
 		ProductForAuction productAuction=new ProductForAuction();
-		productAuction.setProductName(products);
 		productAuction.setProductId(productId);
 		productAuction.setMinBidValue(minimumBidValue);
 		productAuction.setBidStartDate(sDate.now());
