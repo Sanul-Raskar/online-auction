@@ -120,6 +120,7 @@ public class ProductSchedulerDaoImpl implements IProductSchedulerDao {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("Product id NOT EXIST:"+productId);
 		return false;
 	}
 }

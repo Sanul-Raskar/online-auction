@@ -53,10 +53,20 @@ public class DefaultController extends HttpServlet {
 		if (userInSession == null) {
 			// response.sendRedirect("login");
 			System.out.println("session null");
-			request.getRequestDispatcher("/accounts/login.jsp").forward(request, response);
+			ObjectFactory objectFactory = new ObjectFactory();
+			IProductService productService = objectFactory.createProductServiceImplObj();
+			List<ProductForAuction> test = productService.getBidProducts();
+			for (ProductForAuction t : test) {
+				System.out.println(t);
+			}
+			session.setAttribute("products", test);
+			
+			List<Category> categories = productService.getCategoryList();
+			session.setAttribute("categories", categories);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		} else {
 			if (userInSession.getUserType() == 1) {
-				// request.getRequestDispatcher("sellerhistory").forward(request, response);
+				request.getRequestDispatcher("sellerhistory").forward(request, response);
 			} else if (userInSession.getUserType() == 0) {
 				System.out.println("In buyer:" + (User) session.getAttribute("user"));
 				ObjectFactory objectFactory = new ObjectFactory();

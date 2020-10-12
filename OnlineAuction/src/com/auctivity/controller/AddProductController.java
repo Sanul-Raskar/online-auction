@@ -85,7 +85,7 @@ public class AddProductController extends HttpServlet {
 		} else {
 
 			if (userInSession.getUserType() == 1) {
-				String BASE_DIR = "/Users/sanul/Documents/uploads/";
+				String BASE_DIR = "C:\\Users\\hp\\Documents\\onlineauction\\Images\\";
 				String DEFAULT_FILENAME = "./resources/img/logo.jpg";
 				boolean filePresent = false;
 				String currentTime = Long.toString((int) (new Date().getTime() / 10000));
