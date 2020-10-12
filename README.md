@@ -54,12 +54,8 @@ http://localhost:8080/media/myImage.jpg
 │   ├── META-INF
 │   │   └── MANIFEST.MF
 │   ├── WEB-INF
-│   │   ├── lib
-│   │   │   └── jstl-1.2.jar
 │   │   ├── properties
-│   │   │   ├── connection.properties
-│   │   │   ├── queries.properties
-│   │   │   └── status.properties
+│   │   │   └── log4j.properties
 │   │   └── web.xml
 │   ├── accounts
 │   │   ├── login.jsp
@@ -79,10 +75,10 @@ http://localhost:8080/media/myImage.jpg
 │   │   ├── css
 │   │   │   ├── accounts
 │   │   │   │   ├── login.css
+│   │   │   │   ├── profile.css
 │   │   │   │   └── registration.css
 │   │   │   ├── buyer
-│   │   │   │   ├── buyerPagePurchasedProducts1.css
-│   │   │   │   └── buyerProfile.css
+│   │   │   │   └── buyerPagePurchasedProducts1.css
 │   │   │   ├── home.css
 │   │   │   ├── seller
 │   │   │   │   ├── SellerNavbar.css
@@ -99,13 +95,15 @@ http://localhost:8080/media/myImage.jpg
 │   │       ├── home.js
 │   │       ├── index.js
 │   │       ├── seller
-│   │       │   └── addProducts.js
+│   │       │   ├── addProducts.js
+│   │       │   └── scheduleAuction.js
 │   │       └── utility
 │   │           └── inputValidation.js
 │   └── seller
 │       ├── addProduct.jsp
 │       ├── scheduleAuction.jsp
 │       └── sellerHistory.jsp
+├── derby.log
 └── src
     └── com
         └── auctivity
@@ -147,9 +145,11 @@ http://localhost:8080/media/myImage.jpg
             │       ├── ProductServiceImpl.java
             │       └── UserServiceImpl.java
             └── utility
+                ├── ContextListener.java
                 ├── DBConnection.java
                 ├── InputValidation.java
-                ├── Logger.java
+                ├── MyTimerTask.java
                 ├── ObjectFactory.java
                 └── PasswordEncrypter.java
+
 ```
