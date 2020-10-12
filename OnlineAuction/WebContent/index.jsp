@@ -37,6 +37,7 @@
 		<div style="margin:6px;">
 			<label for="filterCategory">Filter products by category:</label>
 			<select class="inputField" name="filterCategory" id="filterCategory">
+			<option value="" hidden disabled">Select Category</option>
 			<%for(Category category: categories){ %>
 				<option value="<%=category.getCategoryName()%>"><%=category.getCategoryName()%></option>
 			<%} %>
