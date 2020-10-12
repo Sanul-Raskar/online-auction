@@ -11,33 +11,52 @@ function createProductArray() {
     if (product.length != 0) {
       let data = {};
       console.log(product);
-      data.productId = product.id;
+      data.productId = productContainerElement[i].id;
+      data.img = product.item(1);
       data.productName = product[3].innerText;
-      data.category = product.item(5).innerText.replace("Category:", "");
-      data.description = product.item(7).innerText.replace("Description:","");
-      data.quantity = product.item(9).innerText("Quantity:","");
-      data.actualPrice = product
-        .item(11)
-        .innerText.replace("Actual Price:", "");
-      data.minBidAmount = product
-        .item(13)
-        .innerText.replace("Min Bid Amount:", "");
+      data.category = product.item(5).innerText.replace("Category: ", "");
+      data.description = product.item(7).innerText.replace("Description: ","");
+      data.quantity = product.item(9).innerText.replace("Quantity: ","");
+   
+      let actualPrice = product.item(11).innerText;
+      let actualPriceNumber = actualPrice.match(/(\d+)/);
+      
+      data.actualPrice = actualPriceNumber[0];
+
+      let minBidAmount = product.item(13).innerText;
+      let minBidNumber = minBidAmount.match(/(\d+)/);
+      
+      data.minBidAmount = minBidNumber[0];
+      
       data.startTime = product
         .item(15)
-        .innerText.replace("Bit Start Time:", "");
+        .innerText.replace("Bid Start Time:", "");
       data.endTime = product
         .item(17)
-        .innerText.replace("Bit End Time:", "");
+        .innerText.replace("Bid End Time:", "");
+      
+      let status = product.item(19).innerText.replace("Status:","");
+      if(status === "OPEN"){
+    	  data.status = 1;
+    	  data.statusDes = "OPEN";
+      }
+      
+      let form = product.item(21);
+      if(form != null){
+    	 data.form = form; 
+      }else{
+    	  data.form = "";
+      }
+      
       console.log(data);
       
-      data.form = "";
       productArray.push(data);
     }
   }
 }
 
 createProductArray();
-
+console.log();
 
 
 function loadProducts() {
@@ -46,14 +65,29 @@ function loadProducts() {
     div.id = product.productId;
     div.className = "card";
     div.innerHTML = `
-      <img src=\${product.productImg} class="productImg">
+      \${product.img}
       <br/>
-      <h2 class="text-center">\${product.productName}</h2>
-      <p><span style="font-weight:bold">Category:</span> \${product.category}</p>
-      <p><span style="font-weight:bold">Actual Price:</span>&nbsp;Rs. \${product.actualPrice}</p>
-      <p> <span style="font-weight:bold">Min Bid Amount:</span>&nbsp;Rs. \${product.minBidAmount}</p>
-      <p><span style="font-weight:bold">Bit Start Time:</span> \${product.startTime}</p>
-      <p><span style="font-weight:bold">Bit Start Time:</span> \${product.endTime}</p>
+     <h2 id="productName\${product.productId}" class="text-center">\${product.productName}</h2>
+     <p id="productCategory\${product.productId}"><span style="font-weight:bold">Category:</span> \${product.category}</p>
+     <p id="productDescription\${product.productId}"><span style="font-weight:bold;word-wrap: break-word;">Description:</span> \${product.description}</p>
+     <p id="productQuantity\${product.productId}"><span style="font-weight:bold">Quantity:</span> \${product.quantity}</p>
+	 <p id="productPrice\${product.productId}"><span style="font-weight:bold">Actual Price:</span>&nbsp;Rs. \${product.actualPrice}</p>
+	 <p id="minBidAmount\${product.productId}"><span style="font-weight:bold">Min Bid Amount:</span>&nbsp;Rs. \${product.minBidAmount}</p>
+	 <p id="startTime\${product.productId}"><span style="font-weight:bold">Bid Start Time:</span> \${product.startTime}</p>
+	 <p id="endTime\${product.productId}"><span style="font-weight:bold">Bid End Time:</span> \${product.endTime}</p>
+	 <p id="bidStatus\${product.productId}"><span style="font-weight:bold">Status:</span>\${product.statusDes}</p>
+    
+    \${if(\${product.form} !== ""){
+    	<form id="bidForm\${product.productId}" method="post" action="/OnlineAuction/home" onsubmit="return validateBidValue(\${product.productId});">
+		      	<div class="bidForm">
+		      		<input id="bidValue\${product.productId}" class="" type="number" name="bidValue" required/>
+		      		<input hidden name="productId" value="\${product.productId}" type="text"/>
+		      		<input hidden name="status" value="\${product.status}"/>
+		      		<button id="bidButton\${product.productId}" class="bid-button" type="submit">Make Bid</button>
+		      	</div>
+		</form>
+    }}
+
       <br/>
   `;
     

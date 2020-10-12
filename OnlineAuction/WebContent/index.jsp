@@ -75,6 +75,17 @@
 		      	</div>
 		      	</form>
 		      <%} %> --%>
+		      
+		      	<p id="bidStatus<%=product.getProductId()%>"><span style="font-weight:bold">Status:</span>OPEN</p>
+		      	<form id="bidForm<%=product.getProductId()%>" method="post" action="/OnlineAuction/home" onsubmit="return validateBidValue(<%=product.getProductId()%>);">
+		      	<div class="bidForm">
+		      		<input id="bidValue<%=product.getProductId()%>" class="" type="number" name="bidValue" required/>
+		      		<input hidden name="productId" value="<%=product.getProductId()%>" type="text"/>
+		      		<input hidden name="status" value="<%=product.getBidStatus() %>"/>
+		      		<button id="bidButton<%=product.getProductId()%>" class="bid-button" type="submit">Make Bid</button>
+		      	</div>
+		      	</form>
+		      
 		      <br/>
 			</div>
 		<%} %>
