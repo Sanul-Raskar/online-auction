@@ -63,14 +63,16 @@ $ cd OnlineAuction/src/com/auctivity/controller
 $ vim AddProductController.java
 ```
 
-Add ```BASE_DIR``` path in doPost method
+Add ```BASE_DIR``` as the image upload folder path in doPost method
 ```java
 String BASE_DIR = "/Users/sanul/Documents/";
 ```
 <br/>
+
 ## Create tables in database
 Run the ```/OnlineAuction/AuctivitySchema.sql```
 <br/>
+
 ## Layered Architecture
 
 ```bash
