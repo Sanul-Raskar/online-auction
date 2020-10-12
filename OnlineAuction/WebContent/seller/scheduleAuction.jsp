@@ -56,8 +56,7 @@
 					</div>
 
 					<div>
-						<button class="submit" type="submit">Schedule Auction</button>
-						<input style="margin-left: 2%" type="reset" value="Reset" />
+						<button class="submit btn" type="submit">Schedule Auction</button>
 					</div>
 
 				</form>
