@@ -238,3 +238,43 @@ function validateUploadImage() {
 		return true;
 	}
 }
+
+/*
+ * validateMinimumBidValue function is check if minimumBidValue is not null or empty. If minimumBidValue
+ * is valid then return true else false
+ */
+function validateMinimumBidValue(minimumBidValue) 
+{
+	/*
+	 * Regular expression pattern to check if minimumBidValue is digit
+	 */
+	let pattern = /^[0-9]*$/;
+	if (minimumBidValue !== null && minimumBidValue !== "" && minimumBidValue !== " "&& pattern.test(minimumBidValue)) 
+	{
+		return true;
+	} 
+	else 
+	{
+		return false;
+	}
+}
+
+
+/*
+ * validateDate function is check if start date is not null or empty and
+ * test with given regex pattern. If start & end Date are valid then return true else
+ * false
+ */
+function validateDate(scheduleDate) 
+{
+	/* Regular expression pattern to check if birth date is in format yyyy/mm/dd */
+	let pattern = /^[0-9]{4}\-(1[0-2]|0[1-9])\-(3[01]|[12][0-9]|0[1-9])$/;
+	if (scheduleDate !== null && scheduleDate !== "" && scheduleDate !== " " && pattern.test(scheduleDate)) 
+	{
+		return true;
+	} 
+	else 
+	{
+		return false;
+	}
+}

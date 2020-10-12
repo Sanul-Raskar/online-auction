@@ -4,8 +4,8 @@
 
 <% 
 		
-		System.out.println("IN NAVBAR isUserAuthenticated:"+session.getAttribute("isUserAuthenticated"));
-		
+/* 		System.out.println("IN NAVBAR isUserAuthenticated:"+session.getAttribute("isUserAuthenticated"));
+ */		
 		boolean isUserAuthenticated = session.getAttribute("isUserAuthenticated")!=null?true:false;
 		int userType=1;
 		if(session.getAttribute("userType")!=null){
@@ -51,8 +51,8 @@
 	%>
 	<div id="main">
 	<div style="float:right">
-	<a href="/OnlineAuction/login" class="navbarButton">Login</a>
-	<a href="/OnlineAuction/register" class="navbarButton">Sign Up</a>
+	<a href="/OnlineAuction/login" class="navbar-button">Login</a>
+	<a href="/OnlineAuction/register" class="navbar-button">Sign Up</a>
 	</div>
 	</div>
 	<%

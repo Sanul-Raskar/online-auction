@@ -1,11 +1,11 @@
 .details {
-	width: 400px;
-	height: 800px;
-	padding-left: 550px;
-	padding-top: 100px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 300px;
+	margin: auto;
+	text-align: center;
 }
 
-input[type=text] {
+p {
 	width: 100%;
 	padding: 12px 20px;
 	margin: 2px 0;

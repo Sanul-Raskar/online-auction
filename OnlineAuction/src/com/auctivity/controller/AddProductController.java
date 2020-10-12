@@ -12,13 +12,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletRequestContext;
 
+import com.auctivity.model.beans.Category;
 import com.auctivity.model.beans.Product;
+import com.auctivity.model.beans.User;
+import com.auctivity.model.service.IProductService;
+import com.auctivity.utility.ObjectFactory;
 
 /**
  * Servlet implementation class AddProductController
@@ -41,7 +46,14 @@ public class AddProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		request.getRequestDispatcher("/seller/addProduct.jsp").include(request, response);
+		ObjectFactory objectFactory = new ObjectFactory();
+		IProductService iProductService = objectFactory.createProductServiceImplObj();
+		List<Category> catList = iProductService.getCategoryList();
+		request.setAttribute("categoryList", catList);
+		for(Category category : catList ) {
+			System.out.println(category);
+		}
+		request.getRequestDispatcher("/seller/addProduct.jsp").forward(request, response);
 	}
 
 	/**
@@ -51,7 +63,10 @@ public class AddProductController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String BASE_DIR = "C:\\Users\\jayes\\Documents\\onlineauction\\Images\\";
+
+		String BASE_DIR = "/Users/sanul/Documents/uploads/";
+		String DEFAULT_FILENAME = "./resources/img/logo.jpg";
+		boolean filePresent = false;
 		String currentTime = Long.toString((int) (new Date().getTime() / 10000));
 		HashMap<String, String> data = new HashMap<String, String>();
 
@@ -65,6 +80,8 @@ public class AddProductController extends HttpServlet {
 					if (!item.isFormField()) {
 						// File Input
 						String fileName = new File(item.getName()).getName();
+						System.out.println("Filename :" + fileName);
+						fileName = fileName.replaceAll("\\s+", "");
 						fileName = currentTime + "-" + fileName;
 						String filePath = BASE_DIR + fileName;
 						File storeFile = new File(filePath);
@@ -77,6 +94,7 @@ public class AddProductController extends HttpServlet {
 							e.printStackTrace();
 						}
 
+						filePresent = true;
 					} else {
 						// Other than file form elements
 						String fieldName = item.getFieldName();
@@ -86,9 +104,17 @@ public class AddProductController extends HttpServlet {
 					}
 				}
 			}
+
+			if (!filePresent) {
+				data.put("Image", DEFAULT_FILENAME);
+			}
 		}
 
-		Product product = new Product(201, data.get("productName"), "Electronics", data.get("productDescription"),
+		
+		HttpSession session = request.getSession();
+		User userInSession = (User)session.getAttribute("user");
+		
+		Product product = new Product(data.get("productName"), data.get("category"), data.get("productDescription"),
 				Double.parseDouble(data.get("actualPrice")), Integer.parseInt(data.get("quantity")), data.get("Image"),
 				100);
 		System.out.println(product);

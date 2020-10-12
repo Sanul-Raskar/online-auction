@@ -73,22 +73,25 @@ public class LoginController extends HttpServlet {
 					session.setAttribute("userType", temp.getUserType());
 					if(temp.getUserType() == 1) {
 						System.out.println("In seller:"+(User)session.getAttribute("user"));
-						response.sendRedirect("sellerhistory");
+						response.setStatus(200);
+						//response.sendRedirect("sellerhistory");
 						//request.getRequestDispatcher("sellerhistory").forward(request, response);
 					}
 					else if(temp.getUserType()==0) {
 						System.out.println("In buyer:"+(User)session.getAttribute("user"));
-
-						response.sendRedirect("home");
+						response.setStatus(200);
+						//response.sendRedirect("home");
 						//request.getRequestDispatcher("home").forward(request, response);
 						//response.sendRedirect(request.getContextPath() + "/buyer/BuyerProfile.jsp");
 					}
 					else {
+						response.setStatus(999);
 						System.out.println("something error from loginservlet");
 					}
 				}
 			} catch (UserNotFoundException e) {
 				//USER NOT FOUND
+				response.setStatus(999);
 				System.out.println("Exception::"+e.getMessage());
 				
 				//response.sendRedirect("home");

@@ -12,7 +12,15 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+<error-page>
+   <error-code>404</error-code>
+   <location>/error/pageNotFoundError.jsp</location>
+</error-page>
 
+<error-page>
+   <error-code>403</error-code>
+   <location>/error/forbiddenAccessError.jsp</location>
+</error-page>
 	<servlet>
 		<servlet-name>index</servlet-name>
 		<servlet-class>com.auctivity.controller.DefaultController</servlet-class>

@@ -5,12 +5,37 @@
 
 package com.auctivity.model.beans;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Bid {
 
 	public enum status {
-		OPEN, LOST, WON;
+		OPEN (0), LOST (1), WON (2);
+		
+		private final int statusCode;
+		private static Map map = new HashMap<>();
+		
+		status(int statusCode) {
+			this.statusCode = statusCode;
+		}
+		
+		static {
+	        for (status userstatus : status.values()) {
+	            map.put(userstatus.statusCode, userstatus);
+	        }
+	    }
+
+	    public static status valueOf(int userstatus) {
+	        return (status) map.get(userstatus);
+	    }
+
+	    public int getValue() {
+	        return statusCode;
+	    }
+
 	}
-	
+
 	private int bidID;
 	// @bidderID must be registered as @userId
 	private int bidderID;
@@ -18,6 +43,7 @@ public class Bid {
 	private int bidProductID;
 	private double bidValue;
 	private status bidStatus;
+
 	/**
 	 * @param bidID
 	 * @param bidderID
@@ -33,66 +59,81 @@ public class Bid {
 		this.bidValue = bidValue;
 		this.bidStatus = bidStatus;
 	}
+
+	public Bid() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * @return the bidID
 	 */
 	public int getBidID() {
 		return bidID;
 	}
+
 	/**
 	 * @param bidID the bidID to set
 	 */
 	public void setBidID(int bidID) {
 		this.bidID = bidID;
 	}
+
 	/**
 	 * @return the bidderID
 	 */
 	public int getBidderID() {
 		return bidderID;
 	}
+
 	/**
 	 * @param bidderID the bidderID to set
 	 */
 	public void setBidderID(int bidderID) {
 		this.bidderID = bidderID;
 	}
+
 	/**
 	 * @return the bidProductID
 	 */
 	public int getBidProductID() {
 		return bidProductID;
 	}
+
 	/**
 	 * @param bidProductID the bidProductID to set
 	 */
 	public void setBidProductID(int bidProductID) {
 		this.bidProductID = bidProductID;
 	}
+
 	/**
 	 * @return the bidValue
 	 */
 	public double getBidValue() {
 		return bidValue;
 	}
+
 	/**
 	 * @param bidValue the bidValue to set
 	 */
 	public void setBidValue(double bidValue) {
 		this.bidValue = bidValue;
 	}
+
 	/**
 	 * @return the bidStatus
 	 */
-	public status getBidStatus() {
-		return bidStatus;
+	public int getBidStatus() {
+		return bidStatus.statusCode;
 	}
+
 	/**
-	 * @param bidStatus the bidStatus to set
+	 * @param status the bidStatus to set
 	 */
-	public void setBidStatus(status bidStatus) {
-		this.bidStatus = bidStatus;
+	public void setBidStatus(int bidstatus) {
+		this.bidStatus = status.valueOf(bidstatus);
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -106,6 +147,7 @@ public class Bid {
 		result = prime * result + bidderID;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -127,11 +169,13 @@ public class Bid {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Bid [bidID=" + bidID + ", bidderID=" + bidderID + ", bidProductID=" + bidProductID + ", bidValue="
 				+ bidValue + ", bidStatus=" + bidStatus + "]";
 	}
+
 	
-	
+
 }

@@ -5,18 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login</title>
     <style><%@include file="../resources/css/style.css"%></style>
+    <style><%@include file="../resources/css/loader.css"%></style>
     <style><%@include file="../resources/css/accounts/login.css"%></style>
-    
+    <style>#footer{
+    position: fixed;
+    left:0;bottom: 0;
+    }</style>
+   
   </head>
   <body>
   	<%@ include file="../common/navbar.jsp"%>
-  <br/><br/><br/>
+ 
+  <div class="text-center">
+      <h1>User Login</h1>
+      <h3>Login using your Auctivity account</h3>
+    </div>
+<!--     
+<div class="loadingio-spinner-spinner-lu5nkl29vt"id="loader"style="display:none"><div class="ldio-3x124cjzrpb">
+<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+</div></div> -->
+
   	<div class="wrapper">
   	<div class="login-container">
-    <form id="loginForm" method="post" action="/OnlineAuction/login">
+    <form id="loginForm" method="post">
       <div class="login-box">
-        <h2>Login Page</h2>
-        <hr />
         <label style="font-weight:bold;">Username or Email:</label>
         <input
           class="inputField"
@@ -43,7 +55,7 @@
 		<p id="authenticationError" style="margin-top:4px;margin-botton:4px;color:red"></p>
         <input class="login-button" type="submit" name="submit" value="Login" />
 
-        <br /> <br/>
+        <br />
         <h4 class="text-center">
           Don't have a account?
           <span class="font-bold"

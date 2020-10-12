@@ -15,9 +15,10 @@
       <h3>Create your Auctivity account</h3>
     </div>
     <br />
-    <section>
+    <section class="wrapper">
       <div class="form-container">
         <form id="userRegisterForm" method="post">
+        <div class="register-box">
           <div class="form-group">
             <label for="name">Name<span style="color:red">*</span> </label><br />
             <input
@@ -141,6 +142,7 @@
           <div class="text-center">
             <button class="signup-btn">Sign Up</button>
           </div>
+         </div>
         </form>
         <br />
         <h4 class="text-center">
