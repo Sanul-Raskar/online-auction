@@ -14,6 +14,8 @@
 <title>Buyer History</title>
 <style><%@include file="../resources/css/style.css"%></style>
 <style><%@include file="../resources/css/seller/SellerPage.css"%></style>
+<style><%@include file="../resources/css/home.css"%></style>
+
 </head>
 <body>
 	<%@ include file="../common/navbar.jsp"%>
