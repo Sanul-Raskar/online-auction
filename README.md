@@ -42,9 +42,35 @@ http://localhost:8080/media/myImage.jpg
 2. Double click *Tomcat v8.5 Server at localhost*.
 3. Click on the *Modules* tab.
 4. Select *Add External Web Module*.
-5. Enter *Document Base* and *Path*.
+5. Enter *Document Base* as the path of folder you created and *Path* as /media.
 
+**Note** : Create folder to upload images outside workspace.
 
+## Add Apache Derby database credentials
+```bash
+$ cd OnlineAuction/src/com/auctivity/utility
+$ vim DBConnection.java
+```
+
+Add derby URL, username and password
+```java
+con = DriverManager.getConnection(url,username,password);
+```
+
+## Add Image upload path
+```bash
+$ cd OnlineAuction/src/com/auctivity/controller
+$ vim AddProductController.java
+```
+
+Add ```BASE_DIR``` path in doPost method
+```java
+String BASE_DIR = "/Users/sanul/Documents/";
+```
+<br/>
+## Create tables in database
+Run the ```/OnlineAuction/AuctivitySchema.sql```
+<br/>
 ## Layered Architecture
 
 ```bash
